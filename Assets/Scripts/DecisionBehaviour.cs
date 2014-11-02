@@ -78,6 +78,7 @@ public class DecisionBehaviour : MonoBehaviour {
 			break;
 		}
 		DisableActions ();
+		FindObjectOfType<MoveCamera>().moves--;
 	}
 
 	public void DisableActions(){

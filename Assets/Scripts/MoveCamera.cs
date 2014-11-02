@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MoveCamera : MonoBehaviour {
 	public float moveSpeed = -.1f;
-	private Vector3 speed;
+	public Vector3 speed;
 	private Vector3 prevSpeed;
 	private bool stopped;
 	public int direction;
@@ -21,6 +21,7 @@ public class MoveCamera : MonoBehaviour {
 	public float timeDuration = .5f;
 	public float startAngle = 0;
 	public float endAngle = 0;
+	private GameObject deadEnd;
 
 	// Use this for initialization
 	void Start () {
@@ -147,13 +148,15 @@ public class MoveCamera : MonoBehaviour {
 		} else if(direction == 1) {
 			direction = 3;
 			//transform.localEulerAngles = new Vector3(0,90f,0);
-			speed = new Vector3(moveSpeed*-1, 0, 0);
+			speed = new Vector3(moveSpeed*-1f, 0, 0);
 		} else if(direction == 2) {
 			direction = 0;
 			//transform.localEulerAngles = new Vector3(0,-180f,0);
 			speed = new Vector3(0, 0, moveSpeed);
 		} else if(direction == 3) {
+			print ("Turning around");
 			direction = 1;
+			print("Direction is now " + direction);
 			//transform.localEulerAngles = new Vector3(0,270f,0);
 			speed = new Vector3(moveSpeed, 0, 0);
 		}
@@ -184,8 +187,9 @@ public class MoveCamera : MonoBehaviour {
 				Invoke("restart", 2);
 			}
 		}
-		else if(col.tag == "DeadEnd") {
+		else if(col.tag == "DeadEnd" && !turning) {
 			turnAround();
+			deadEnd = col.gameObject;
 		}
 		else if(col.tag == "VictoryPoint" && moves > 0) {
 			stopMoving();
