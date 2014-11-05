@@ -8,7 +8,7 @@ public class MoveCamera : MonoBehaviour {
 	private bool stopped;
 	public int direction;
 	public int moves = 50;
-	public GUIText movesText;
+	//public GUIText movesText;
 	public GUIText messageText;
 	public bool restarting;
 
@@ -30,7 +30,7 @@ public class MoveCamera : MonoBehaviour {
 		stopped = false;
 		prevSpeed = Vector3.zero;
 		speed = new Vector3 (0, 0, moveSpeed);
-		movesText.text = "";
+		//movesText.text = "";
 		messageText.text = "";
 	}
 	
@@ -49,7 +49,7 @@ public class MoveCamera : MonoBehaviour {
 		} else if(Input.GetButtonDown("forward")) {
 			continueMoving();
 		}*/
-		movesText.text = "Moves Remaining: " + moves;
+		//movesText.text = "Moves Remaining: " + moves;
 		if(!turning)
 		{
 			transform.position += speed;
@@ -194,6 +194,13 @@ public class MoveCamera : MonoBehaviour {
 		else if(col.tag == "VictoryPoint" && moves > 0) {
 			stopMoving();
 			messageText.text = "You Win!";
+			Invoke("restart", 3);
+		} else if(col.tag == "MainCamera") {
+			stopMoving ();
+			if(name == "Player1Cam")
+				messageText.text = "You Win!";
+			else
+				messageText.text = "You Lose... :(";
 			Invoke("restart", 3);
 		}
 	}

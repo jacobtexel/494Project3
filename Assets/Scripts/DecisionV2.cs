@@ -23,6 +23,7 @@ public class DecisionV2 : MonoBehaviour {
 
 	// Information about collider
 	private bool collided;
+	private int playerNum;
 	private Collider playerCol;
 
 
@@ -39,16 +40,16 @@ public class DecisionV2 : MonoBehaviour {
 				Debug.LogError("Player options currently null");
 				return;
 			}
-			if(Input.GetButton ("backward") && current.backward) {
+			if(current.backward && (Input.GetButtonDown ("backward") && playerNum == 1 || Input.GetButtonDown ("backward2") && playerNum == 2)) {
 				playerCol.GetComponent<MoveCamera>().turnAround();
 				actionTaken ();
-			} else if(Input.GetButton("left") && current.left) {
+			} else if(current.left && (Input.GetButtonDown("left") && playerNum == 1 || Input.GetButtonDown("left2") && playerNum == 2)) {
 				playerCol.GetComponent<MoveCamera>().turnLeft ();
 				actionTaken ();
-			} else if(Input.GetButton("right") && current.right) {
+			} else if(current.right && (Input.GetButtonDown("right") && playerNum == 1 || Input.GetButtonDown("right2") && playerNum == 2)) {
 				playerCol.GetComponent<MoveCamera>().turnRight ();
 				actionTaken ();
-			} else if(Input.GetButton("forward") && current.forward) {
+			} else if(current.forward && (Input.GetButtonDown("forward") && playerNum == 1 || Input.GetButtonDown("forward2") && playerNum == 2)) {
 				playerCol.GetComponent<MoveCamera>().continueMoving();
 				actionTaken ();
 			} else {
@@ -67,9 +68,9 @@ public class DecisionV2 : MonoBehaviour {
 		//Forward, right, left, backward
 		if (current.forward) {
 			playerCol.gameObject.GetComponent<MoveCamera>().continueMoving();
-		} else if(current.right) {
+		} else if(current.left) {
 			playerCol.gameObject.GetComponent<MoveCamera>().turnLeft();
-		} else if(current.left){
+		} else if(current.right){
 			playerCol.GetComponent<MoveCamera>().turnRight();
 		} else if(current.backward){
 			playerCol.GetComponent<MoveCamera>().turnAround();
@@ -85,9 +86,15 @@ public class DecisionV2 : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if(col.gameObject.tag == "MainCamera"){
+			if(col.gameObject.name == "Player1Cam")
+				playerNum = 1;
+			else {
+				playerNum = 2;
+			}
 			print("Collision!");
 			playerCol = col;
 			dir = col.gameObject.GetComponent<MoveCamera>().direction;
+			text = col.gameObject.GetComponent<MoveCamera>().messageText;
 			switch(dir){
 			case 0:
 				current = NActionSet;
