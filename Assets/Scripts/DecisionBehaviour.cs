@@ -7,7 +7,6 @@ public class DecisionBehaviour : MonoBehaviour {
 	public GameObject[] EActionSet;
 	public GameObject[] SActionSet;
 	public GameObject[] WActionSet;
-	public int example = 5;
 
 	// Stuff for the countdown
 	public float pickTime = 3f;
@@ -89,7 +88,6 @@ public class DecisionBehaviour : MonoBehaviour {
 	void OnTriggerExit(Collider col) {
 		collided = false;
 		text.text = "";
-
 	}
 
 	void OnTriggerEnter(Collider col){
