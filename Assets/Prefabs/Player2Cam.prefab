@@ -12,11 +12,11 @@ GameObject:
   - 92: {fileID: 9200000}
   - 124: {fileID: 12400000}
   - 81: {fileID: 8100000}
-  - 114: {fileID: 11400000}
   - 65: {fileID: 6500000}
   - 54: {fileID: 5400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Player2Cam
   m_TagString: MainCamera
@@ -144,23 +144,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bf0daa2164243e68862c58d2f7f801, type: 3}
+  m_Script: {fileID: 11500000, guid: d31e24de8e4a9c4439560e44a79d97ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -.100000001
-  speed: {x: 0, y: 0, z: 0}
-  direction: 0
-  moves: 35
-  messageText: {fileID: 0}
-  restarting: 0
-  checkToCalculateLeft: 0
-  checkToCalculateRight: 0
-  checkToCalculateTurnAround: 0
-  turning: 0
-  timeStart: 0
-  timeDuration: .5
-  startAngle: 0
-  endAngle: 0
+  playerNum: 0
+  score: 0
+  cat: 0
+  respawning: 0
+  scoreText: {fileID: 0}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
