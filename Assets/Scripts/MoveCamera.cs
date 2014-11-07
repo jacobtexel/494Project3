@@ -181,6 +181,7 @@ public class MoveCamera : MonoBehaviour {
 	void OnTriggerEnter(Collider col) {
 		if(col.tag == "Decision") {
 			stopMoving ();
+			transform.position = col.gameObject.transform.position;
 			if(moves <= 0 && !restarting) {
 				messageText.text = "You Lose... :(";
 				restarting = true;
@@ -206,7 +207,7 @@ public class MoveCamera : MonoBehaviour {
 	}
 
 	void restart() {
-		Application.LoadLevel ("YeahYeahYeah");
+		Application.LoadLevel (0);
 		restarting = false;
 	}
 
