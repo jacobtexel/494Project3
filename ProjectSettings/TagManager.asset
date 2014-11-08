@@ -9,6 +9,8 @@ TagManager:
   - VictoryPoint
   - Player1
   - Player2
+  - Powerup
+  - Spawn
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

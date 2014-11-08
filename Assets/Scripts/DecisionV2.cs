@@ -85,7 +85,7 @@ public class DecisionV2 : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
-		if(col.gameObject.tag == "MainCamera"){
+		if(col.gameObject.tag == "Player"){
 			if(col.gameObject.name == "Player1Cam")
 				playerNum = 1;
 			else {
