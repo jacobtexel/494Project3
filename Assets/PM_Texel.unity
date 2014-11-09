@@ -660,8 +660,6 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &344502943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -925,7 +923,19 @@ MonoBehaviour:
   score: 0
   cat: 0
   respawning: 0
+  collided: 0
   scoreText: {fileID: 1040256843}
+  timerText: {fileID: 751393856}
+  current:
+    forward: 0
+    left: 0
+    right: 0
+    backward: 0
+  pickTime: 3
+  forward: forward
+  left: left
+  right: right
+  backward: backward
 --- !u!114 &458323892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,8 +1154,6 @@ MonoBehaviour:
     left: 0
     right: 1
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &470332753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1285,8 +1293,6 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &480381841
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1542,6 +1548,34 @@ Prefab:
     - target: {fileID: 100000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: forward
+      value: forward
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: left
+      value: left
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: right
+      value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: backward
+      value: backward
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 751393856}
+    - target: {fileID: 2000000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
@@ -1899,8 +1933,6 @@ MonoBehaviour:
     left: 0
     right: 1
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &752174378
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2173,8 +2205,6 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 0
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &870671148
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2965,8 +2995,6 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &1082085214
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3154,8 +3182,6 @@ MonoBehaviour:
     left: 1
     right: 1
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &1138580496
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3343,8 +3369,6 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &1187335037
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3924,8 +3948,6 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 0
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &1403420785
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4389,7 +4411,19 @@ MonoBehaviour:
   score: 0
   cat: 0
   respawning: 0
+  collided: 0
   scoreText: {fileID: 1582161592}
+  timerText: {fileID: 533769700}
+  current:
+    forward: 0
+    left: 0
+    right: 0
+    backward: 0
+  pickTime: 3
+  forward: forward2
+  left: left2
+  right: right2
+  backward: backward2
 --- !u!23 &1677213957
 Renderer:
   m_ObjectHideFlags: 0
@@ -4767,8 +4801,6 @@ MonoBehaviour:
     left: 0
     right: 1
     backward: 0
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &1844160895
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4908,8 +4940,6 @@ MonoBehaviour:
     left: 1
     right: 1
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &1874157837
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5219,6 +5249,26 @@ Prefab:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: forward
+      value: forward2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: left
+      value: left2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: right
+      value: right2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: backward
+      value: backward2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 533769700}
     m_RemovedComponents:
     - {fileID: 8100000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
@@ -5646,8 +5696,6 @@ MonoBehaviour:
     left: 0
     right: 1
     backward: 1
-  pickTime: 3
-  text: {fileID: 0}
 --- !u!54 &2116583075
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -151,7 +151,19 @@ MonoBehaviour:
   score: 0
   cat: 0
   respawning: 0
+  collided: 0
   scoreText: {fileID: 0}
+  timerText: {fileID: 0}
+  current:
+    forward: 0
+    left: 0
+    right: 0
+    backward: 0
+  pickTime: 3
+  forward: forward2
+  left: left2
+  right: right2
+  backward: backward2
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
