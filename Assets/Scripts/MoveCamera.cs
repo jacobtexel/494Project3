@@ -162,6 +162,7 @@ public class MoveCamera : MonoBehaviour {
 	void OnTriggerEnter(Collider col) {
 		if(col.tag == "Decision" && !turning) {
 			stopMoving ();
+			transform.position = col.transform.position;
 		}
 	}
 
