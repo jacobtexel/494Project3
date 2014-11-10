@@ -86,9 +86,11 @@ public class Player : MonoBehaviour {
 			GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 			for (int i=0; i<players.Length; i++){
 				players[i].GetComponent<Player>().cat = false;
+				players[i].GetComponent<Player>().transform.localScale = new Vector3(1, 1, 1);
 			}
 			cat = true;
 			col.gameObject.GetComponent<PowerupAction>().startRespawn();
+			transform.localScale = new Vector3(2, 2, 2);
 		} else if (col.tag == "Decision") {
 			print("Collision!");
 			switch(GetComponent<MoveCamera>().direction){
