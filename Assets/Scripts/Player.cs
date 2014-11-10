@@ -8,11 +8,10 @@ public class Player : MonoBehaviour {
 	public bool respawning;
 	public bool collided;
 	public GUIText scoreText;
-	public GUIText timerText;
 	public Options current;
 	private float timer;
 	public float pickTime = 3f;
-
+	public GUITexture timerBar;
 
 	//Input strings for movement
 	public string forward;
@@ -27,12 +26,17 @@ public class Player : MonoBehaviour {
 		respawning = false;
 		cat = false;
 		scoreText.text = score.ToString ();
+		timerBar.enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {		
 		scoreText.text = score.ToString ();
 		if(collided) {
+			timerBar.enabled = true;
+			Vector3 barscale = timerBar.transform.localScale;
+			barscale.x = .5f * (timer/pickTime);
+			timerBar.transform.localScale = barscale;
 			if(current == null){
 				Debug.LogError("Player options currently null");
 				return;
@@ -51,13 +55,14 @@ public class Player : MonoBehaviour {
 				actionTaken ();
 			} else {
 				timer -= Time.deltaTime;
-				timerText.text = timer.ToString ();
 				if (timer <= 0)
 				{
 					collided = false;
 					TakeAction();
 				}
 			}
+		} else {
+			timerBar.enabled = false;
 		}
 	}
 
@@ -86,7 +91,6 @@ public class Player : MonoBehaviour {
 			col.gameObject.GetComponent<PowerupAction>().startRespawn();
 		} else if (col.tag == "Decision") {
 			print("Collision!");
-			timerText = GetComponent<MoveCamera>().messageText;
 			switch(GetComponent<MoveCamera>().direction){
 			case 0:
 				current = col.gameObject.GetComponent<DecisionV2>().NActionSet;
@@ -138,7 +142,6 @@ public class Player : MonoBehaviour {
 	
 	void actionTaken(){
 		collided = false;
-		timerText.text = "";
 	}
 
 }

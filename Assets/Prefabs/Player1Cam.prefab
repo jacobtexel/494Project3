@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31e24de8e4a9c4439560e44a79d97ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 0
+  playerNum: 1
   score: 0
   cat: 0
   respawning: 0
@@ -178,6 +178,9 @@ MonoBehaviour:
     right: 0
     backward: 0
   pickTime: 3
+  progressBarFull: {fileID: 0}
+  barLocation: {x: 0, y: 0}
+  barSize: {x: 0, y: 0}
   forward: forward
   left: left
   right: right

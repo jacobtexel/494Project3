@@ -285,6 +285,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!1 &54750758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 54750760}
+  - 131: {fileID: 54750759}
+  m_Layer: 11
+  m_Name: Player4Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &54750759
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 54750758}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 1af9cf61c5fdf2c48b669751b940cda4, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 128
+    height: 58
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &54750760
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 54750758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: .5, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
 --- !u!1001 &154568014
 Prefab:
   m_ObjectHideFlags: 0
@@ -377,6 +424,53 @@ Prefab:
   m_RootGameObject: {fileID: 480381838}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &252793468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 252793470}
+  - 131: {fileID: 252793469}
+  m_Layer: 8
+  m_Name: Player1Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &252793469
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 252793468}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 1af9cf61c5fdf2c48b669751b940cda4, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 128
+    height: 15
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &252793470
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 252793468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .504292011, y: .893708587, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
 --- !u!1001 &255361081
 Prefab:
   m_ObjectHideFlags: 0
@@ -1543,6 +1637,18 @@ Prefab:
       propertyPath: m_NormalizedViewPortRect.height
       value: .495000005
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: progressBarFull
+      value: 
+      objectReference: {fileID: 2800000, guid: 1af9cf61c5fdf2c48b669751b940cda4, type: 3}
+    - target: {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: barSize.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: barSize.y
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
   m_RootGameObject: {fileID: 458323890}
@@ -1682,6 +1788,18 @@ Prefab:
     - target: {fileID: 6500000, guid: 626c88513fc402e43b68b24c6afabca1, type: 2}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 626c88513fc402e43b68b24c6afabca1, type: 2}
+      propertyPath: progressBarFull
+      value: 
+      objectReference: {fileID: 2800000, guid: 1af9cf61c5fdf2c48b669751b940cda4, type: 3}
+    - target: {fileID: 11400000, guid: 626c88513fc402e43b68b24c6afabca1, type: 2}
+      propertyPath: barSize.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 626c88513fc402e43b68b24c6afabca1, type: 2}
+      propertyPath: barSize.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 626c88513fc402e43b68b24c6afabca1, type: 2}
@@ -2149,10 +2267,10 @@ Camera:
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: .425000012
-    y: .375
-    width: .150000006
-    height: .25
+    x: .25
+    y: .25
+    width: .5
+    height: .5
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 60
@@ -3237,6 +3355,18 @@ Prefab:
     - target: {fileID: 6500000, guid: 0e8eb26105f6b4f4589087ea2b5d2ff5, type: 2}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 0e8eb26105f6b4f4589087ea2b5d2ff5, type: 2}
+      propertyPath: progressBarFull
+      value: 
+      objectReference: {fileID: 2800000, guid: 1af9cf61c5fdf2c48b669751b940cda4, type: 3}
+    - target: {fileID: 11400002, guid: 0e8eb26105f6b4f4589087ea2b5d2ff5, type: 2}
+      propertyPath: barSize.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 0e8eb26105f6b4f4589087ea2b5d2ff5, type: 2}
+      propertyPath: barSize.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e8eb26105f6b4f4589087ea2b5d2ff5, type: 2}
@@ -4583,6 +4713,53 @@ Prefab:
   m_RootGameObject: {fileID: 260082608}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1573100611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1573100613}
+  - 131: {fileID: 1573100612}
+  m_Layer: 10
+  m_Name: Player3Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &1573100612
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573100611}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 1af9cf61c5fdf2c48b669751b940cda4, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 128
+    height: 58
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &1573100613
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573100611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: .5, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
 --- !u!1 &1582161591
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,6 +5336,53 @@ Prefab:
   m_RootGameObject: {fileID: 1411852482}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1789468923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1789468925}
+  - 131: {fileID: 1789468924}
+  m_Layer: 9
+  m_Name: Player2Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &1789468924
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1789468923}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 1af9cf61c5fdf2c48b669751b940cda4, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 128
+    height: 58
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &1789468925
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1789468923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: .5, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
 --- !u!1 &1819159815
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,6 +6201,26 @@ Prefab:
     - target: {fileID: 2000000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
       propertyPath: m_NormalizedViewPortRect.height
       value: .495000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: progressBarFull
+      value: 
+      objectReference: {fileID: 2800000, guid: 1af9cf61c5fdf2c48b669751b940cda4, type: 3}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: barSize.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: barSize.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: barLocation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: barLocation.x
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
