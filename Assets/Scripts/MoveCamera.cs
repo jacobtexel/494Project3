@@ -28,8 +28,12 @@ public class MoveCamera : MonoBehaviour {
 	void Update () {
 		if(turning)
 		{
-			if(endAngle - startAngle > 180)
-				endAngle -= 360;
+			if(Mathf.Abs(endAngle - startAngle) > 180){
+				if(endAngle > startAngle)
+					endAngle -= 360;
+				else
+					endAngle += 360;
+			}
 			float u = (Time.time - timeStart) / timeDuration;
 			if(u>=1)
 			{
