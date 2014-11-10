@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
 		cat = false;
 		scoreText.text = score.ToString ();
 		timerBar.enabled = false;
+		// respawn ();
 	}
 	
 	// Update is called once per frame

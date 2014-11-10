@@ -19,8 +19,23 @@ public class MoveCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		restarting = false;
-		direction = 0;
-		speed = new Vector3 (0, 0, moveSpeed);
+		switch(direction){
+		case 0:
+			faceNorth();
+			break;
+		case 1:
+			faceEast();
+			break;
+		case 2:
+			faceSouth();
+			break;
+		case 3:
+			faceWest ();
+			break;
+		default:
+			Debug.Log("Unrecognized starting direction for player: "+direction);
+			break;
+		}
 		messageText.text = "";
 	}
 	
