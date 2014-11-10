@@ -28,6 +28,8 @@ public class MoveCamera : MonoBehaviour {
 	void Update () {
 		if(turning)
 		{
+			if(endAngle - startAngle > 180)
+				endAngle -= 360;
 			float u = (Time.time - timeStart) / timeDuration;
 			if(u>=1)
 			{

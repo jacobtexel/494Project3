@@ -78,6 +78,10 @@ public class Player : MonoBehaviour {
 			if(!player.respawning) {
 				score++;
 				player.startRespawn();
+				if(score >= 10){
+					PlayerPrefs.SetString("winner", playerNum.ToString());
+					Application.LoadLevel("_End_screen");
+				}
 			}
 		} else if (col.tag == "Powerup") {
 			GameObject[] players = GameObject.FindGameObjectsWithTag("Player");

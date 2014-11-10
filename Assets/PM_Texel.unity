@@ -391,9 +391,6 @@ MonoBehaviour:
   direction: 0
   messageText: {fileID: 869868086}
   restarting: 0
-  checkToCalculateLeft: 0
-  checkToCalculateRight: 0
-  checkToCalculateTurnAround: 0
   turning: 0
   timeStart: 0
   timeDuration: .5
@@ -1239,6 +1236,7 @@ MonoBehaviour:
     left: 0
     right: 1
     backward: 1
+  spawnDir: 0
 --- !u!54 &287007100
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1373,6 +1371,7 @@ MonoBehaviour:
     left: 1
     right: 1
     backward: 1
+  spawnDir: 0
 --- !u!54 &302451434
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1495,6 +1494,7 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 0
+  spawnDir: 0
 --- !u!54 &333604888
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1821,6 +1821,7 @@ MonoBehaviour:
     left: 1
     right: 1
     backward: 1
+  spawnDir: 0
 --- !u!54 &407990983
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2019,6 +2020,7 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 1
+  spawnDir: 0
 --- !u!54 &437015870
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2539,9 +2541,6 @@ MonoBehaviour:
   direction: 0
   messageText: {fileID: 202036771}
   restarting: 0
-  checkToCalculateLeft: 0
-  checkToCalculateRight: 0
-  checkToCalculateTurnAround: 0
   turning: 0
   timeStart: 0
   timeDuration: .5
@@ -2846,6 +2845,7 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 1
+  spawnDir: 0
 --- !u!54 &730677903
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3052,9 +3052,6 @@ MonoBehaviour:
   direction: 0
   messageText: {fileID: 2051859698}
   restarting: 0
-  checkToCalculateLeft: 0
-  checkToCalculateRight: 0
-  checkToCalculateTurnAround: 0
   turning: 0
   timeStart: 0
   timeDuration: .5
@@ -5215,6 +5212,7 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 1
+  spawnDir: 0
 --- !u!54 &1439101349
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5477,6 +5475,7 @@ MonoBehaviour:
     left: 0
     right: 1
     backward: 0
+  spawnDir: 0
 --- !u!54 &1502282487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5671,6 +5670,7 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 1
+  spawnDir: 0
 --- !u!54 &1542884439
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5793,6 +5793,7 @@ MonoBehaviour:
     left: 0
     right: 1
     backward: 1
+  spawnDir: 0
 --- !u!54 &1544642022
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6092,6 +6093,7 @@ MonoBehaviour:
     left: 0
     right: 1
     backward: 1
+  spawnDir: 0
 --- !u!54 &1654312060
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6265,6 +6267,7 @@ MonoBehaviour:
     left: 1
     right: 0
     backward: 0
+  spawnDir: 0
 --- !u!54 &1820929232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6364,9 +6367,6 @@ MonoBehaviour:
   direction: 0
   messageText: {fileID: 1384892767}
   restarting: 0
-  checkToCalculateLeft: 0
-  checkToCalculateRight: 0
-  checkToCalculateTurnAround: 0
   turning: 0
   timeStart: 0
   timeDuration: .5
