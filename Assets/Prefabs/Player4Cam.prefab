@@ -30,7 +30,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 1.33158053e-07, y: 1, z: 1.33158053e-07, w: -4.37114061e-08}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: -4.37113883e-08}
   m_LocalPosition: {x: 12, y: 1.00002837, z: 4.09156895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -60,7 +60,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294965503
+    m_Bits: 4294961407
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -120,7 +120,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: .100000001, y: 1, z: .100000001}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!92 &9200000
 Behaviour:
@@ -171,13 +171,13 @@ MonoBehaviour:
   respawning: 0
   collided: 0
   scoreText: {fileID: 0}
-  timerText: {fileID: 0}
   current:
     forward: 0
     left: 0
     right: 0
     backward: 0
   pickTime: 3
+  timerBar: {fileID: 0}
   forward: forward4
   left: left4
   right: right4

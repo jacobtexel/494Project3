@@ -7,7 +7,7 @@ TagManager:
   - DeadEnd
   - Action
   - VictoryPoint
-  - 
+  - Vignette
   - 
   - Powerup
   - Spawn
@@ -24,7 +24,7 @@ TagManager:
   User Layer 9: Player2
   User Layer 10: Player3
   User Layer 11: Player4
-  User Layer 12: 
+  User Layer 12: PlayerNone
   User Layer 13: 
   User Layer 14: 
   User Layer 15: 

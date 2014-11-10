@@ -75,6 +75,12 @@ public class Player : MonoBehaviour {
 
 	}
 
+	void OnTriggerStay(Collider col) {
+		if(col.tag == "Decision" && collided){
+			transform.position = Vector3.MoveTowards(transform.position, col.transform.position, 3f);
+		}
+	}
+
 	void OnTriggerEnter(Collider col) {
 		if (col.tag == "Player" && cat) {
 			Player player = col.gameObject.GetComponent<Player>();
@@ -91,6 +97,7 @@ public class Player : MonoBehaviour {
 			cat = true;
 			col.gameObject.GetComponent<PowerupAction>().startRespawn();
 			transform.localScale = new Vector3(2, 2, 2);
+			GameObject.FindGameObjectWithTag("Vignette").layer = 7 + playerNum;
 		} else if (col.tag == "Decision") {
 			print("Collision!");
 			switch(GetComponent<MoveCamera>().direction){
