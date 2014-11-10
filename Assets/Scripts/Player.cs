@@ -66,15 +66,6 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public void respawn() {
-		gameObject.renderer.enabled = true;
-		GameObject[] points = GameObject.FindGameObjectsWithTag ("Decision");
-		transform.position = points [Random.Range (0, points.Length - 1)].transform.position;
-		GetComponent<Camera> ().enabled = true;
-		respawning = false;
-
-	}
-
 	void OnTriggerStay(Collider col) {
 		if(col.tag == "Decision" && collided){
 			transform.position = Vector3.MoveTowards(transform.position, col.transform.position, 3f);
@@ -131,6 +122,32 @@ public class Player : MonoBehaviour {
 			gameObject.renderer.enabled = false;
 			Invoke("respawn", 2f);
 		}
+	}
+
+	public void respawn() {
+		gameObject.renderer.enabled = true;
+		GameObject[] points = GameObject.FindGameObjectsWithTag ("Decision");
+		GameObject newLoc = points [Random.Range (0, points.Length - 1)];
+		int dir = newLoc.GetComponent<DecisionV2> ().spawnDir;
+		switch (dir) {
+		case 0:
+			gameObject.GetComponent<MoveCamera>().faceNorth();
+			break;
+		case 1:
+			gameObject.GetComponent<MoveCamera>().faceEast();
+			break;
+		case 2:
+			gameObject.GetComponent<MoveCamera>().faceSouth();
+			break;
+		case 3:
+			gameObject.GetComponent<MoveCamera>().faceWest();
+			break;
+		}
+		transform.position = newLoc.transform.position;
+		GetComponent<Camera> ().enabled = true;
+
+		respawning = false;
+		
 	}
 
 	public void TakeAction() {

@@ -13,6 +13,9 @@ public class DecisionV2 : MonoBehaviour {
 	public Options SActionSet;
 	public Options WActionSet;
 
+	// Spawning direction
+	public int spawnDir = 0;
+
 	// Use this for initialization
 	void Start () {
 		gameObject.renderer.material.color = new Color(1.0f,1.0f,1.0f,0.0f);
