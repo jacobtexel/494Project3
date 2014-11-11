@@ -94,6 +94,7 @@ public class Player : MonoBehaviour {
 			col.gameObject.GetComponent<PowerupAction>().startRespawn();
 			transform.localScale = new Vector3(2, 2, 2);
 			GameObject.FindGameObjectWithTag("Vignette").layer = 7 + playerNum;
+			GameObject.FindGameObjectWithTag("Vignette").guiTexture.color = this.gameObject.renderer.material.color;
 		} else if (col.tag == "Decision") {
 			print("Collision!");
 			switch(GetComponent<MoveCamera>().direction){
