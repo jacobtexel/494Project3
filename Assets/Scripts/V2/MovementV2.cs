@@ -13,15 +13,18 @@ public class MovementV2 : MonoBehaviour {
 	public float dashTime = .2f;
 	public float timer;
 	public int points = 0;
+	private bool recharge;
+	private bool respawning;
 
 	// Use this for initialization
 	void Start () {
-	
+		recharge = false;
+		respawning = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!dash && !pointMan && Input.GetButton (left) && Input.GetButton (right)) {
+		if (!dash && !pointMan && Input.GetButton (left) && Input.GetButton (right) && !recharge) {
 			dash = true;
 			timer = 0.0f;
 			gameObject.layer = 0;
@@ -39,14 +42,20 @@ public class MovementV2 : MonoBehaviour {
 				transform.position -= transform.forward * 3 * Time.deltaTime;
 			}
 		}
-		if(dash){
+		if(dash && !recharge){
 			transform.position += transform.forward * 5 * Time.deltaTime;
 			timer += Time.deltaTime;
 			if(timer >= dashTime){
 				dash = false;
 				gameObject.layer = 12; //Layer not rendered by any player or minimap
+				recharge = true;
+				Invoke("rechargeDash", 1.5f);
 			}
 		}
+	}
+
+	void rechargeDash() {
+		recharge = false;
 	}
 
 	public void becomePointMan(){
@@ -61,6 +70,7 @@ public class MovementV2 : MonoBehaviour {
 		pointMan = false;
 		CancelInvoke ("GainPoint");
 		gameObject.layer = 12;
+		startRespawn ();
 	}
 
 	void GainPoint(){
@@ -81,7 +91,31 @@ public class MovementV2 : MonoBehaviour {
 			if(dash && col.gameObject.GetComponent<MovementV2>().pointMan){
 				becomePointMan();
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
+			} else if(col.gameObject.GetComponent<MovementV2>().pointMan){
+				startRespawn();
 			}
 		}
 	}
+
+	void startRespawn() {
+		GetComponent<Camera> ().enabled = false;
+		if(!respawning) {
+			respawning = true;
+			gameObject.renderer.enabled = false;
+			gameObject.collider.enabled =false;
+			Invoke("respawn", 2f);
+		}
+	}
+
+	void respawn() {
+		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
+		GameObject spot = spawns [Random.Range (0, spawns.Length)];
+		transform.position = spot.transform.position;
+		gameObject.renderer.enabled = true;
+		gameObject.collider.enabled =true;
+		GetComponent<Camera> ().enabled = true;
+		respawning = false;
+
+	}
+
 }
