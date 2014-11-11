@@ -106,6 +106,8 @@ public class MovementV2 : MonoBehaviour {
 		gameObject.layer = 0;
 		timer = 0.0f;
 		dash = false;
+		GameObject.FindGameObjectWithTag ("Vignette").layer = GetComponent<PlayerV2> ().playerNum + 7;
+		GameObject.FindGameObjectWithTag ("Vignette").guiTexture.color = renderer.material.color;
 		InvokeRepeating("GainPoint", 1.0f, 1.0f);
 	}
 
@@ -118,6 +120,10 @@ public class MovementV2 : MonoBehaviour {
 
 	void GainPoint(){
 		points++;
+		if(points >= 60){
+			PlayerPrefs.SetString("winner", GetComponent<PlayerV2>().playerNum.ToString());
+			Application.LoadLevel("_End_screen");
+		}
 	}
 
 	public void GetKnockedUp(Vector3 source){
