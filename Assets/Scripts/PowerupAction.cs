@@ -15,7 +15,7 @@ public class PowerupAction : MonoBehaviour {
 	}
 
 	void respawn() {
-		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
+		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("PowerupSpawn");
 		transform.position = spawns [Random.Range (0, spawns.Length)].transform.position;
 	}
 }
