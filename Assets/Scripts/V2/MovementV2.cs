@@ -50,17 +50,14 @@ public class MovementV2 : MonoBehaviour {
 	}
 
 	public void becomePointMan(){
-		print ("Called by "+name);
 		pointMan = true;
 		gameObject.layer = 0;
 		timer = 0.0f;
 		dash = false;
 		InvokeRepeating("GainPoint", 1.0f, 1.0f);
-		print (gameObject.layer);
 	}
 
 	public void losePointMan(){
-		print ("Point lost by " + name);
 		pointMan = false;
 		CancelInvoke ("GainPoint");
 		gameObject.layer = 12;
