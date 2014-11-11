@@ -8,13 +8,19 @@ public class MovementV2 : MonoBehaviour {
 	public string left;
 	public string right;
 	public string backward;
-	private bool dash = false;
 	public bool pointMan = false;
 	public float dashTime = .2f;
 	public float timer;
 	public int points = 0;
+
+	//Bools concerning state of player
+	private bool dash = false;
 	private bool recharge;
 	private bool respawning;
+	private bool knockedUp;
+	private bool up;
+
+	private Vector3 knockUpDirection;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +34,7 @@ public class MovementV2 : MonoBehaviour {
 			dash = true;
 			timer = 0.0f;
 			gameObject.layer = 0;
-		}else{
+		}else if(!knockedUp){
 			if(Input.GetButton(left)){
 				transform.Rotate(100 * Vector3.down * Time.deltaTime);
 			}
@@ -42,7 +48,7 @@ public class MovementV2 : MonoBehaviour {
 				transform.position -= transform.forward * 3 * Time.deltaTime;
 			}
 		}
-		if(dash && !recharge){
+		if(dash && !recharge && !knockedUp){
 			transform.position += transform.forward * 5 * Time.deltaTime;
 			timer += Time.deltaTime;
 			if(timer >= dashTime){
@@ -50,6 +56,25 @@ public class MovementV2 : MonoBehaviour {
 				gameObject.layer = 12; //Layer not rendered by any player or minimap
 				recharge = true;
 				Invoke("rechargeDash", 1.5f);
+			}
+		}
+		if(knockedUp){
+			if(up){
+				transform.position += 3*knockUpDirection*Time.deltaTime;
+				transform.position += 2*Vector3.up*Time.deltaTime;
+				if(transform.position.y >= 2.0f)
+					up=false;
+ 			}else{
+				transform.position += 3*knockUpDirection*Time.deltaTime;
+				transform.position += 2*Vector3.down*Time.deltaTime;
+				if(Physics.Raycast(transform.position, Vector3.down, 0.6f)){
+					knockedUp = false;
+					gameObject.layer = 12;
+				} else if(transform.position.y <= -1){
+					knockedUp = false;
+					gameObject.layer = 12;
+					startRespawn();
+				}
 			}
 		}
 	}
@@ -70,13 +95,19 @@ public class MovementV2 : MonoBehaviour {
 		pointMan = false;
 		CancelInvoke ("GainPoint");
 		gameObject.layer = 12;
-		startRespawn ();
+		//startRespawn ();
 	}
 
 	void GainPoint(){
 		points++;
 	}
 
+	public void GetKnockedUp(Vector3 source){
+		knockUpDirection = transform.position - source;
+		knockedUp = true;
+		up = true;
+		gameObject.layer = 0;
+	}
 
 	void OnTriggerEnter(Collider col){
 		if(col.tag == "Powerup"){
@@ -89,10 +120,13 @@ public class MovementV2 : MonoBehaviour {
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "MainCamera"){
 			if(dash && col.gameObject.GetComponent<MovementV2>().pointMan){
-				becomePointMan();
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
-			} else if(col.gameObject.GetComponent<MovementV2>().pointMan){
-				startRespawn();
+				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
+				becomePointMan();
+			} else if(dash){
+				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
+			}else if(col.gameObject.GetComponent<MovementV2>().pointMan) {
+				GetKnockedUp(col.gameObject.transform.position);
 			}
 		}
 	}
