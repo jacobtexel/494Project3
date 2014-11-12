@@ -156,7 +156,7 @@ public class MovementV2 : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		if(col.tag == "Powerup"){
 			becomePointMan();
-			Destroy(col.gameObject);
+			col.GetComponent<PowerUpV2>().remove();
 			//col.GetComponent<PowerupAction>().startRespawn();
 		} else if(col.tag == "Danger"){
 			if(pointMan)
@@ -188,8 +188,7 @@ public class MovementV2 : MonoBehaviour {
 			jump = false;
 			up = false;
 			respawning = true;
-			gameObject.renderer.enabled = false;
-			gameObject.collider.enabled =false;
+			gameObject.layer = 12;
 			Invoke("respawn", 2f);
 		}
 	}
