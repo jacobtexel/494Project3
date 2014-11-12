@@ -12,6 +12,7 @@ TagManager:
   - Powerup
   - Spawn
   - PowerupSpawn
+  - Danger
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   User Layer 10: Player3
   User Layer 11: Player4
   User Layer 12: PlayerNone
-  User Layer 13: 
+  User Layer 13: NotOnMinimap
   User Layer 14: 
   User Layer 15: 
   User Layer 16: 

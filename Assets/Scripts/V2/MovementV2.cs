@@ -131,6 +131,7 @@ public class MovementV2 : MonoBehaviour {
 		pointMan = false;
 		CancelInvoke ("GainPoint");
 		gameObject.layer = 12;
+		GameObject.FindGameObjectWithTag ("Vignette").layer = 12;
 		//startRespawn ();
 	}
 
@@ -146,6 +147,7 @@ public class MovementV2 : MonoBehaviour {
 	public void GetKnockedUp(Vector3 source){
 		knockUpDirection = transform.position - source;
 		knockedUp = true;
+		timer = 0.5f;
 		up = true;
 		jump = false;
 		gameObject.layer = 0;
@@ -156,7 +158,11 @@ public class MovementV2 : MonoBehaviour {
 			becomePointMan();
 			Destroy(col.gameObject);
 			//col.GetComponent<PowerupAction>().startRespawn();
-		} 
+		} else if(col.tag == "Danger"){
+			if(pointMan)
+				losePointMan();
+			startRespawn();
+		}
 	}
 
 	void OnCollisionEnter(Collision col){
