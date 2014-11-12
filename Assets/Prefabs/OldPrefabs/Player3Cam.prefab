@@ -174,9 +174,6 @@ MonoBehaviour:
   direction: 0
   messageText: {fileID: 0}
   restarting: 0
-  checkToCalculateLeft: 0
-  checkToCalculateRight: 0
-  checkToCalculateTurnAround: 0
   turning: 0
   timeStart: 0
   timeDuration: .5

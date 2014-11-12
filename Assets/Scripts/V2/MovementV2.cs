@@ -120,6 +120,7 @@ public class MovementV2 : MonoBehaviour {
 		points++;
 	}
 
+	// Lol great method name
 	public void GetKnockedUp(Vector3 source){
 		knockUpDirection = transform.position - source;
 		knockedUp = true;
