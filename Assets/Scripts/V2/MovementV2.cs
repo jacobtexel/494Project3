@@ -10,6 +10,8 @@ public class MovementV2 : MonoBehaviour {
 	public string backward;
 	public bool pointMan = false;
 	public float dashTime = .2f;
+	public float jumpTime = .5f;
+	public float knockBackTime = .5f;
 	public float timer;
 	public int points = 0;
 
@@ -20,6 +22,7 @@ public class MovementV2 : MonoBehaviour {
 	private bool recharge;
 	private bool respawning;
 	private bool knockedUp;
+	private bool jump;
 	private bool up;
 
 	private Vector3 knockUpDirection;
@@ -28,6 +31,7 @@ public class MovementV2 : MonoBehaviour {
 	void Start () {
 		recharge = false;
 		respawning = false;
+		jump = false;
 	}
 	
 	// Update is called once per frame
@@ -41,7 +45,13 @@ public class MovementV2 : MonoBehaviour {
 			dash = true;
 			timer = 0.0f;
 			gameObject.layer = 0;
-		} 
+		}
+		//Jump action
+		else if(!jump && !pointMan && !knockedUp && Physics.Raycast(transform.position, Vector3.down, 0.25f) && Input.GetButton (forward) && Input.GetButton (backward)){
+			jump = true;
+			timer = jumpTime;
+			gameObject.layer = 0;
+		}
 		//Fireball action
 		else if(pointMan && !recharge && Input.GetButton (left) && Input.GetButton (right)){
 			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
@@ -76,11 +86,21 @@ public class MovementV2 : MonoBehaviour {
 				Invoke("rechargeSkill", 1.5f);
 			}
 		}
+		if(jump){
+			transform.position += 4	*Vector3.up*Time.deltaTime;
+			timer -= Time.deltaTime;
+			if(timer <= 0.0f){
+				jump = false;
+				gameObject.layer = 12;
+			}
+		}
 		if(knockedUp){
+			jump = false;
 			if(up){
 				transform.position += 5 *knockUpDirection*Time.deltaTime;
 				transform.position += 4	*Vector3.up*Time.deltaTime;
-				if(transform.position.y >= 2.0f)
+				timer -= Time.deltaTime;
+				if(timer <= 0.0f)
 					up=false;
  			}else{
 				transform.position += 3*knockUpDirection*Time.deltaTime;
@@ -88,10 +108,6 @@ public class MovementV2 : MonoBehaviour {
 				if(Physics.Raycast(transform.position, Vector3.down, 0.3f)){
 					knockedUp = false;
 					gameObject.layer = 12;
-				} else if(transform.position.y <= 0){
-					knockedUp = false;
-					gameObject.layer = 12;
-					startRespawn();
 				}
 			}
 		}
@@ -130,6 +146,7 @@ public class MovementV2 : MonoBehaviour {
 		knockUpDirection = transform.position - source;
 		knockedUp = true;
 		up = true;
+		jump = false;
 		gameObject.layer = 0;
 	}
 
@@ -158,6 +175,11 @@ public class MovementV2 : MonoBehaviour {
 	void startRespawn() {
 		GetComponent<Camera>().enabled = false;
 		if(!respawning) {
+			dash = false;
+			recharge = false;
+			knockedUp = false;
+			jump = false;
+			up = false;
 			respawning = true;
 			gameObject.renderer.enabled = false;
 			gameObject.collider.enabled =false;
