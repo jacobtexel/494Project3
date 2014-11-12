@@ -123,6 +123,7 @@ public class MovementV2 : MonoBehaviour {
 		timer = 0.0f;
 		dash = false;
 		gameObject.layer = 0;
+		GetComponent<PlayerV2> ().vignette.enabled = true;
 		//GameObject.FindGameObjectWithTag ("Vignette").layer = GetComponent<PlayerV2> ().playerNum + 7;
 		//GameObject.FindGameObjectWithTag ("Vignette").guiTexture.color = renderer.material.color;
 		InvokeRepeating("GainPoint", 1.0f, 1.0f);
@@ -133,6 +134,7 @@ public class MovementV2 : MonoBehaviour {
 		CancelInvoke ("GainPoint");
 		gameObject.layer = 12;
 		gameObject.layer = 9;
+		GetComponent<PlayerV2> ().vignette.enabled = false;
 		//GameObject.FindGameObjectWithTag ("Vignette").layer = 12;
 		//startRespawn ();
 	}
@@ -147,6 +149,7 @@ public class MovementV2 : MonoBehaviour {
 
 	// Lol great method name
 	public void GetKnockedUp(Vector3 source){
+		losePointMan ();
 		knockUpDirection = transform.position - source;
 		knockedUp = true;
 		timer = 0.5f;

@@ -14,7 +14,6 @@ public class PowerUpV2 : MonoBehaviour {
 	void Update () {
 		RaycastHit hit;
 		if(Physics.Raycast (transform.position, Vector3.down, out hit,  0.1f)){
-			print (hit.collider.name);
 			GetComponent<Rigidbody>().isKinematic = true;
 		}
 	}
