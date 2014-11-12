@@ -12,7 +12,20 @@ public class LevelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		//GetComponent<GUIText> ().text = "Victorious Player: " + PlayerPrefs.GetString ("winner");
+		string numPlayers = PlayerPrefs.GetString ("numPlayers");
+		//string numPlayers = "3";
+		if(numPlayers == "2") {
+			GameObject player2 = GameObject.Find("Player2Cam");
+			Destroy(player2);
+			GameObject player3 = GameObject.Find("Player3Cam");
+			Destroy(player3);
+		} else if(numPlayers == "3") {
+			GameObject player2 = GameObject.Find("Player2Cam");
+			Destroy(player2);
+		} else {
+			Debug.Log("Something has went wrong and we have recieved something that made no sense in player number selection");
+		}
 	}
 	
 	// Update is called once per frame
