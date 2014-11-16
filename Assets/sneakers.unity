@@ -421,10 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward3
-  left: left3
-  right: right3
-  backward: backward3
+  move: move1
+  turn: turn1
+  commandA: commandA1
+  commandB: commandB1
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -654,10 +654,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward
-  left: left
-  right: right
-  backward: backward
+  move: move1
+  turn: turn1
+  commandA: commandA1
+  commandB: commandB1
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -2593,10 +2593,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward4
-  left: left4
-  right: right4
-  backward: backward4
+  move: move1
+  turn: turn1
+  commandA: commandA1
+  commandB: commandB1
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -5470,10 +5470,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward2
-  left: left2
-  right: right2
-  backward: backward2
+  move: move1
+  turn: turn1
+  commandA: commandA1
+  commandB: commandB1
   pointMan: 0
   dashTime: .5
   jumpTime: .5

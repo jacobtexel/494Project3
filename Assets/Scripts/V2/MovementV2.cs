@@ -4,10 +4,10 @@ using System.Collections;
 public class MovementV2 : MonoBehaviour {
 
 	//Input strings for movement
-	public string forward;
-	public string left;
-	public string right;
-	public string backward;
+	public string move;
+	public string turn;
+	public string commandA;
+	public string commandB;
 	public bool pointMan = false;
 	public float dashTime = .2f;
 	public float jumpTime = .5f;
@@ -41,19 +41,19 @@ public class MovementV2 : MonoBehaviour {
 			return;
 		}
 		//Dash action
-		if (!dash && !pointMan && Input.GetButton (left) && Input.GetButton (right) && !recharge) {
+		if (!dash && !pointMan && Input.GetButton (commandB) && !recharge) {
 			dash = true;
 			timer = 0.0f;
 			gameObject.layer = 0;
 		}
 		//Jump action
-		else if(!jump && !pointMan && !knockedUp && Physics.Raycast(transform.position, Vector3.down, 0.25f) && Input.GetButton (forward) && Input.GetButton (backward)){
+		else if(!jump && !pointMan && !knockedUp && Physics.Raycast(transform.position, Vector3.down, 0.25f) && Input.GetButton (commandA)){
 			jump = true;
 			timer = jumpTime;
 			gameObject.layer = 0;
 		}
 		//Fireball action
-		else if(pointMan && !recharge && Input.GetButton (left) && Input.GetButton (right)){
+		else if(pointMan && !recharge && Input.GetButton (commandB)){
 			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
 			fireball.transform.position = transform.position+transform.forward;
 			fireball.GetComponent<Fireball>().direction = transform.forward;
@@ -63,18 +63,8 @@ public class MovementV2 : MonoBehaviour {
 		}
 		//Regular action
 		else if(!knockedUp){
-			if(Input.GetButton(left)){
-				transform.Rotate(100 * Vector3.down * Time.deltaTime);
-			}
-			if(Input.GetButton (right)) {
-				transform.Rotate(100 * Vector3.up * Time.deltaTime);
-			}
-			if(Input.GetButton (forward)){
-				transform.position += transform.forward * 3 * Time.deltaTime;
-			}
-			if(Input.GetButton (backward)){
-				transform.position -= transform.forward * 3 * Time.deltaTime;
-			}
+			transform.Rotate(100 * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
+			transform.position += transform.forward * 3 * Time.deltaTime * Input.GetAxis(move);
 		}
 		if(dash && !recharge){
 			transform.position += transform.forward * 5 * Time.deltaTime;
