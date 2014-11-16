@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour {
 		} else {
 			Debug.Log("Something has went wrong and we have recieved something that made no sense in player number selection");
 		}
+		foreach(string x in Input.GetJoystickNames ()) print (x);
 	}
 	
 	// Update is called once per frame

@@ -421,10 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: move1
-  turn: turn1
-  commandA: commandA1
-  commandB: commandB1
+  move: move2
+  turn: turn2
+  commandA: commandA2
+  commandB: commandB2
   pointMan: 0
   dashTime: .5
   jumpTime: .5

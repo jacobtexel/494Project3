@@ -63,6 +63,7 @@ public class MovementV2 : MonoBehaviour {
 		}
 		//Regular action
 		else if(!knockedUp){
+			print (Input.GetAxisRaw(turn));
 			transform.Rotate(100 * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
 			transform.position += transform.forward * 3 * Time.deltaTime * Input.GetAxis(move);
 		}
