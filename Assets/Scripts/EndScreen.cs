@@ -10,7 +10,7 @@ public class EndScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetButtonDown("forward"))
+		if(Input.GetButtonDown("commandA1"))
 			Application.LoadLevel("_Start_Screen");
 	}
 }

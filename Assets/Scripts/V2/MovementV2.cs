@@ -40,28 +40,28 @@ public class MovementV2 : MonoBehaviour {
 
 		//Evaluate player actions this frame
 		//Dash action
-		if (!dash && !pointMan && Input.GetButton (commandB) && !recharge) {
+		if (!respawning && !dash && !pointMan && Input.GetButton (commandB) && !recharge) {
 			dash = true;
 			downDash = false;
 			timer = 0.0f;
 			gameObject.layer = 0;
 		}
 		//Jump action
-		else if (!jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButton (commandA)) {
+		else if (!respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			jump = true;
 			downDash = false;
 			timer = jumpTime;
 			gameObject.layer = 0;
 		} 
 		//Downdash action
-		else if (!downDash && !jump && !pointMan && !knockedUp && !Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButton (commandA)) {
+		else if (!respawning && !downDash && !jump && !pointMan && !knockedUp && !Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			downDash = true;
 			gameObject.layer = 0;
 			jump = false;
 			dash = false;
 		}
 		//Fireball action
-		else if(pointMan && !recharge && Input.GetButton (commandB)){
+		else if(!respawning && pointMan && !recharge && Input.GetButton (commandB)){
 			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
 			fireball.transform.position = transform.position+transform.forward;
 			fireball.GetComponent<Fireball>().direction = transform.forward;
@@ -70,7 +70,7 @@ public class MovementV2 : MonoBehaviour {
 			Invoke("rechargeSkill", 0.5f);
 		}
 		//Regular action
-		else if(!knockedUp && !downDash){
+		else if(!respawning && !knockedUp && !downDash){
 			print (Input.GetAxisRaw(turn));
 			transform.Rotate(100 * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
 			transform.position += transform.forward * 3 * Time.deltaTime * Input.GetAxis(move);
@@ -198,6 +198,7 @@ public class MovementV2 : MonoBehaviour {
 		if(!respawning) {
 			losePointMan();
 			dash = false;
+			downDash = false;
 			recharge = false;
 			knockedUp = false;
 			jump = false;
