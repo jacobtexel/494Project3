@@ -62,7 +62,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294959615
+    m_Bits: 4294951423
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -183,10 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward
-  left: left
-  right: right
-  backward: backward
+  move: 
+  turn: 
+  commandA: 
+  commandB: 
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   vignette: {fileID: 0}
+  timerBar: {fileID: 0}
 --- !u!122 &12200000
 Halo:
   m_ObjectHideFlags: 1

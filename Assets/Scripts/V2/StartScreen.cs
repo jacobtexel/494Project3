@@ -23,14 +23,11 @@ public class StartScreen : MonoBehaviour {
 			disableText();
 			Application.LoadLevel("iceyWeiner");
 		}
-
-	
-
 	}
 
 	void disableText() {
-				foreach (GUIText text in GameObject.FindObjectsOfType<GUIText>()) {
-						text.enabled = false;
-				}
+		foreach (GUIText text in GameObject.FindObjectsOfType<GUIText>()) {
+				text.enabled = false;
 		}
+	}
 }

@@ -531,7 +531,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294961407
+    m_Bits: 4294895871
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -618,7 +618,7 @@ TrailRenderer:
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_LightProbeAnchor: {fileID: 866701797}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -693,7 +693,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1106237280}
   m_GameObject: {fileID: 83536923}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &83536929
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -764,7 +764,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294959615
+    m_Bits: 4294951423
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1573,7 +1573,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294951167
+      value: 4294828287
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_NormalizedViewPortRect.width
@@ -1984,7 +1984,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294951167
+    m_Bits: 4294828287
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2711,7 +2711,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294959871
+    m_Bits: 4294943487
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2890,7 +2890,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 2766b81aa62312f458ff3808eed4f6a6, type: 2}
     - target: {fileID: 2000000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294960383
+      value: 4294927615
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
@@ -3332,8 +3332,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294959615
+      value: 4294951423
       objectReference: {fileID: 0}
+    - target: {fileID: 3300000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
     - {fileID: 11400000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
@@ -3635,6 +3639,10 @@ Prefab:
       propertyPath: m_NormalizedViewPortRect.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294943487
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d40134327cdc6e540a4d3f58e3f50d6b, type: 2}
@@ -3652,7 +3660,7 @@ GameObject:
   - 33: {fileID: 1338584361}
   - 65: {fileID: 1338584360}
   - 23: {fileID: 1338584359}
-  m_Layer: 13
+  m_Layer: 17
   m_Name: DangerFloor
   m_TagString: Danger
   m_Icon: {fileID: 0}
@@ -4606,7 +4614,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: d12c6b0472474c3489ebf0113158e732, type: 2}
     - target: {fileID: 2000000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294961407
+      value: 4294895871
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
@@ -5588,7 +5596,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294960383
+    m_Bits: 4294927615
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

@@ -11,6 +11,7 @@ public class PlayerV2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		vignette.enabled = false;
+		GetComponent<TrailRenderer> ().renderer.sortingLayerID = 12;
 	}
 
 	void Update() {

@@ -44,19 +44,19 @@ public class MovementV2 : MonoBehaviour {
 			dash = true;
 			downDash = false;
 			timer = 0.0f;
-			gameObject.layer = 0;
+			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		}
 		//Jump action
 		else if (!respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			jump = true;
 			downDash = false;
 			timer = jumpTime;
-			gameObject.layer = 0;
+			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		} 
 		//Downdash action
 		else if (!respawning && !downDash && !jump && !pointMan && !knockedUp && !Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			downDash = true;
-			gameObject.layer = 0;
+			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 			jump = false;
 			dash = false;
 		}
@@ -71,7 +71,6 @@ public class MovementV2 : MonoBehaviour {
 		}
 		//Regular action
 		else if(!respawning && !knockedUp && !downDash){
-			print (Input.GetAxisRaw(turn));
 			transform.Rotate(100 * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
 			transform.position += transform.forward * 3 * Time.deltaTime * Input.GetAxis(move);
 		}
@@ -128,13 +127,10 @@ public class MovementV2 : MonoBehaviour {
 
 	public void becomePointMan(){
 		pointMan = true;
-		gameObject.layer = 0;
+		gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		timer = 0.0f;
 		dash = false;
-		gameObject.layer = 0;
 		GetComponent<PlayerV2> ().vignette.enabled = true;
-		//GameObject.FindGameObjectWithTag ("Vignette").layer = GetComponent<PlayerV2> ().playerNum + 7;
-		//GameObject.FindGameObjectWithTag ("Vignette").guiTexture.color = renderer.material.color;
 		InvokeRepeating("GainPoint", 1.0f, 1.0f);
 	}
 
@@ -142,10 +138,7 @@ public class MovementV2 : MonoBehaviour {
 		pointMan = false;
 		CancelInvoke ("GainPoint");
 		gameObject.layer = 12;
-		gameObject.layer = 9;
 		GetComponent<PlayerV2> ().vignette.enabled = false;
-		//GameObject.FindGameObjectWithTag ("Vignette").layer = 12;
-		//startRespawn ();
 	}
 
 	void GainPoint(){
@@ -164,7 +157,7 @@ public class MovementV2 : MonoBehaviour {
 		timer = 0.5f;
 		up = true;
 		jump = false;
-		gameObject.layer = 0;
+		gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 	}
 
 	void OnTriggerEnter(Collider col){
