@@ -20,6 +20,12 @@ public class LevelManager : MonoBehaviour {
 			Destroy(player2);
 			GameObject player3 = GameObject.Find("Player3Cam");
 			Destroy(player3);
+			GameObject player4 = GameObject.Find ("Player4Cam");
+			player4.GetComponent<Camera>().rect = new Rect(0,0,1,0.495f);
+			GameObject player1 = GameObject.Find ("Player1Cam");
+			player1.GetComponent<Camera>().rect = new Rect(0,0.5f,1,0.495f);
+			GameObject minimap = GameObject.Find("Minimap");
+			minimap.GetComponent<Camera>().rect = new Rect(0.75f, 0.25f, 0.5f, 0.5f);
 		} else if(numPlayers == "3") {
 			GameObject player2 = GameObject.Find("Player2Cam");
 			Destroy(player2);

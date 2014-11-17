@@ -19,6 +19,7 @@ public class MovementV2 : MonoBehaviour {
 
 	//Bools concerning state of player
 	private bool dash = false;
+	private bool downDash = false;
 	private bool recharge;
 	private bool respawning;
 	private bool knockedUp;
@@ -36,21 +37,28 @@ public class MovementV2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(transform.position.y <= 0){
-			startRespawn();
-			return;
-		}
+
+		//Evaluate player actions this frame
 		//Dash action
 		if (!dash && !pointMan && Input.GetButton (commandB) && !recharge) {
 			dash = true;
+			downDash = false;
 			timer = 0.0f;
 			gameObject.layer = 0;
 		}
 		//Jump action
-		else if(!jump && !pointMan && !knockedUp && Physics.Raycast(transform.position, Vector3.down, 0.25f) && Input.GetButton (commandA)){
+		else if (!jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButton (commandA)) {
 			jump = true;
+			downDash = false;
 			timer = jumpTime;
 			gameObject.layer = 0;
+		} 
+		//Downdash action
+		else if (!downDash && !jump && !pointMan && !knockedUp && !Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButton (commandA)) {
+			downDash = true;
+			gameObject.layer = 0;
+			jump = false;
+			dash = false;
 		}
 		//Fireball action
 		else if(pointMan && !recharge && Input.GetButton (commandB)){
@@ -62,12 +70,14 @@ public class MovementV2 : MonoBehaviour {
 			Invoke("rechargeSkill", 0.5f);
 		}
 		//Regular action
-		else if(!knockedUp){
+		else if(!knockedUp && !downDash){
 			print (Input.GetAxisRaw(turn));
 			transform.Rotate(100 * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
 			transform.position += transform.forward * 3 * Time.deltaTime * Input.GetAxis(move);
 		}
-		if(dash && !recharge){
+
+		//Process position-alterring states
+		if(dash){
 			transform.position += transform.forward * 5 * Time.deltaTime;
 			timer += Time.deltaTime;
 			if(timer >= dashTime){
@@ -102,6 +112,14 @@ public class MovementV2 : MonoBehaviour {
 				}
 			}
 		}
+		if (downDash) {
+			transform.position += 4 * Vector3.down * Time.deltaTime;
+			if(downDash && Physics.Raycast(transform.position, Vector3.down, 0.25f)){
+				downDash = false;
+				if(!pointMan)gameObject.layer = 12;
+			}
+		}
+
 	}
 
 	void rechargeSkill() {
