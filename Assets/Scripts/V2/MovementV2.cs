@@ -58,7 +58,11 @@ public class MovementV2 : MonoBehaviour {
 			downDash = true;
 			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 			jump = false;
-			dash = false;
+			if(dash){
+				dash = false;
+				recharge = true;
+				Invoke("rechargeSkill", 1.5f);
+			}
 		}
 		//Fireball action
 		else if(!respawning && pointMan && !recharge && Input.GetButton (commandB)){
