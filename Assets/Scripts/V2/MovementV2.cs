@@ -134,6 +134,8 @@ public class MovementV2 : MonoBehaviour {
 		gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		timer = 0.0f;
 		dash = false;
+		jump = false;
+		downDash = false;
 		GetComponent<PlayerV2> ().vignette.enabled = true;
 		InvokeRepeating("GainPoint", 1.0f, 1.0f);
 	}

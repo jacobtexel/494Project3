@@ -83,7 +83,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_LocalPosition.y
@@ -91,7 +91,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_LocalRotation.x
@@ -127,11 +127,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_NormalizedViewPortRect.x
-      value: .324999988
+      value: .25
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_NormalizedViewPortRect.y
-      value: .275000006
+      value: .25
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
@@ -2272,10 +2272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward4
-  left: left4
-  right: right4
-  backward: backward4
+  move: move2
+  turn: turn2
+  commandA: commandA2
+  commandB: commandB2
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -2382,7 +2382,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294961407
+    m_Bits: 4294895871
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3489,6 +3489,22 @@ Prefab:
       propertyPath: timerBar
       value: 
       objectReference: {fileID: 1762026110}
+    - target: {fileID: 11400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: move
+      value: move1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: turn
+      value: turn1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: commandA
+      value: commandA1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: commandB
+      value: commandB1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
   m_RootGameObject: {fileID: 859868832}
@@ -3630,10 +3646,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward
-  left: left
-  right: right
-  backward: backward
+  move: move1
+  turn: turn1
+  commandA: commandA1
+  commandB: commandB1
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -3740,7 +3756,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294959615
+    m_Bits: 4294951423
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4150,8 +4166,8 @@ Camera:
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: .324999988
-    y: .275000006
+    x: .25
+    y: .25
     width: .5
     height: .5
   near clip plane: .300000012
@@ -4177,7 +4193,7 @@ Transform:
   m_PrefabInternal: {fileID: 27252672}
   m_GameObject: {fileID: 945166465}
   m_LocalRotation: {x: .65328151, y: .270598084, z: -.270598084, w: .65328151}
-  m_LocalPosition: {x: 9, y: 50, z: 0}
+  m_LocalPosition: {x: 0, y: 50, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4418,10 +4434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward2
-  left: left2
-  right: right2
-  backward: backward2
+  move: 
+  turn: 
+  commandA: 
+  commandB: 
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -4528,7 +4544,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294959871
+    m_Bits: 4294943487
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5190,6 +5206,22 @@ Prefab:
       propertyPath: timerBar
       value: 
       objectReference: {fileID: 2093745639}
+    - target: {fileID: 11400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: move
+      value: move2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: turn
+      value: turn2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: commandA
+      value: commandA2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: commandB
+      value: commandB2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
   m_RootGameObject: {fileID: 613200766}
@@ -9093,10 +9125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: forward3
-  left: left3
-  right: right3
-  backward: backward3
+  move: 
+  turn: 
+  commandA: 
+  commandB: 
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -9203,7 +9235,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294960383
+    m_Bits: 4294927615
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
