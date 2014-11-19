@@ -259,7 +259,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: .200000003
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -584,6 +584,7 @@ GameObject:
   - 96: {fileID: 83536925}
   - 122: {fileID: 83536924}
   - 114: {fileID: 83536935}
+  - 45: {fileID: 83536936}
   m_Layer: 12
   m_Name: Player1Cam
   m_TagString: MainCamera
@@ -798,6 +799,14 @@ MonoBehaviour:
   playerNum: 1
   vignette: {fileID: 627229791}
   timerBar: {fileID: 2093754850}
+--- !u!45 &83536936
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 83536923}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 724d5e33674446e499e9fdb0b29b3c3a, type: 2}
 --- !u!1001 &103662274
 Prefab:
   m_ObjectHideFlags: 0
@@ -1015,7 +1024,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: .200000003
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2832,7 +2841,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: .200000003
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3232,6 +3241,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 2300000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c10b05d1196e256449afedce677b1331, type: 2}
     m_RemovedComponents:
     - {fileID: 11400002, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
     - {fileID: 11400000, guid: a9f6feb315a2aee4588061c8a917a912, type: 2}
@@ -3651,7 +3664,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: .200000003
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -4692,7 +4705,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10271122d4b24fc4084ab8d4bcb288e7, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 10271122d4b24fc4084ab8d4bcb288e7, type: 2}
       propertyPath: m_IsTrigger
@@ -4750,7 +4763,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: .200000003
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
