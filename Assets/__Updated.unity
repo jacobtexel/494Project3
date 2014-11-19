@@ -502,7 +502,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 740e29ca1ca4e43c28a5493f42e4b892, type: 2}
+  - {fileID: 2100000, guid: 4cc2dcab46d834d2db64db3b18a18f23, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2282,7 +2282,13 @@ MonoBehaviour:
   knockBackTime: .5
   timer: 0
   points: 0
+  moveMult: 3
+  rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  startingSize: {x: .5, y: .5, z: .5}
+  minMove: 1
+  minRot: 25
+  maxSize: 2
 --- !u!23 &613200770
 Renderer:
   m_ObjectHideFlags: 0
@@ -3286,7 +3292,7 @@ Prefab:
     - target: {fileID: 2300000, guid: d68c85ae53b823647969078ae2139974, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 740e29ca1ca4e43c28a5493f42e4b892, type: 2}
+      objectReference: {fileID: 2100000, guid: 4cc2dcab46d834d2db64db3b18a18f23, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d68c85ae53b823647969078ae2139974, type: 3}
   m_RootGameObject: {fileID: 2126541562}
@@ -3656,7 +3662,13 @@ MonoBehaviour:
   knockBackTime: .5
   timer: 0
   points: 0
+  moveMult: 3
+  rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  startingSize: {x: .5, y: .5, z: .5}
+  minMove: 1
+  minRot: 25
+  maxSize: 2
 --- !u!23 &859868836
 Renderer:
   m_ObjectHideFlags: 0
@@ -4444,7 +4456,13 @@ MonoBehaviour:
   knockBackTime: .5
   timer: 0
   points: 0
+  moveMult: 3
+  rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  startingSize: {x: .5, y: .5, z: .5}
+  minMove: 1
+  minRot: 25
+  maxSize: 2
 --- !u!23 &981779588
 Renderer:
   m_ObjectHideFlags: 0
@@ -7780,7 +7798,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 740e29ca1ca4e43c28a5493f42e4b892, type: 2}
+  - {fileID: 2100000, guid: 748f87dd9ce6742e29b1fddc01388ded, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -9159,7 +9177,13 @@ MonoBehaviour:
   knockBackTime: .5
   timer: 0
   points: 0
+  moveMult: 3
+  rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  startingSize: {x: .5, y: .5, z: .5}
+  minMove: 1
+  minRot: 25
+  maxSize: 2
 --- !u!23 &2035943054
 Renderer:
   m_ObjectHideFlags: 0
