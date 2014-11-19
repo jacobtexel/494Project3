@@ -180,3 +180,131 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 2
+  - serializedVersion: 3
+    m_Name: turn3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: a
+    positiveButton: d
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: move3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: s
+    positiveButton: w
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: commandA3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: q
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: commandB3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: e
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: turn4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: j
+    positiveButton: l
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: move4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: k
+    positiveButton: i
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: commandA4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: u
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: commandB4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: o
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2

@@ -14,6 +14,8 @@ public class MovementV2 : MonoBehaviour {
 	public float knockBackTime = .5f;
 	public float timer;
 	public int points = 0;
+	public float moveMult = 3f;
+	public float rotMult = 100f;
 
 	public GameObject fireballPrefab;
 
@@ -25,6 +27,10 @@ public class MovementV2 : MonoBehaviour {
 	private bool knockedUp;
 	private bool jump;
 	private bool up;
+	public Vector3 startingSize = new Vector3 (.5f, .5f, .5f);
+	public float minMove = 1f;
+	public float minRot = 25f;
+	public float maxSize = 2f;
 
 	private Vector3 knockUpDirection;
 
@@ -75,8 +81,8 @@ public class MovementV2 : MonoBehaviour {
 		}
 		//Regular action
 		else if(!respawning && !knockedUp && !downDash){
-			transform.Rotate(100 * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
-			transform.position += transform.forward * 3 * Time.deltaTime * Input.GetAxis(move);
+			transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
+			transform.position += transform.forward * moveMult * Time.deltaTime * Input.GetAxis(move);
 		}
 
 		//Process position-alterring states
@@ -145,10 +151,12 @@ public class MovementV2 : MonoBehaviour {
 		CancelInvoke ("GainPoint");
 		gameObject.layer = 12;
 		GetComponent<PlayerV2> ().vignette.enabled = false;
+		resetSize ();
 	}
 
 	void GainPoint(){
-		points++;
+		//points++;
+		changeSize ();
 		if(points >= 60){
 			PlayerPrefs.SetString("winner", GetComponent<PlayerV2>().playerNum.ToString());
 			Application.LoadLevel("_End_screen");
@@ -219,4 +227,18 @@ public class MovementV2 : MonoBehaviour {
 
 	}
 
+	void changeSize() {
+		if(this.transform.lossyScale.x < maxSize)
+			this.transform.localScale += new Vector3 (.1f, .1f, .1f);
+		if(moveMult > minMove)
+			moveMult -= .1f;
+		if(rotMult > minRot)
+			rotMult -= 1f;
+	}
+
+	void resetSize() {
+		rotMult = 100f;
+		moveMult = 3f;
+		this.transform.localScale = startingSize;
+	}
 }
