@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3300000}
   - 136: {fileID: 13600000}
   - 23: {fileID: 2300000}
-  - 122: {fileID: 12200000}
   m_Layer: 2
   m_Name: PowerUpV2
   m_TagString: Untagged
@@ -32,6 +31,7 @@ GameObject:
   - 23: {fileID: 2300002}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
+  - 122: {fileID: 12200000}
   m_Layer: 0
   m_Name: PowerUp
   m_TagString: Powerup
@@ -161,11 +161,11 @@ Halo:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4293068031
+    rgba: 4291056594
   m_Size: 1
 --- !u!136 &13600000
 CapsuleCollider:

@@ -73,9 +73,11 @@ public class MovementV2 : MonoBehaviour {
 		//Fireball action
 		else if(!respawning && pointMan && !recharge && Input.GetButton (commandB)){
 			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
-			fireball.transform.position = transform.position+transform.forward;
+
+			fireball.transform.position = transform.position+(transform.forward*(transform.localScale.x/2.0f+0.2f));
 			fireball.GetComponent<Fireball>().direction = transform.forward;
 			fireball.GetComponent<Fireball>().color = renderer.material.color;
+
 			recharge = true;
 			Invoke("rechargeSkill", 0.5f);
 		}
