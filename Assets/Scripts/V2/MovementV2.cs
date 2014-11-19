@@ -144,6 +144,7 @@ public class MovementV2 : MonoBehaviour {
 		dash = false;
 		jump = false;
 		downDash = false;
+		knockedUp = false;
 		GetComponent<PlayerV2> ().vignette.enabled = true;
 		InvokeRepeating("GainPoint", 1.0f, 1.0f);
 	}
