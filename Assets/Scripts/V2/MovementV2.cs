@@ -50,19 +50,16 @@ public class MovementV2 : MonoBehaviour {
 			dash = true;
 			downDash = false;
 			timer = 0.0f;
-			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		}
 		//Jump action
 		else if (!respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			jump = true;
 			downDash = false;
 			timer = jumpTime;
-			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		} 
 		//Downdash action
 		else if (!respawning && !downDash && !jump && !pointMan && !knockedUp && !Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			downDash = true;
-			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 			jump = false;
 			if(dash){
 				dash = false;
@@ -73,6 +70,7 @@ public class MovementV2 : MonoBehaviour {
 		//Fireball action
 		else if(!respawning && pointMan && !recharge && Input.GetButton (commandB)){
 			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
+			fireball.GetComponent<Fireball>().player = GetComponent<MovementV2>();
 
 			fireball.transform.position = transform.position+(transform.forward*(transform.localScale.x/2.0f+0.2f));
 			fireball.GetComponent<Fireball>().direction = transform.forward;
@@ -93,7 +91,6 @@ public class MovementV2 : MonoBehaviour {
 			timer += Time.deltaTime;
 			if(timer >= dashTime){
 				dash = false;
-				gameObject.layer = 12; //Layer not rendered by any player or minimap
 				recharge = true;
 				Invoke("rechargeSkill", 1.5f);
 			}
@@ -103,7 +100,6 @@ public class MovementV2 : MonoBehaviour {
 			timer -= Time.deltaTime;
 			if(timer <= 0.0f){
 				jump = false;
-				gameObject.layer = 12;
 			}
 		}
 		if(knockedUp){
@@ -119,7 +115,6 @@ public class MovementV2 : MonoBehaviour {
 				transform.position += 4*Vector3.down*Time.deltaTime;
 				if(Physics.Raycast(transform.position, Vector3.down, 0.3f)){
 					knockedUp = false;
-					gameObject.layer = 12;
 				}
 			}
 		}
@@ -127,7 +122,6 @@ public class MovementV2 : MonoBehaviour {
 			transform.position += 4 * Vector3.down * Time.deltaTime;
 			if(downDash && Physics.Raycast(transform.position, Vector3.down, 0.25f)){
 				downDash = false;
-				if(!pointMan)gameObject.layer = 12;
 			}
 		}
 
@@ -139,26 +133,23 @@ public class MovementV2 : MonoBehaviour {
 
 	public void becomePointMan(){
 		pointMan = true;
-		gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		timer = 0.0f;
 		dash = false;
 		jump = false;
 		downDash = false;
+		moveMult = moveMult / 3f;
 		GetComponent<PlayerV2> ().vignette.enabled = true;
-		InvokeRepeating("GainPoint", 1.0f, 1.0f);
 	}
 
 	public void losePointMan(){
 		pointMan = false;
-		CancelInvoke ("GainPoint");
-		gameObject.layer = 12;
+		transform.localScale = new Vector3 (1f, 1f, 1f);
 		GetComponent<PlayerV2> ().vignette.enabled = false;
 		resetSize ();
 	}
 
-	void GainPoint(){
-		//points++;
-		changeSize ();
+	public void GainPoint(){
+		points++;
 		if(points >= 60){
 			PlayerPrefs.SetString("winner", GetComponent<PlayerV2>().playerNum.ToString());
 			Application.LoadLevel("_End_screen");
@@ -173,7 +164,6 @@ public class MovementV2 : MonoBehaviour {
 		timer = 0.5f;
 		up = true;
 		jump = false;
-		gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 	}
 
 	void OnTriggerEnter(Collider col){
@@ -182,8 +172,10 @@ public class MovementV2 : MonoBehaviour {
 			col.GetComponent<PowerUpV2>().remove();
 			//col.GetComponent<PowerupAction>().startRespawn();
 		} else if(col.tag == "Danger"){
-			if(pointMan)
+			if(pointMan) {
 				losePointMan();
+				GameObject.FindGameObjectWithTag("Minimap").GetComponent<LevelManager>().spawnPowerup();
+			}
 			startRespawn();
 		}
 	}
@@ -202,9 +194,12 @@ public class MovementV2 : MonoBehaviour {
 		}
 	}
 
-	void startRespawn() {
+	public void startRespawn() {
 		GetComponent<Camera>().enabled = false;
+		gameObject.renderer.enabled = false;
+		gameObject.collider.enabled = false;
 		if(!respawning) {
+			transform.position -= new Vector3(0, 100f, 0);
 			losePointMan();
 			dash = false;
 			downDash = false;
@@ -213,29 +208,20 @@ public class MovementV2 : MonoBehaviour {
 			jump = false;
 			up = false;
 			respawning = true;
-			gameObject.layer = 12;
 			Invoke("respawn", 2f);
 		}
 	}
 
 	void respawn() {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
+		gameObject.renderer.enabled = true;
+
 		GameObject spot = spawns [Random.Range (0, spawns.Length)];
 		transform.position = spot.transform.position;
 		gameObject.renderer.enabled = true;
 		gameObject.collider.enabled =true;
 		GetComponent<Camera> ().enabled = true;
 		respawning = false;
-
-	}
-
-	void changeSize() {
-		if(this.transform.lossyScale.x < maxSize)
-			this.transform.localScale += new Vector3 (.1f, .1f, .1f);
-		if(moveMult > minMove)
-			moveMult -= .1f;
-		if(rotMult > minRot)
-			rotMult -= 1f;
 	}
 
 	void resetSize() {

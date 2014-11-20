@@ -7,11 +7,10 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 	public GameObject UpgradePrefab;
 
-
-	public float upgradeRespawnTimer;
-
+	private bool spawnedPowerup;
 	// Use this for initialization
 	void Start () {
+		spawnedPowerup = false;
 		//GetComponent<GUIText> ().text = "Victorious Player: " + PlayerPrefs.GetString ("winner");
 		string numPlayers = PlayerPrefs.GetString ("numPlayers");
 		//string numPlayers = "3";
@@ -37,15 +36,13 @@ public class LevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(upgradeRespawnTimer<=0.0f && GameObject.FindGameObjectsWithTag("Powerup").Length == 0){
+		if(GameObject.FindGameObjectsWithTag("Powerup").Length == 0 && !spawnedPowerup){
 			spawnPowerup();
-			upgradeRespawnTimer = 5.0f;
+			spawnedPowerup = true;
 		}
-		else if(GameObject.FindGameObjectsWithTag("Powerup").Length == 0)
-			upgradeRespawnTimer -= Time.deltaTime;
 	}
 
-	void spawnPowerup(){
+	public void spawnPowerup(){
 		if(GameObject.FindGameObjectsWithTag("PowerupSpawn").Length == 0)
 			print ("No power up spawn points on the level!");
 		else {

@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Fireball : MonoBehaviour {
 
+	public MovementV2 player;
 	public Vector3 direction;
 	public Color color;
-	public float speed = 5.0f;
+	public float speed = 15.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,8 @@ public class Fireball : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "MainCamera") {
-			col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
+			col.gameObject.GetComponent<MovementV2>().startRespawn();
+			player.GainPoint();
 		}
 		print ("called");
 		Destroy (this.gameObject);
