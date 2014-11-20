@@ -13,15 +13,15 @@ public class StartScreen : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha2)){
 			PlayerPrefs.SetString("numPlayers", "2");
 			disableText();
-			Application.LoadLevel("iceyWeiner");
+			Application.LoadLevel(1);
 		} else if(Input.GetKeyDown(KeyCode.Alpha3)){
 			PlayerPrefs.SetString("numPlayers", "3");
 			disableText();
-			Application.LoadLevel("iceyWeiner");
+			Application.LoadLevel(1);
 		} else if(Input.GetKeyDown(KeyCode.Alpha4)) {
 			PlayerPrefs.SetString("numPlayers", "4");
 			disableText();
-			Application.LoadLevel("iceyWeiner");
+			Application.LoadLevel(1);
 		}
 	}
 

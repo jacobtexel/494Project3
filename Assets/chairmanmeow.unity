@@ -2358,7 +2358,7 @@ MonoBehaviour:
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
-  maxSize: 4
+  maxSize: 2
 --- !u!23 &613200770
 Renderer:
   m_ObjectHideFlags: 0
@@ -3065,7 +3065,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3738,7 +3738,7 @@ MonoBehaviour:
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
-  maxSize: 4
+  maxSize: 2
 --- !u!23 &859868836
 Renderer:
   m_ObjectHideFlags: 0
@@ -4532,7 +4532,7 @@ MonoBehaviour:
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
-  maxSize: 4
+  maxSize: 2
 --- !u!23 &981779588
 Renderer:
   m_ObjectHideFlags: 0
@@ -7379,23 +7379,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 10800004, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 10800008, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 10800006, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 10800002, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 10800000, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
@@ -7829,7 +7829,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8157,7 +8157,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8592,7 +8592,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8644,7 +8644,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -9289,7 +9289,7 @@ MonoBehaviour:
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
-  maxSize: 4
+  maxSize: 2
 --- !u!23 &2035943054
 Renderer:
   m_ObjectHideFlags: 0
