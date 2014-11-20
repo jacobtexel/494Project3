@@ -50,19 +50,16 @@ public class MovementV2 : MonoBehaviour {
 			dash = true;
 			downDash = false;
 			timer = 0.0f;
-			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		}
 		//Jump action
 		else if (!respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			jump = true;
 			downDash = false;
 			timer = jumpTime;
-			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		} 
 		//Downdash action
 		else if (!respawning && !downDash && !jump && !pointMan && !knockedUp && !Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			downDash = true;
-			gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 			jump = false;
 			if(dash){
 				dash = false;
@@ -75,6 +72,9 @@ public class MovementV2 : MonoBehaviour {
 			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
 
 			fireball.transform.position = transform.position+(transform.forward*(transform.localScale.x/2.0f+0.2f));
+			Vector3 pos = fireball.transform.position;
+			pos.y = .5f;
+			fireball.transform.position = pos;
 			fireball.GetComponent<Fireball>().direction = transform.forward;
 			fireball.GetComponent<Fireball>().color = renderer.material.color;
 
@@ -93,7 +93,6 @@ public class MovementV2 : MonoBehaviour {
 			timer += Time.deltaTime;
 			if(timer >= dashTime){
 				dash = false;
-				gameObject.layer = 12; //Layer not rendered by any player or minimap
 				recharge = true;
 				Invoke("rechargeSkill", 1.5f);
 			}
@@ -103,7 +102,6 @@ public class MovementV2 : MonoBehaviour {
 			timer -= Time.deltaTime;
 			if(timer <= 0.0f){
 				jump = false;
-				gameObject.layer = 12;
 			}
 		}
 		if(knockedUp){
@@ -119,7 +117,6 @@ public class MovementV2 : MonoBehaviour {
 				transform.position += 4*Vector3.down*Time.deltaTime;
 				if(Physics.Raycast(transform.position, Vector3.down, 0.3f)){
 					knockedUp = false;
-					gameObject.layer = 12;
 				}
 			}
 		}
@@ -127,7 +124,6 @@ public class MovementV2 : MonoBehaviour {
 			transform.position += 4 * Vector3.down * Time.deltaTime;
 			if(downDash && Physics.Raycast(transform.position, Vector3.down, 0.25f)){
 				downDash = false;
-				if(!pointMan)gameObject.layer = 12;
 			}
 		}
 
@@ -139,7 +135,6 @@ public class MovementV2 : MonoBehaviour {
 
 	public void becomePointMan(){
 		pointMan = true;
-		gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 		timer = 0.0f;
 		dash = false;
 		jump = false;
@@ -152,13 +147,12 @@ public class MovementV2 : MonoBehaviour {
 	public void losePointMan(){
 		pointMan = false;
 		CancelInvoke ("GainPoint");
-		gameObject.layer = 12;
 		GetComponent<PlayerV2> ().vignette.enabled = false;
 		resetSize ();
 	}
 
 	void GainPoint(){
-		//points++;
+		points++;
 		changeSize ();
 		if(points >= 60){
 			PlayerPrefs.SetString("winner", GetComponent<PlayerV2>().playerNum.ToString());
@@ -174,7 +168,6 @@ public class MovementV2 : MonoBehaviour {
 		timer = 0.5f;
 		up = true;
 		jump = false;
-		gameObject.layer = 12+GetComponent<PlayerV2>().playerNum;
 	}
 
 	void OnTriggerEnter(Collider col){
@@ -214,7 +207,6 @@ public class MovementV2 : MonoBehaviour {
 			jump = false;
 			up = false;
 			respawning = true;
-			gameObject.layer = 12;
 			Invoke("respawn", 2f);
 		}
 	}
