@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: 6a76ab2f018ee9349a481ab3ab14de43
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fireballPrefab: {instanceID: 0}
+  - knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

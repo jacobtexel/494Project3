@@ -18,6 +18,9 @@ public class MovementV2 : MonoBehaviour {
 	public float rotMult = 100f;
 
 	public GameObject fireballPrefab;
+	public GameObject knifePrefab;
+	
+	public GameObject myKnife;
 
 	//Bools concerning state of player
 	private bool dash = false;
@@ -39,6 +42,7 @@ public class MovementV2 : MonoBehaviour {
 		recharge = false;
 		respawning = false;
 		jump = false;
+		getKnife ();
 	}
 	
 	// Update is called once per frame
@@ -144,12 +148,14 @@ public class MovementV2 : MonoBehaviour {
 
 		knockedUp = false;
 		GetComponent<PlayerV2> ().vignette.enabled = true;
+		loseKnife ();
 	}
 
 	public void losePointMan(){
 		pointMan = false;
 		transform.localScale = new Vector3 (1f, 1f, 1f);
 		GetComponent<PlayerV2> ().vignette.enabled = false;
+		getKnife ();
 		resetSize ();
 	}
 
@@ -233,5 +239,34 @@ public class MovementV2 : MonoBehaviour {
 		rotMult = 100f;
 		moveMult = 3f;
 		this.transform.localScale = startingSize;
+	}
+
+	void getKnife() {
+		GameObject knife = Instantiate(knifePrefab) as GameObject;
+		knife.transform.parent = transform;
+		Vector3 v = displacementVector(.2f, .3f, transform.position.y-.1f, transform.position, Mathf.Deg2Rad*transform.eulerAngles.y+.587981f);
+
+		knife.gameObject.renderer.material.color = gameObject.renderer.material.color;
+		knife.transform.position = v;
+
+		Vector3 rot = knife.transform.localRotation.eulerAngles;
+		rot.y = 0;
+		knife.transform.localRotation = Quaternion.Euler(rot);
+
+		myKnife = knife;
+	}
+	
+	void loseKnife() {
+		
+	}
+
+	//uses parametric equations of a circle. x and z are the wanted values at an angle of 0
+	Vector3 displacementVector(float x, float z, float height, Vector3 position, float angle){
+		float radius = Mathf.Sqrt (Mathf.Pow (x, 2f) + Mathf.Pow (z, 2f));
+		Vector3 ret = new Vector3 (0,0,0);
+		ret.x = position.x + radius * Mathf.Sin (angle);
+		ret.z = position.z + radius * Mathf.Cos (angle);
+		ret.y = height;
+		return ret;
 	}
 }

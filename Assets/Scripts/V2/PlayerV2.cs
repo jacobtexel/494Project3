@@ -8,6 +8,7 @@ public class PlayerV2 : MonoBehaviour {
 	public GUITexture vignette;
 	public GUITexture timerBar;
 
+
 	// Use this for initialization
 	void Start () {
 		vignette.enabled = false;
@@ -19,4 +20,6 @@ public class PlayerV2 : MonoBehaviour {
 		barscale.x = .5f * ((60-GetComponent<MovementV2>().points)/60.0f);
 		timerBar.transform.localScale = barscale;
 	}
+
+
 }

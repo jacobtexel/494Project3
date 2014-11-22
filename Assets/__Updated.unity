@@ -111,7 +111,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: d54804f46fc870c498fe07a9782f2362, type: 2}
       propertyPath: orthographic size
@@ -1478,7 +1478,7 @@ Transform:
   - {fileID: 1906758319}
   - {fileID: 1484010090}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1001 &331089196
 Prefab:
   m_ObjectHideFlags: 0
@@ -2199,7 +2199,7 @@ GameObject:
   - 96: {fileID: 613200768}
   - 122: {fileID: 613200767}
   - 114: {fileID: 613200778}
-  m_Layer: 12
+  m_Layer: 16
   m_Name: Player4Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2285,6 +2285,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -2403,7 +2405,7 @@ Transform:
   m_PrefabInternal: {fileID: 1132956905}
   m_GameObject: {fileID: 613200766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.105242729, y: .25, z: -1.16525984}
+  m_LocalPosition: {x: -.227621019, y: .25, z: -1.51014376}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2995,7 +2997,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3245,7 +3247,7 @@ Transform:
   - {fileID: 232512262}
   - {fileID: 2126541563}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1001 &786108212
 Prefab:
   m_ObjectHideFlags: 0
@@ -3485,7 +3487,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: vignette
@@ -3497,11 +3499,11 @@ Prefab:
       objectReference: {fileID: 1762026110}
     - target: {fileID: 11400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: move
-      value: move1
+      value: Vertical
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: turn
-      value: turn1
+      value: Horizontal
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: commandA
@@ -3511,6 +3513,14 @@ Prefab:
       propertyPath: commandB
       value: commandB1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: knifePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+    - target: {fileID: 11400002, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: knifePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
   m_RootGameObject: {fileID: 859868832}
@@ -3579,7 +3589,7 @@ GameObject:
   - 96: {fileID: 859868834}
   - 122: {fileID: 859868833}
   - 114: {fileID: 859868844}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Player1Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -3652,8 +3662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: move1
-  turn: turn1
+  move: Vertical
+  turn: Horizontal
   commandA: commandA1
   commandB: commandB1
   pointMan: 0
@@ -3665,6 +3675,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -3787,7 +3799,7 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
 --- !u!114 &859868844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4148,7 +4160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradePrefab: {fileID: 100000, guid: 0cd462aec67eb964dbc0c58903801d5b, type: 2}
-  upgradeRespawnTimer: 0
 --- !u!81 &945166467
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4209,7 +4220,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1001 &950115663
 Prefab:
   m_ObjectHideFlags: 0
@@ -4284,7 +4295,7 @@ Transform:
   - {fileID: 405808972}
   - {fileID: 1089777144}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &971758998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,7 +4384,7 @@ GameObject:
   - 96: {fileID: 981779586}
   - 122: {fileID: 981779585}
   - 114: {fileID: 981779596}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Player2Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -4459,6 +4470,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -5186,7 +5199,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.105242729
+      value: -.227621019
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5194,7 +5207,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.16525984
+      value: -1.51014376
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5240,6 +5253,14 @@ Prefab:
       propertyPath: commandB
       value: commandB2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: knifePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+    - target: {fileID: 11400002, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: knifePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
   m_RootGameObject: {fileID: 613200766}
@@ -6522,6 +6543,14 @@ Prefab:
       propertyPath: timerBar
       value: 
       objectReference: {fileID: 824853491}
+    - target: {fileID: 11400000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+      propertyPath: knifePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+    - target: {fileID: 11400002, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+      propertyPath: knifePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
   m_RootGameObject: {fileID: 981779584}
@@ -7293,23 +7322,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 10800004, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 10800008, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 10800006, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 10800002, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 10800000, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
       propertyPath: m_Intensity
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e7ff4e4c4baaf24b849c15ff2a935f8, type: 2}
@@ -7743,7 +7772,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8071,7 +8100,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8360,11 +8389,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: .25
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 5.81192207
+      value: 5.83640671
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
       propertyPath: m_LocalRotation.x
@@ -8394,6 +8423,14 @@ Prefab:
       propertyPath: timerBar
       value: 
       objectReference: {fileID: 432186384}
+    - target: {fileID: 11400000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+      propertyPath: knifePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+    - target: {fileID: 11400002, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+      propertyPath: knifePrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
   m_RootGameObject: {fileID: 2035943050}
@@ -8486,7 +8523,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8538,7 +8575,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .200000003
+  m_Intensity: .300000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -9094,7 +9131,7 @@ GameObject:
   - 96: {fileID: 2035943052}
   - 122: {fileID: 2035943051}
   - 114: {fileID: 2035943062}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Player3Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -9180,6 +9217,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -9298,7 +9337,7 @@ Transform:
   m_PrefabInternal: {fileID: 1845724720}
   m_GameObject: {fileID: 2035943050}
   m_LocalRotation: {x: 0, y: .707106888, z: 0, w: .707106769}
-  m_LocalPosition: {x: -8.04784203, y: 0, z: 5.81192207}
+  m_LocalPosition: {x: -8.04784203, y: .25, z: 5.83640671}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9717,7 +9756,7 @@ Transform:
   m_LocalScale: {x: .5, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &2102307503
 GameObject:
   m_ObjectHideFlags: 0
