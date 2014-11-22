@@ -183,10 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a76ab2f018ee9349a481ab3ab14de43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 
-  turn: 
-  commandA: 
-  commandB: 
+  move: move4
+  turn: turn4
+  commandA: commandA4
+  commandB: commandB4
   pointMan: 0
   dashTime: .5
   jumpTime: .5
@@ -196,6 +196,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 0}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
