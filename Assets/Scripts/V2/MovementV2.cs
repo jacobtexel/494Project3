@@ -29,7 +29,6 @@ public class MovementV2 : MonoBehaviour {
 	private bool respawning;
 	private bool knockedUp;
 	private bool jump;
-	private bool up;
 	public Vector3 startingSize = new Vector3 (.5f, .5f, .5f);
 	public float minMove = 1f;
 	public float minRot = 25f;
@@ -88,8 +87,16 @@ public class MovementV2 : MonoBehaviour {
 		}
 		//Regular action
 		else if(!respawning && !knockedUp && !downDash){
+			//Rotate
 			transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
-			transform.position += transform.forward * moveMult * Time.deltaTime * Input.GetAxis(move);
+			//Forward/backward motion
+			Vector3 vel = rigidbody.velocity;
+			vel.x = 0;
+			vel.z = 0;
+			vel += transform.forward * moveMult * Input.GetAxis(move);
+			rigidbody.velocity = vel;
+			//Left/right strafe
+			//transform.position += transform.forward * moveMult * Time.deltaTime * Input.GetAxis(move);
 		}
 
 		//Process position-alterring states
@@ -103,26 +110,17 @@ public class MovementV2 : MonoBehaviour {
 			}
 		}
 		if(jump){
-			transform.position += 4	*Vector3.up*Time.deltaTime;
-			timer -= Time.deltaTime;
-			if(timer <= 0.0f){
-				jump = false;
-			}
+			gameObject.rigidbody.velocity += Vector3.up*6.5f;
+			jump = false;
 		}
 		if(knockedUp){
 			jump = false;
-			if(up){
-				transform.position += 5 *knockUpDirection*Time.deltaTime;
-				transform.position += 4	*Vector3.up*Time.deltaTime;
-				timer -= Time.deltaTime;
-				if(timer <= 0.0f)
-					up=false;
- 			}else{
-				transform.position += 3*knockUpDirection*Time.deltaTime;
-				transform.position += 4*Vector3.down*Time.deltaTime;
-				if(Physics.Raycast(transform.position, Vector3.down, 0.3f)){
-					knockedUp = false;
-				}
+			transform.position += 5 *knockUpDirection*Time.deltaTime;
+			transform.position += 4	*Vector3.up*Time.deltaTime;
+			timer -= Time.deltaTime;
+			if(timer <= 0.0f){
+				GetComponent<PlayerV2>().vignette.enabled = false;
+				knockedUp = false;
 			}
 		}
 		if (downDash) {
@@ -145,16 +143,16 @@ public class MovementV2 : MonoBehaviour {
 		jump = false;
 		downDash = false;
 		moveMult = moveMult / 3f;
-
-		knockedUp = false;
-		GetComponent<PlayerV2> ().vignette.enabled = true;
+		if(knockedUp){
+			knockedUp = false;
+			GetComponent<PlayerV2>().vignette.enabled = false;
+		}
 		loseKnife ();
 	}
 
 	public void losePointMan(){
 		pointMan = false;
 		transform.localScale = new Vector3 (1f, 1f, 1f);
-		GetComponent<PlayerV2> ().vignette.enabled = false;
 		getKnife ();
 		resetSize ();
 	}
@@ -172,8 +170,8 @@ public class MovementV2 : MonoBehaviour {
 		losePointMan ();
 		knockUpDirection = transform.position - source;
 		knockedUp = true;
-		timer = 0.5f;
-		up = true;
+		GetComponent<PlayerV2> ().vignette.enabled = true;
+		timer = knockBackTime;
 		jump = false;
 	}
 
@@ -217,7 +215,6 @@ public class MovementV2 : MonoBehaviour {
 			recharge = false;
 			knockedUp = false;
 			jump = false;
-			up = false;
 			respawning = true;
 			Invoke("respawn", 2f);
 		}
