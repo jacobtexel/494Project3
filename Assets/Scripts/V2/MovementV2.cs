@@ -5,6 +5,7 @@ public class MovementV2 : MonoBehaviour {
 
 	//Input strings for movement
 	public string move;
+	public string strafe;
 	public string turn;
 	public string commandA;
 	public string commandB;
@@ -16,6 +17,8 @@ public class MovementV2 : MonoBehaviour {
 	public int points = 0;
 	public float moveMult = 3f;
 	public float rotMult = 100f;
+	public float slowRotMult = 40f;
+	private float slowTimer = 0.0f;
 
 	public GameObject fireballPrefab;
 	public GameObject knifePrefab;
@@ -41,12 +44,13 @@ public class MovementV2 : MonoBehaviour {
 		recharge = false;
 		respawning = false;
 		jump = false;
-		getKnife ();
+		makeKnife ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		if(slowTimer > 0)
+			slowTimer -= Time.deltaTime;
 		//Evaluate player actions this frame
 		//Dash action
 		if (!respawning && !dash && !pointMan && Input.GetButton (commandB) && !recharge) {
@@ -70,33 +74,29 @@ public class MovementV2 : MonoBehaviour {
 				Invoke("rechargeSkill", 1.5f);
 			}
 		}
-		//Fireball action
-		else if(!respawning && pointMan && !recharge && Input.GetButton (commandB)){
-			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
-			fireball.GetComponent<Fireball>().player = GetComponent<MovementV2>();
-
-			fireball.transform.position = transform.position+(transform.forward*(transform.localScale.x/2.0f+0.2f));
-			Vector3 pos = fireball.transform.position;
-			pos.y = .5f;
-			fireball.transform.position = pos;
-			fireball.GetComponent<Fireball>().direction = transform.forward;
-			fireball.GetComponent<Fireball>().color = renderer.material.color;
-
-			recharge = true;
-			Invoke("rechargeSkill", 0.5f);
+		//Shooting action
+		if(!respawning && pointMan && Input.GetButton (commandB)){
+			if(transform.GetComponentInChildren<Gun>().regularShot()){
+				slowTimer = .5f;
+			}
+		} else if(!respawning && pointMan && Input.GetButton (commandA)) {
+			transform.GetComponentInChildren<Gun>().superShot();
 		}
 		//Regular action
-		else if(!respawning && !knockedUp && !downDash){
+		if(!respawning && !knockedUp && !downDash){
 			//Rotate
-			transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
+			if(slowTimer > 0)
+				transform.Rotate(slowRotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
+			else
+				transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
 			//Forward/backward motion
 			Vector3 vel = rigidbody.velocity;
 			vel.x = 0;
 			vel.z = 0;
 			vel += transform.forward * moveMult * Input.GetAxis(move);
-			rigidbody.velocity = vel;
 			//Left/right strafe
-			//transform.position += transform.forward * moveMult * Time.deltaTime * Input.GetAxis(move);
+			vel += transform.right * moveMult * Input.GetAxis(strafe);
+			rigidbody.velocity = vel;
 		}
 
 		//Process position-alterring states
@@ -140,19 +140,20 @@ public class MovementV2 : MonoBehaviour {
 		pointMan = true;
 		timer = 0.0f;
 		dash = false;
-		jump = false;
 		downDash = false;
-		moveMult = moveMult / 3f;
+		moveMult = moveMult / 2f;
 		if(knockedUp){
 			knockedUp = false;
 			GetComponent<PlayerV2>().vignette.enabled = false;
 		}
 		loseKnife ();
+		transform.FindChild ("Gun").renderer.enabled = true;
 	}
 
 	public void losePointMan(){
 		pointMan = false;
 		transform.localScale = new Vector3 (1f, 1f, 1f);
+		transform.FindChild ("Gun").renderer.enabled = false;
 		getKnife ();
 		resetSize ();
 	}
@@ -238,7 +239,7 @@ public class MovementV2 : MonoBehaviour {
 		this.transform.localScale = startingSize;
 	}
 
-	void getKnife() {
+	void makeKnife() {
 		GameObject knife = Instantiate(knifePrefab) as GameObject;
 		knife.transform.parent = transform;
 		Vector3 v = displacementVector(.2f, .3f, transform.position.y-.1f, transform.position, Mathf.Deg2Rad*transform.eulerAngles.y+.587981f);
@@ -252,9 +253,12 @@ public class MovementV2 : MonoBehaviour {
 
 		myKnife = knife;
 	}
-	
+
+	void getKnife() {
+		myKnife.renderer.enabled = true;
+	}
 	void loseKnife() {
-		
+		myKnife.renderer.enabled = false;
 	}
 
 	//uses parametric equations of a circle. x and z are the wanted values at an angle of 0
