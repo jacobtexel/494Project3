@@ -7,6 +7,7 @@ public class PlayerV2 : MonoBehaviour {
 	public int playerNum;
 	public GUITexture vignette;
 	public GUITexture timerBar;
+	public GUITexture crosshairs;
 
 
 	// Use this for initialization

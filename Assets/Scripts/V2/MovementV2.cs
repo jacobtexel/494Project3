@@ -22,7 +22,7 @@ public class MovementV2 : MonoBehaviour {
 
 	public GameObject fireballPrefab;
 	public GameObject knifePrefab;
-	
+
 	public GameObject myKnife;
 
 	//Bools concerning state of player
@@ -242,6 +242,7 @@ public class MovementV2 : MonoBehaviour {
 	void makeKnife() {
 		GameObject knife = Instantiate(knifePrefab) as GameObject;
 		knife.transform.parent = transform;
+
 		Vector3 v = displacementVector(.2f, .3f, transform.position.y-.1f, transform.position, Mathf.Deg2Rad*transform.eulerAngles.y+.587981f);
 
 		knife.gameObject.renderer.material.color = gameObject.renderer.material.color;
@@ -256,9 +257,11 @@ public class MovementV2 : MonoBehaviour {
 
 	void getKnife() {
 		myKnife.renderer.enabled = true;
+		GetComponent<PlayerV2> ().crosshairs.enabled = false;
 	}
 	void loseKnife() {
 		myKnife.renderer.enabled = false;
+		GetComponent<PlayerV2> ().crosshairs.enabled = true;
 	}
 
 	//uses parametric equations of a circle. x and z are the wanted values at an angle of 0
