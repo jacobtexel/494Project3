@@ -15,7 +15,7 @@ GameObject:
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Fireball
   m_TagString: fireball
   m_Icon: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: -1}
   color: {r: 1, g: 0, b: 0, a: 0}
   speed: 20
+  lifeTimer: 2
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

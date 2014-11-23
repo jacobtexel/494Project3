@@ -119,7 +119,8 @@ MonoBehaviour:
   fireballPrefab: {fileID: 0}
   regularInterval: 0
   superInterval: 0
-  timer: 0
+  superSpread: .400000006
+  superShotCount: 20
 --- !u!23 &6311897
 Renderer:
   m_ObjectHideFlags: 0
@@ -1810,6 +1811,7 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -2539,6 +2541,7 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 20
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -3131,7 +3134,8 @@ MonoBehaviour:
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: .100000001
   superInterval: .5
-  timer: 0
+  superSpread: .400000006
+  superShotCount: 20
 --- !u!1 &1470511594
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,6 +3752,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: superSpread
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: slowRotMult
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
   m_RootGameObject: {fileID: 1383326799}
@@ -4039,6 +4051,7 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -4408,7 +4421,8 @@ MonoBehaviour:
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: .100000001
   superInterval: .5
-  timer: 0
+  superSpread: .400000006
+  superShotCount: 20
 --- !u!23 &1916579096
 Renderer:
   m_ObjectHideFlags: 0
@@ -4699,7 +4713,8 @@ MonoBehaviour:
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: .100000001
   superInterval: .5
-  timer: 0
+  superSpread: .400000006
+  superShotCount: 20
 --- !u!23 &1970442219
 Renderer:
   m_ObjectHideFlags: 0
@@ -5002,6 +5017,7 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}

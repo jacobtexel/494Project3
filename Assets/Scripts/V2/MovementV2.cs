@@ -17,6 +17,8 @@ public class MovementV2 : MonoBehaviour {
 	public int points = 0;
 	public float moveMult = 3f;
 	public float rotMult = 100f;
+	public float slowRotMult = 40f;
+	private float slowTimer = 0.0f;
 
 	public GameObject fireballPrefab;
 	public GameObject knifePrefab;
@@ -47,7 +49,8 @@ public class MovementV2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		if(slowTimer > 0)
+			slowTimer -= Time.deltaTime;
 		//Evaluate player actions this frame
 		//Dash action
 		if (!respawning && !dash && !pointMan && Input.GetButton (commandB) && !recharge) {
@@ -71,14 +74,21 @@ public class MovementV2 : MonoBehaviour {
 				Invoke("rechargeSkill", 1.5f);
 			}
 		}
-		//Fireball action
+		//Shooting action
 		if(!respawning && pointMan && Input.GetButton (commandB)){
-			transform.GetComponentInChildren<Gun>().regularShot();
+			if(transform.GetComponentInChildren<Gun>().regularShot()){
+				slowTimer = .5f;
+			}
+		} else if(!respawning && pointMan && Input.GetButton (commandA)) {
+			transform.GetComponentInChildren<Gun>().superShot();
 		}
 		//Regular action
 		if(!respawning && !knockedUp && !downDash){
 			//Rotate
-			transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
+			if(slowTimer > 0)
+				transform.Rotate(slowRotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
+			else
+				transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
 			//Forward/backward motion
 			Vector3 vel = rigidbody.velocity;
 			vel.x = 0;
@@ -87,7 +97,6 @@ public class MovementV2 : MonoBehaviour {
 			//Left/right strafe
 			vel += transform.right * moveMult * Input.GetAxis(strafe);
 			rigidbody.velocity = vel;
-			//transform.position += transform.forward * moveMult * Time.deltaTime * Input.GetAxis(move);
 		}
 
 		//Process position-alterring states

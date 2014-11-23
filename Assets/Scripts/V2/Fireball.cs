@@ -7,6 +7,7 @@ public class Fireball : MonoBehaviour {
 	public Vector3 direction;
 	public Color color;
 	public float speed = 15.0f;
+	public float lifeTimer = 5.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,9 @@ public class Fireball : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		lifeTimer -= Time.deltaTime;
+		if (lifeTimer < 0)
+			Destroy (this.gameObject);
 		transform.position += direction * speed * Time.deltaTime;
 	}
 
