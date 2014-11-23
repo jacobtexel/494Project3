@@ -44,7 +44,7 @@ public class MovementV2 : MonoBehaviour {
 		recharge = false;
 		respawning = false;
 		jump = false;
-		getKnife ();
+		makeKnife ();
 	}
 	
 	// Update is called once per frame
@@ -239,7 +239,7 @@ public class MovementV2 : MonoBehaviour {
 		this.transform.localScale = startingSize;
 	}
 
-	void getKnife() {
+	void makeKnife() {
 		GameObject knife = Instantiate(knifePrefab) as GameObject;
 		knife.transform.parent = transform;
 		Vector3 v = displacementVector(.2f, .3f, transform.position.y-.1f, transform.position, Mathf.Deg2Rad*transform.eulerAngles.y+.587981f);
@@ -253,7 +253,10 @@ public class MovementV2 : MonoBehaviour {
 
 		myKnife = knife;
 	}
-	
+
+	void getKnife() {
+		myKnife.renderer.enabled = true;
+	}
 	void loseKnife() {
 		myKnife.renderer.enabled = false;
 	}
