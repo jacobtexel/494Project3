@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 3
   vignette: {fileID: 13100002}
-  timerBar: {fileID: 0}
+  timerBar: {fileID: 13100000}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

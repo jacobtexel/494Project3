@@ -132,7 +132,7 @@ public class MovementV2 : MonoBehaviour {
 		timer = 0.0f;
 		dash = false;
 		downDash = false;
-		moveMult = moveMult / 3f;
+		moveMult = moveMult / 2f;
 		if(knockedUp){
 			knockedUp = false;
 			GetComponent<PlayerV2>().vignette.enabled = false;

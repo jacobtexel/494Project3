@@ -325,7 +325,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: strafe
+    m_Name: strafe4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
