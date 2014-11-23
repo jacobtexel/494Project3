@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move2
+  strafe: strafe1
   turn: turn2
   commandA: commandA2
   commandB: commandB2
@@ -664,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move1
+  strafe: strafe1
   turn: turn1
   commandA: commandA1
   commandB: commandB1
@@ -2520,6 +2522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move1
+  strafe: strafe1
   turn: turn1
   commandA: commandA1
   commandB: commandB1
@@ -3985,7 +3988,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1540068362}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6444070b65379a145b44d7601204b726, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4100,7 +4103,7 @@ Renderer:
   m_GameObject: {fileID: 1615709042}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
@@ -5362,6 +5365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move1
+  strafe: strafe1
   turn: turn1
   commandA: commandA1
   commandB: commandB1

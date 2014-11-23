@@ -5,6 +5,7 @@ public class MovementV2 : MonoBehaviour {
 
 	//Input strings for movement
 	public string move;
+	public string strafe;
 	public string turn;
 	public string commandA;
 	public string commandB;
@@ -94,8 +95,9 @@ public class MovementV2 : MonoBehaviour {
 			vel.x = 0;
 			vel.z = 0;
 			vel += transform.forward * moveMult * Input.GetAxis(move);
-			rigidbody.velocity = vel;
 			//Left/right strafe
+			vel += transform.right * moveMult * Input.GetAxis(strafe);
+			rigidbody.velocity = vel;
 			//transform.position += transform.forward * moveMult * Time.deltaTime * Input.GetAxis(move);
 		}
 

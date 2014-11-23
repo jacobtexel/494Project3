@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move3
+  strafe: strafe3
   turn: turn3
   commandA: commandA3
   commandB: commandB3
