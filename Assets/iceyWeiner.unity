@@ -2080,7 +2080,7 @@ GameObject:
   - 96: {fileID: 613200768}
   - 122: {fileID: 613200767}
   - 114: {fileID: 613200778}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Player4Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2154,6 +2154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move2
+  strafe: strafe2
   turn: turn2
   commandA: commandA2
   commandB: commandB2
@@ -2166,6 +2167,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -2207,9 +2210,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1132956905}
   m_GameObject: {fileID: 613200766}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 20
-  m_AngularDrag: Infinity
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2222,7 +2225,7 @@ BoxCollider:
     type: 2}
   m_PrefabInternal: {fileID: 1132956905}
   m_GameObject: {fileID: 613200766}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 08fe4b6c1185a75499a42589eaed4a88, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3238,7 +3241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
@@ -3264,7 +3267,7 @@ GameObject:
   - 96: {fileID: 859868834}
   - 122: {fileID: 859868833}
   - 114: {fileID: 859868844}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Player1Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -3338,6 +3341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move1
+  strafe: strafe1
   turn: turn1
   commandA: commandA1
   commandB: commandB1
@@ -3350,6 +3354,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -3391,9 +3397,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 831555621}
   m_GameObject: {fileID: 859868832}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 20
-  m_AngularDrag: Infinity
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3406,7 +3412,7 @@ BoxCollider:
     type: 2}
   m_PrefabInternal: {fileID: 831555621}
   m_GameObject: {fileID: 859868832}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 08fe4b6c1185a75499a42589eaed4a88, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3985,7 +3991,7 @@ GameObject:
   - 96: {fileID: 981779586}
   - 122: {fileID: 981779585}
   - 114: {fileID: 981779596}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player2Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -4059,6 +4065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move4
+  strafe: strafe4
   turn: turn4
   commandA: commandA4
   commandB: commandB4
@@ -4071,6 +4078,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -4112,9 +4121,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1429412234}
   m_GameObject: {fileID: 981779584}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 20
-  m_AngularDrag: Infinity
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -4127,7 +4136,7 @@ BoxCollider:
     type: 2}
   m_PrefabInternal: {fileID: 1429412234}
   m_GameObject: {fileID: 981779584}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 08fe4b6c1185a75499a42589eaed4a88, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4854,7 +4863,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
@@ -5952,7 +5961,7 @@ Prefab:
       objectReference: {fileID: 824853491}
     - target: {fileID: 100000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
       propertyPath: move
@@ -7754,7 +7763,7 @@ Prefab:
       objectReference: {fileID: 432186384}
     - target: {fileID: 100000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
       propertyPath: move
@@ -8400,7 +8409,7 @@ GameObject:
   - 96: {fileID: 2035943052}
   - 122: {fileID: 2035943051}
   - 114: {fileID: 2035943062}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Player3Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -8474,6 +8483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: move3
+  strafe: strafe3
   turn: turn3
   commandA: commandA3
   commandB: commandB3
@@ -8486,6 +8496,8 @@ MonoBehaviour:
   moveMult: 3
   rotMult: 100
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
+  myKnife: {fileID: 0}
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -8527,9 +8539,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1845724720}
   m_GameObject: {fileID: 2035943050}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 20
-  m_AngularDrag: Infinity
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -8542,7 +8554,7 @@ BoxCollider:
     type: 2}
   m_PrefabInternal: {fileID: 1845724720}
   m_GameObject: {fileID: 2035943050}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 08fe4b6c1185a75499a42589eaed4a88, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

@@ -77,9 +77,6 @@ public class MovementV2 : MonoBehaviour {
 			fireball.GetComponent<Fireball>().player = GetComponent<MovementV2>();
 
 			fireball.transform.position = transform.position+(transform.forward*(transform.localScale.x/2.0f+0.2f));
-			Vector3 pos = fireball.transform.position;
-			pos.y = .5f;
-			fireball.transform.position = pos;
 			fireball.GetComponent<Fireball>().direction = transform.forward;
 			fireball.GetComponent<Fireball>().color = renderer.material.color;
 
@@ -144,7 +141,7 @@ public class MovementV2 : MonoBehaviour {
 		dash = false;
 		jump = false;
 		downDash = false;
-		moveMult = moveMult / 3f;
+		moveMult = moveMult / 2f;
 		if(knockedUp){
 			knockedUp = false;
 			GetComponent<PlayerV2>().vignette.enabled = false;
