@@ -29,7 +29,7 @@ public class MovementV2 : MonoBehaviour {
 	private bool dash = false;
 	private bool downDash = false;
 	private bool recharge;
-	private bool respawning;
+	public bool respawning;
 	private bool knockedUp;
 	private bool jump;
 	public Vector3 startingSize = new Vector3 (.5f, .5f, .5f);
@@ -142,6 +142,7 @@ public class MovementV2 : MonoBehaviour {
 		dash = false;
 		downDash = false;
 		moveMult = moveMult / 2f;
+		GameObject.FindGameObjectWithTag ("Minimap").GetComponent<LevelManager> ().setHeavy (gameObject);
 		if(knockedUp){
 			knockedUp = false;
 			GetComponent<PlayerV2>().vignette.enabled = false;
@@ -222,11 +223,7 @@ public class MovementV2 : MonoBehaviour {
 	}
 
 	void respawn() {
-		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
-		gameObject.renderer.enabled = true;
-
-		GameObject spot = spawns [Random.Range (0, spawns.Length)];
-		transform.position = spot.transform.position;
+		GameObject.FindGameObjectWithTag ("Minimap").GetComponent<LevelManager> ().respawnPlayer (gameObject);
 		gameObject.renderer.enabled = true;
 		gameObject.collider.enabled =true;
 		GetComponent<Camera> ().enabled = true;
