@@ -72,22 +72,11 @@ public class MovementV2 : MonoBehaviour {
 			}
 		}
 		//Fireball action
-		else if(!respawning && pointMan && !recharge && Input.GetButton (commandB)){
-			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
-			fireball.GetComponent<Fireball>().player = GetComponent<MovementV2>();
-
-			fireball.transform.position = transform.position+(transform.forward*(transform.localScale.x/2.0f+0.2f));
-			Vector3 pos = fireball.transform.position;
-			pos.y = .5f;
-			fireball.transform.position = pos;
-			fireball.GetComponent<Fireball>().direction = transform.forward;
-			fireball.GetComponent<Fireball>().color = renderer.material.color;
-
-			recharge = true;
-			Invoke("rechargeSkill", 0.5f);
+		if(!respawning && pointMan && Input.GetButton (commandB)){
+			transform.GetComponentInChildren<Gun>().regularShot();
 		}
 		//Regular action
-		else if(!respawning && !knockedUp && !downDash){
+		if(!respawning && !knockedUp && !downDash){
 			//Rotate
 			transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
 			//Forward/backward motion
@@ -142,7 +131,6 @@ public class MovementV2 : MonoBehaviour {
 		pointMan = true;
 		timer = 0.0f;
 		dash = false;
-		jump = false;
 		downDash = false;
 		moveMult = moveMult / 3f;
 		if(knockedUp){
@@ -150,11 +138,13 @@ public class MovementV2 : MonoBehaviour {
 			GetComponent<PlayerV2>().vignette.enabled = false;
 		}
 		loseKnife ();
+		transform.FindChild ("Gun").renderer.enabled = true;
 	}
 
 	public void losePointMan(){
 		pointMan = false;
 		transform.localScale = new Vector3 (1f, 1f, 1f);
+		transform.FindChild ("Gun").renderer.enabled = false;
 		getKnife ();
 		resetSize ();
 	}
@@ -256,7 +246,7 @@ public class MovementV2 : MonoBehaviour {
 	}
 	
 	void loseKnife() {
-		
+		myKnife.renderer.enabled = false;
 	}
 
 	//uses parametric equations of a circle. x and z are the wanted values at an angle of 0

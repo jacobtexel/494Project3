@@ -22,6 +22,9 @@ public class Fireball : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
+		print (col.gameObject.name);
+		if(col.gameObject.tag == "Fireball")
+			return;
 		if (col.gameObject.tag == "MainCamera") {
 			col.gameObject.GetComponent<MovementV2>().startRespawn();
 			player.GainPoint();
