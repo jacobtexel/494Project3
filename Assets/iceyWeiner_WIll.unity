@@ -717,11 +717,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d4898eadbdff549b16e6df0df28e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 0}
-  regularInterval: 0
-  superInterval: 0
-  superSpread: .400000006
-  superShotCount: 20
+  fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+  regularInterval: .100000001
+  superInterval: 1.5
+  superSpread: .300000012
+  superShotCount: 40
 --- !u!23 &161786915
 Renderer:
   m_ObjectHideFlags: 0
@@ -1812,6 +1812,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: fireballPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: regularInterval
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: superInterval
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: superSpread
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: superShotCount
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
   m_RootGameObject: {fileID: 598590503}
@@ -1870,7 +1890,7 @@ GUITexture:
     type: 2}
   m_PrefabInternal: {fileID: 946203259}
   m_GameObject: {fileID: 419359853}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Texture: {fileID: 2800000, guid: ef1de1be668b22441bd84c34510ebbb9, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_PixelInset:
@@ -2691,7 +2711,7 @@ GUITexture:
     type: 2}
   m_PrefabInternal: {fileID: 374843630}
   m_GameObject: {fileID: 591517057}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Texture: {fileID: 2800000, guid: ef1de1be668b22441bd84c34510ebbb9, type: 3}
   m_Color: {r: 0, g: 1, b: .00689649582, a: 1}
   m_PixelInset:
@@ -3630,7 +3650,7 @@ GUITexture:
     type: 2}
   m_PrefabInternal: {fileID: 207063207}
   m_GameObject: {fileID: 867497097}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Texture: {fileID: 2800000, guid: ef1de1be668b22441bd84c34510ebbb9, type: 3}
   m_Color: {r: .199999809, g: 0, b: 1, a: 1}
   m_PixelInset:
@@ -4683,7 +4703,7 @@ Halo:
     type: 2}
   m_PrefabInternal: {fileID: 207063207}
   m_GameObject: {fileID: 993780931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Color:
     serializedVersion: 2
     rgba: 4294901779
@@ -6648,7 +6668,7 @@ Halo:
     type: 2}
   m_PrefabInternal: {fileID: 946203259}
   m_GameObject: {fileID: 1430228905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Color:
     serializedVersion: 2
     rgba: 4278190335
@@ -8206,7 +8226,7 @@ GUITexture:
     type: 2}
   m_PrefabInternal: {fileID: 317914194}
   m_GameObject: {fileID: 1820000592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Texture: {fileID: 2800000, guid: ef1de1be668b22441bd84c34510ebbb9, type: 3}
   m_Color: {r: .986206889, g: 1, b: 0, a: 1}
   m_PixelInset:
