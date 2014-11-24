@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 131: {fileID: 13100000}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CrossHairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
