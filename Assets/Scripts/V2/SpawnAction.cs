@@ -3,15 +3,19 @@ using System.Collections;
 
 public class SpawnAction : MonoBehaviour {
 
+	public bool occupied;
+
+	void Start() {
+		occupied = false;
+	}
+
 	void OnTriggerEnter(Collider col) {
 		if(col.tag == "MainCamera") {
-			gameObject.tag = "Untagged";
+			occupied = true;
 		}
 	}
 
 	void OnTriggerExit(Collider col) {
-		if(col.tag == "MainCamera") {
-			gameObject.tag = "Spawn";
-		}
+			occupied = false;
 	}
 }

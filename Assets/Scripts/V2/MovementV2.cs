@@ -22,14 +22,14 @@ public class MovementV2 : MonoBehaviour {
 
 	public GameObject fireballPrefab;
 	public GameObject knifePrefab;
-	
+
 	public GameObject myKnife;
 
 	//Bools concerning state of player
 	private bool dash = false;
 	private bool downDash = false;
 	private bool recharge;
-	private bool respawning;
+	public bool respawning;
 	private bool knockedUp;
 	private bool jump;
 	public Vector3 startingSize = new Vector3 (.5f, .5f, .5f);
@@ -142,6 +142,7 @@ public class MovementV2 : MonoBehaviour {
 		dash = false;
 		downDash = false;
 		moveMult = moveMult / 2f;
+		GameObject.FindGameObjectWithTag ("Minimap").GetComponent<LevelManager> ().setHeavy (gameObject);
 		if(knockedUp){
 			knockedUp = false;
 			GetComponent<PlayerV2>().vignette.enabled = false;
@@ -222,11 +223,7 @@ public class MovementV2 : MonoBehaviour {
 	}
 
 	void respawn() {
-		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
-		gameObject.renderer.enabled = true;
-
-		GameObject spot = spawns [Random.Range (0, spawns.Length)];
-		transform.position = spot.transform.position;
+		GameObject.FindGameObjectWithTag ("Minimap").GetComponent<LevelManager> ().respawnPlayer (gameObject);
 		gameObject.renderer.enabled = true;
 		gameObject.collider.enabled =true;
 		GetComponent<Camera> ().enabled = true;
@@ -242,6 +239,7 @@ public class MovementV2 : MonoBehaviour {
 	void makeKnife() {
 		GameObject knife = Instantiate(knifePrefab) as GameObject;
 		knife.transform.parent = transform;
+
 		Vector3 v = displacementVector(.2f, .3f, transform.position.y-.1f, transform.position, Mathf.Deg2Rad*transform.eulerAngles.y+.587981f);
 
 		knife.gameObject.renderer.material.color = gameObject.renderer.material.color;
@@ -256,9 +254,11 @@ public class MovementV2 : MonoBehaviour {
 
 	void getKnife() {
 		myKnife.renderer.enabled = true;
+		GetComponent<PlayerV2> ().crosshairs.enabled = false;
 	}
 	void loseKnife() {
 		myKnife.renderer.enabled = false;
+		GetComponent<PlayerV2> ().crosshairs.enabled = true;
 	}
 
 	//uses parametric equations of a circle. x and z are the wanted values at an angle of 0
