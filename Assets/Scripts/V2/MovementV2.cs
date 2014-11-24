@@ -156,12 +156,15 @@ public class MovementV2 : MonoBehaviour {
 		transform.localScale = new Vector3 (1f, 1f, 1f);
 		transform.FindChild ("Gun").renderer.enabled = false;
 		getKnife ();
-		resetSize ();
+		rotMult = 100f;
+		moveMult = 3f;
+		this.transform.localScale = startingSize;
+		startRespawn ();
 	}
 
 	public void GainPoint(){
 		points++;
-		if(points >= 60){
+		if(points >= 10){
 			PlayerPrefs.SetString("winner", GetComponent<PlayerV2>().playerNum.ToString());
 			Application.LoadLevel("_End_screen");
 		}
@@ -169,7 +172,8 @@ public class MovementV2 : MonoBehaviour {
 
 	// Lol great method name
 	public void GetKnockedUp(Vector3 source){
-		losePointMan ();
+		if(pointMan)
+			losePointMan ();
 		knockUpDirection = transform.position - source;
 		knockedUp = true;
 		GetComponent<PlayerV2> ().vignette.enabled = true;
@@ -182,7 +186,8 @@ public class MovementV2 : MonoBehaviour {
 			becomePointMan();
 			col.GetComponent<PowerUpV2>().remove();
 			//col.GetComponent<PowerupAction>().startRespawn();
-		} else if(col.tag == "Danger"){
+		}
+		if(col.tag == "Danger"){
 			if(pointMan) {
 				losePointMan();
 				GameObject.FindGameObjectWithTag("Minimap").GetComponent<LevelManager>().spawnPowerup();
@@ -191,11 +196,15 @@ public class MovementV2 : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerStay(Collider col) {
+		OnTriggerEnter (col);
+	}
+
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "MainCamera"){
 			if(dash && col.gameObject.GetComponent<MovementV2>().pointMan){
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
-				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
+				//col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
 				becomePointMan();
 			} else if(dash){
 				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
@@ -211,7 +220,6 @@ public class MovementV2 : MonoBehaviour {
 		gameObject.collider.enabled = false;
 		if(!respawning) {
 			transform.position -= new Vector3(0, 100f, 0);
-			losePointMan();
 			dash = false;
 			downDash = false;
 			recharge = false;
@@ -228,12 +236,6 @@ public class MovementV2 : MonoBehaviour {
 		gameObject.collider.enabled =true;
 		GetComponent<Camera> ().enabled = true;
 		respawning = false;
-	}
-
-	void resetSize() {
-		rotMult = 100f;
-		moveMult = 3f;
-		this.transform.localScale = startingSize;
 	}
 
 	void makeKnife() {

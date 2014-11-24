@@ -57,15 +57,24 @@ public class LevelManager : MonoBehaviour {
 	public void respawnPlayer(GameObject player) {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
 		GameObject farthestSpawn = spawns[0];
-		float farthestDist = 0f;
-		Vector3 heavyLoc = heavy.transform.position;
-		foreach (GameObject spawn in spawns) {
-			if(spawn.GetComponent<SpawnAction>().occupied)
-				continue;
-			float dist = Mathf.Abs(Vector3.Distance(heavyLoc, spawn.transform.position));
-			if(dist > farthestDist) {
-				farthestDist = dist;
-				farthestSpawn = spawn;
+		if(heavy == null) {
+			bool found = false;
+			while(!found) {
+				farthestSpawn = spawns[Random.Range(0,spawns.Length)];
+				if(!farthestSpawn.GetComponent<SpawnAction>().occupied)
+					found = true;
+			}
+		} else {
+			float farthestDist = 0f;
+			Vector3 heavyLoc = heavy.transform.position;
+			foreach (GameObject spawn in spawns) {
+				if(spawn.GetComponent<SpawnAction>().occupied)
+					continue;
+				float dist = Mathf.Abs(Vector3.Distance(heavyLoc, spawn.transform.position));
+				if(dist > farthestDist) {
+					farthestDist = dist;
+					farthestSpawn = spawn;
+				}
 			}
 		}
 		player.transform.position = farthestSpawn.transform.position;
