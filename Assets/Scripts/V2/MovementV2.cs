@@ -37,6 +37,9 @@ public class MovementV2 : MonoBehaviour {
 	public float minRot = 25f;
 	public float maxSize = 2f;
 
+	public float lastRespawn = -10f;
+	public float invincibilityPeriod = 2f;
+
 	private Vector3 knockUpDirection;
 
 	// Use this for initialization
@@ -192,7 +195,7 @@ public class MovementV2 : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		if(col.gameObject.tag == "MainCamera"){
+		if(col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPerio){
 			if(dash && col.gameObject.GetComponent<MovementV2>().pointMan){
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
 				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
@@ -228,6 +231,7 @@ public class MovementV2 : MonoBehaviour {
 		gameObject.collider.enabled =true;
 		GetComponent<Camera> ().enabled = true;
 		respawning = false;
+		lastRespawn = Time.time;
 	}
 
 	void resetSize() {
