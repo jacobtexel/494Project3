@@ -342,6 +342,7 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -363,7 +364,8 @@ MonoBehaviour:
   fireballPrefab: {fileID: 0}
   regularInterval: 0
   superInterval: 0
-  timer: 0
+  superSpread: .400000006
+  superShotCount: 20
 --- !u!122 &12200000
 Halo:
   m_ObjectHideFlags: 1
@@ -388,7 +390,7 @@ GUITexture:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Texture: {fileID: 2800000, guid: ef1de1be668b22441bd84c34510ebbb9, type: 3}
   m_Color: {r: 0, g: 1, b: .00689649582, a: 1}
   m_PixelInset:

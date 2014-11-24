@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 3
   vignette: {fileID: 13100002}
-  timerBar: {fileID: 13100000}
+  timerBar: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,6 +342,7 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -363,7 +364,8 @@ MonoBehaviour:
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: .100000001
   superInterval: .5
-  timer: 0
+  superSpread: .400000006
+  superShotCount: 20
 --- !u!122 &12200000
 Halo:
   m_ObjectHideFlags: 1
@@ -407,7 +409,7 @@ GUITexture:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Texture: {fileID: 2800000, guid: ef1de1be668b22441bd84c34510ebbb9, type: 3}
   m_Color: {r: .986206889, g: 1, b: 0, a: 1}
   m_PixelInset:
