@@ -195,7 +195,7 @@ public class MovementV2 : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		if(col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPerio){
+		if(col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod){
 			if(dash && col.gameObject.GetComponent<MovementV2>().pointMan){
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
 				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
