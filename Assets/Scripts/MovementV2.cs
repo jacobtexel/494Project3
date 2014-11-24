@@ -104,7 +104,7 @@ public class MovementV2 : MonoBehaviour {
 
 		//Process position-alterring states
 		if(dash){
-			transform.position += transform.forward * 5 * Time.deltaTime;
+			transform.position += transform.forward * 8 * Time.deltaTime;
 			timer += Time.deltaTime;
 			if(timer >= dashTime){
 				dash = false;
