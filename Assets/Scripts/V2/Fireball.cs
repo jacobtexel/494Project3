@@ -29,8 +29,13 @@ public class Fireball : MonoBehaviour {
 		print (col.gameObject.name);
 		if(col.gameObject.tag == "Fireball")
 			return;
-		if (col.gameObject.tag == "MainCamera") {
+
+		if (col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod) {
+			Debug.Log (Time.time);
+			Debug.Log (col.gameObject.GetComponent<MovementV2> ().lastRespawn);
+			Debug.Log(col.gameObject.GetComponent<MovementV2>().invincibilityPeriod);
 			col.gameObject.GetComponent<MovementV2>().startRespawn();
+
 			player.GainPoint();
 		}
 		print ("called");
