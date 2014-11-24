@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &53462753
 Renderer:
   m_ObjectHideFlags: 0
@@ -353,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &71042295
 Renderer:
   m_ObjectHideFlags: 0
@@ -630,6 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &147118341
 Renderer:
   m_ObjectHideFlags: 0
@@ -732,6 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &187137016
 Renderer:
   m_ObjectHideFlags: 0
@@ -1289,12 +1293,12 @@ Transform:
   m_PrefabInternal: {fileID: 1003928549}
   m_GameObject: {fileID: 300950204}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: -9.82609558, y: -9.46564484, z: -4.32828426}
+  m_LocalPosition: {x: -11.7331696, y: -9.46564484, z: -4.77094364}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 404450031}
   m_Father: {fileID: 1102788924}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!135 &300950206
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1323,6 +1327,7 @@ MonoBehaviour:
   playerNum: 3
   vignette: {fileID: 1820000594}
   timerBar: {fileID: 543559143}
+  crosshairs: {fileID: 2099022797}
 --- !u!122 &300950208
 Halo:
   m_ObjectHideFlags: 0
@@ -1402,9 +1407,11 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  respawning: 0
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -1646,8 +1653,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: .100000001
-  superInterval: .5
-  timer: 0
+  superInterval: 1.5
+  superSpread: .300000012
+  superShotCount: 40
 --- !u!23 &370579051
 Renderer:
   m_ObjectHideFlags: 0
@@ -1716,6 +1724,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: regularInterval
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: superInterval
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: superSpread
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: superShotCount
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -6.97036076
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
   m_RootGameObject: {fileID: 598590503}
@@ -1765,8 +1793,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: .100000001
-  superInterval: .5
-  timer: 0
+  superInterval: 1.5
+  superSpread: .300000012
+  superShotCount: 40
 --- !u!23 &404450033
 Renderer:
   m_ObjectHideFlags: 0
@@ -1934,6 +1963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &428834081
 Renderer:
   m_ObjectHideFlags: 0
@@ -2517,9 +2547,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 0}
-  regularInterval: 0
-  superInterval: 0
-  timer: 0
+  regularInterval: .100000001
+  superInterval: 1.5
+  superSpread: .300000012
+  superShotCount: 40
 --- !u!23 &574147014
 Renderer:
   m_ObjectHideFlags: 0
@@ -2587,6 +2618,18 @@ Prefab:
     - target: {fileID: 400000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: superInterval
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: superSpread
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+      propertyPath: superShotCount
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
@@ -2668,6 +2711,7 @@ Transform:
   m_Children:
   - {fileID: 591517059}
   - {fileID: 59315512}
+  - {fileID: 857220496}
   - {fileID: 901540318}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -3515,9 +3559,58 @@ Transform:
   m_Children:
   - {fileID: 719491114}
   - {fileID: 419359855}
+  - {fileID: 1022959680}
   - {fileID: 1430228906}
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!1 &857220494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100010, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+  m_PrefabInternal: {fileID: 391541136}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 857220496}
+  - 131: {fileID: 857220495}
+  m_Layer: 11
+  m_Name: CrossHairs4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &857220495
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13100004, guid: 740012119b56d4510abb7018db0711d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 391541136}
+  m_GameObject: {fileID: 857220494}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: e01b218c9937a4ebc9c1c060de346941, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: .501960814}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -11
+    y: -9
+    width: 20
+    height: 20
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &857220496
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400010, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+  m_PrefabInternal: {fileID: 391541136}
+  m_GameObject: {fileID: 857220494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.82609606, y: -9.21564484, z: -4.32828522}
+  m_LocalScale: {x: 0, y: 0, z: 2}
+  m_Children: []
+  m_Father: {fileID: 598590504}
+  m_RootOrder: 2
 --- !u!1 &867497097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3818,6 +3911,7 @@ MonoBehaviour:
   playerNum: 4
   vignette: {fileID: 591517058}
   timerBar: {fileID: 59315511}
+  crosshairs: {fileID: 857220495}
 --- !u!122 &901540309
 Halo:
   m_ObjectHideFlags: 0
@@ -3897,9 +3991,11 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  respawning: 0
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -4005,12 +4101,12 @@ Transform:
   m_PrefabInternal: {fileID: 391541136}
   m_GameObject: {fileID: 901540306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.32609558, y: -9.46564484, z: -7.82828426}
+  m_LocalPosition: {x: -6.22693014, y: -9.46564484, z: -6.97036076}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 574147012}
   m_Father: {fileID: 598590504}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1001 &923375920
 Prefab:
   m_ObjectHideFlags: 0
@@ -4393,12 +4489,12 @@ Transform:
   m_PrefabInternal: {fileID: 1410140746}
   m_GameObject: {fileID: 993780931}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: -2.82609558, y: -9.46564484, z: -4.32828426}
+  m_LocalPosition: {x: -1.3506403, y: -9.46564484, z: -6.25844812}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 370579049}
   m_Father: {fileID: 1971966398}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!135 &993780933
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4427,6 +4523,7 @@ MonoBehaviour:
   playerNum: 2
   vignette: {fileID: 867497099}
   timerBar: {fileID: 533060699}
+  crosshairs: {fileID: 2097457730}
 --- !u!122 &993780935
 Halo:
   m_ObjectHideFlags: 0
@@ -4506,9 +4603,11 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  respawning: 0
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -4646,6 +4745,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+      propertyPath: superInterval
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+      propertyPath: superSpread
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+      propertyPath: superShotCount
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -11.7331696
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.77094364
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
   m_RootGameObject: {fileID: 1102788923}
@@ -4764,6 +4883,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 783325050}
   m_RootOrder: 7
+--- !u!1 &1022959679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100010, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+  m_PrefabInternal: {fileID: 589749550}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1022959680}
+  - 131: {fileID: 1022959681}
+  m_Layer: 8
+  m_Name: CrossHairs1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1022959680
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400010, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
+  m_PrefabInternal: {fileID: 589749550}
+  m_GameObject: {fileID: 1022959679}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.82609606, y: -9.21564484, z: -4.32828522}
+  m_LocalScale: {x: 0, y: 0, z: 2}
+  m_Children: []
+  m_Father: {fileID: 839386800}
+  m_RootOrder: 2
+--- !u!131 &1022959681
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13100004, guid: bd1475072c8b84555abc805cdd97c7ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 589749550}
+  m_GameObject: {fileID: 1022959679}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: e01b218c9937a4ebc9c1c060de346941, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: .501960814}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -11
+    y: -9
+    width: 20
+    height: 20
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1001 &1032756509
 Prefab:
   m_ObjectHideFlags: 0
@@ -4912,6 +5079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1078808169
 Renderer:
   m_ObjectHideFlags: 0
@@ -5011,6 +5179,7 @@ Transform:
   m_Children:
   - {fileID: 1820000593}
   - {fileID: 543559144}
+  - {fileID: 2099022798}
   - {fileID: 300950205}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -5118,6 +5287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1115394619
 Renderer:
   m_ObjectHideFlags: 0
@@ -5252,6 +5422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1153791959
 Renderer:
   m_ObjectHideFlags: 0
@@ -5477,6 +5648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1231207368
 Renderer:
   m_ObjectHideFlags: 0
@@ -5567,6 +5739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1277006520
 Renderer:
   m_ObjectHideFlags: 0
@@ -5725,6 +5898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1296698511
 Renderer:
   m_ObjectHideFlags: 0
@@ -6119,6 +6293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1396623093
 Renderer:
   m_ObjectHideFlags: 0
@@ -6199,6 +6374,22 @@ Prefab:
     - target: {fileID: 400000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+      propertyPath: superInterval
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+      propertyPath: superSpread
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+      propertyPath: superShotCount
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.3506403
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
@@ -6311,12 +6502,12 @@ Transform:
   m_PrefabInternal: {fileID: 589749550}
   m_GameObject: {fileID: 1430228905}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: -6.32609558, y: -9.46564484, z: -.828284264}
+  m_LocalPosition: {x: -6.32609558, y: -9.46564484, z: .639279366}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 1876790084}
   m_Father: {fileID: 839386800}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!135 &1430228907
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6345,6 +6536,7 @@ MonoBehaviour:
   playerNum: 1
   vignette: {fileID: 419359854}
   timerBar: {fileID: 719491115}
+  crosshairs: {fileID: 1022959681}
 --- !u!122 &1430228909
 Halo:
   m_ObjectHideFlags: 0
@@ -6424,9 +6616,11 @@ MonoBehaviour:
   points: 0
   moveMult: 3
   rotMult: 100
+  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  respawning: 0
   startingSize: {x: .5, y: .5, z: .5}
   minMove: 1
   minRot: 25
@@ -6705,6 +6899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1541493873
 Renderer:
   m_ObjectHideFlags: 0
@@ -6920,6 +7115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1573571346
 Renderer:
   m_ObjectHideFlags: 0
@@ -7098,6 +7294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1630156916
 Renderer:
   m_ObjectHideFlags: 0
@@ -7634,6 +7831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &1733312987
 Renderer:
   m_ObjectHideFlags: 0
@@ -8135,8 +8333,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: .100000001
-  superInterval: .5
-  timer: 0
+  superInterval: 1.5
+  superSpread: .300000012
+  superShotCount: 40
 --- !u!23 &1876790082
 Renderer:
   m_ObjectHideFlags: 0
@@ -8409,6 +8608,7 @@ Transform:
   m_Children:
   - {fileID: 867497098}
   - {fileID: 533060700}
+  - {fileID: 2097457729}
   - {fileID: 993780932}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -8696,6 +8896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cbcc7643984726af62da765a1f834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupied: 0
 --- !u!23 &2041217483
 Renderer:
   m_ObjectHideFlags: 0
@@ -8940,6 +9141,102 @@ Prefab:
   m_RootGameObject: {fileID: 71042291}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &2097457728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100010, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+  m_PrefabInternal: {fileID: 1410140746}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2097457729}
+  - 131: {fileID: 2097457730}
+  m_Layer: 9
+  m_Name: CrossHairs2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2097457729
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400010, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+  m_PrefabInternal: {fileID: 1410140746}
+  m_GameObject: {fileID: 2097457728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.82609606, y: -9.21564484, z: -4.32828522}
+  m_LocalScale: {x: 0, y: 0, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1971966398}
+  m_RootOrder: 2
+--- !u!131 &2097457730
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13100004, guid: 151ee481ed976424e9037a2ab2d941d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1410140746}
+  m_GameObject: {fileID: 2097457728}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: e01b218c9937a4ebc9c1c060de346941, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: .501960814}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -11
+    y: -9
+    width: 20
+    height: 20
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!1 &2099022796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100010, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+  m_PrefabInternal: {fileID: 1003928549}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2099022798}
+  - 131: {fileID: 2099022797}
+  m_Layer: 10
+  m_Name: CrossHairs3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &2099022797
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13100004, guid: 9fd87912754c8458081ee00c1a34b185,
+    type: 2}
+  m_PrefabInternal: {fileID: 1003928549}
+  m_GameObject: {fileID: 2099022796}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: e01b218c9937a4ebc9c1c060de346941, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: .501960814}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -11
+    y: -9
+    width: 20
+    height: 20
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &2099022798
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400010, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+  m_PrefabInternal: {fileID: 1003928549}
+  m_GameObject: {fileID: 2099022796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.82609606, y: -9.21564484, z: -4.32828522}
+  m_LocalScale: {x: 0, y: 0, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1102788924}
+  m_RootOrder: 2
 --- !u!1 &2102307503
 GameObject:
   m_ObjectHideFlags: 0
