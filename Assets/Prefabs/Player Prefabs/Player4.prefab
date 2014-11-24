@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.32609558, y: 9.71564484, z: 10.2330675}
+  m_LocalPosition: {x: -.105242729, y: .25, z: -1.16525984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -130,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.22693014, y: -9.46564484, z: -12.6154909}
+  m_LocalPosition: {x: -.300195694, y: -.168773651, z: -1.32822299}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400008}
@@ -381,6 +381,8 @@ MonoBehaviour:
   minMove: 1
   minRot: 25
   maxSize: 2
+  lastRespawn: -10
+  invincibilityPeriod: 2
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d4898eadbdff549b16e6df0df28e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 0}
+  fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: 0
   superInterval: 0
   superSpread: .400000006

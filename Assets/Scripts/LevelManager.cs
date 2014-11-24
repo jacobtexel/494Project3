@@ -38,9 +38,16 @@ public class LevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		bool respawn = true;
+		foreach(GameObject player in GameObject.FindGameObjectsWithTag("MainCamera")){
+			if(player.GetComponent<MovementV2>().pointMan)
+				respawn = false;
+		}
 		if(GameObject.FindGameObjectsWithTag("Powerup").Length == 0 && !spawnedPowerup){
 			spawnPowerup();
 			spawnedPowerup = true;
+		} else if(respawn && GameObject.FindGameObjectsWithTag("Powerup").Length == 0){
+			spawnPowerup();
 		}
 	}
 

@@ -152,6 +152,8 @@ public class MovementV2 : MonoBehaviour {
 		}
 		loseKnife ();
 		transform.FindChild ("Gun").renderer.enabled = true;
+		Component halo = GetComponent("Halo");
+		halo.GetType().GetProperty("enabled").SetValue(halo, true, null);
 	}
 
 	public void losePointMan(){
@@ -162,6 +164,8 @@ public class MovementV2 : MonoBehaviour {
 		rotMult = 100f;
 		moveMult = 3f;
 		this.transform.localScale = startingSize;
+		Component halo = GetComponent("Halo");
+		halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
 		startRespawn ();
 	}
 

@@ -18,7 +18,7 @@ public class PlayerV2 : MonoBehaviour {
 
 	void Update() {
 		Vector3 barscale = timerBar.transform.localScale;
-		barscale.x = .5f * ((60-GetComponent<MovementV2>().points)/60.0f);
+		barscale.x = .5f * ((10-GetComponent<MovementV2>().points)/10.0f);
 		timerBar.transform.localScale = barscale;
 	}
 }
