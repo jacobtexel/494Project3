@@ -13,8 +13,10 @@ public class Fireball : MonoBehaviour {
 	void Start () {
 		//Ensure direction vector is a unit vector
 		direction = direction / direction.magnitude;
-		GetComponent<ParticleSystem> ().startColor = color;
+		rigidbody.velocity = direction * speed;
+		//GetComponent<ParticleSystem> ().startColor = color;
 		renderer.material.color = color;
+
 	}
 	
 	// Update is called once per frame
@@ -22,7 +24,7 @@ public class Fireball : MonoBehaviour {
 		lifeTimer -= Time.deltaTime;
 		if (lifeTimer < 0)
 			Destroy (this.gameObject);
-		transform.position += direction * speed * Time.deltaTime;
+		//transform.position += direction * speed * Time.deltaTime;
 	}
 
 	void OnCollisionEnter(Collision col){

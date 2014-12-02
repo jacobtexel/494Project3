@@ -35,6 +35,7 @@ public class Gun : MonoBehaviour {
 		fireball.GetComponent<Fireball>().direction = transform.parent.transform.forward;
 		fireball.GetComponent<Fireball>().color = parentColor;
 
+
 		timer = regularInterval;
 		return true;
 	}
@@ -51,7 +52,7 @@ public class Gun : MonoBehaviour {
 			fireball.transform.position += transform.parent.forward * transform.localScale.y / 2;
 			fireball.GetComponent<Fireball>().direction = transform.parent.forward + Random.insideUnitSphere * superSpread;
 			fireball.GetComponent<Fireball>().color = parentColor;
-			fireball.GetComponent<ParticleSystem>().enableEmission = false;
+			//fireball.GetComponent<ParticleSystem>().enableEmission = false;
 		}
 		timer = superInterval;
 		return true;
