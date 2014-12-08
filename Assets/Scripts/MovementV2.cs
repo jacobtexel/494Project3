@@ -15,13 +15,13 @@ public class MovementV2 : MonoBehaviour {
 	public float timer;
 	public int points = 0;
 	public float moveMult = 3f;
+	public float dashMult = 8f;
 	public float rotMult = 100f;
 	public float slowRotMult = 40f;
 	private float slowTimer = 0.0f;
 
 	public GameObject fireballPrefab;
 	public GameObject knifePrefab;
-
 	public GameObject myKnife;
 
 	//Bools concerning state of player
@@ -93,7 +93,7 @@ public class MovementV2 : MonoBehaviour {
 			transform.GetComponentInChildren<Gun>().superShot();
 		}
 		//Regular action
-		if(!respawning && !knockedUp && !downDash){
+		if(!dash && !respawning && !knockedUp && !downDash){
 			//Rotate
 			if(slowTimer > 0)
 				transform.Rotate(slowRotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
@@ -107,11 +107,21 @@ public class MovementV2 : MonoBehaviour {
 			//Left/right strafe
 			vel += transform.right * moveMult * Input.GetAxis(strafe);
 			rigidbody.velocity = vel;
+	
 		}
 
 		//Process position-alterring states
 		if(dash){
-			transform.position += transform.forward * 8 * Time.deltaTime;
+			transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
+			//Forward/backward motion
+			Vector3 vel = rigidbody.velocity;
+			vel.x = 0;
+			vel.z = 0;
+			vel += transform.forward * dashMult;
+			//Left/right strafe
+			vel += transform.right * moveMult * Input.GetAxis(strafe);
+			rigidbody.velocity = vel;
+
 			timer += Time.deltaTime;
 			if(timer >= dashTime){
 				dash = false;
