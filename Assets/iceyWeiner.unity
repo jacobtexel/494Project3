@@ -1416,6 +1416,8 @@ MonoBehaviour:
   minMove: 1
   minRot: 25
   maxSize: 2
+  lastRespawn: -10
+  invincibilityPeriod: 2
 --- !u!23 &300950211
 Renderer:
   m_ObjectHideFlags: 0
@@ -1694,15 +1696,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.32609558
+      value: .625888348
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.71564484
+      value: .37591362
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 5.02659893
+      value: 5.04973125
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2546,7 +2548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d4898eadbdff549b16e6df0df28e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 0}
+  fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   regularInterval: .100000001
   superInterval: 1.5
   superSpread: .300000012
@@ -2706,7 +2708,7 @@ Transform:
   m_PrefabInternal: {fileID: 391541136}
   m_GameObject: {fileID: 598590503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.32609558, y: 9.71564484, z: 5.02659893}
+  m_LocalPosition: {x: .625888348, y: .37591362, z: 5.04973125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 591517059}
@@ -4000,6 +4002,8 @@ MonoBehaviour:
   minMove: 1
   minRot: 25
   maxSize: 2
+  lastRespawn: -10
+  invincibilityPeriod: 2
 --- !u!23 &901540312
 Renderer:
   m_ObjectHideFlags: 0
@@ -4101,7 +4105,7 @@ Transform:
   m_PrefabInternal: {fileID: 391541136}
   m_GameObject: {fileID: 901540306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.22693014, y: -9.46564484, z: -6.97036076}
+  m_LocalPosition: {x: -.300195694, y: -.168773651, z: -6.97036076}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 574147012}
@@ -4612,6 +4616,8 @@ MonoBehaviour:
   minMove: 1
   minRot: 25
   maxSize: 2
+  lastRespawn: -10
+  invincibilityPeriod: 2
 --- !u!23 &993780938
 Renderer:
   m_ObjectHideFlags: 0
@@ -6625,6 +6631,8 @@ MonoBehaviour:
   minMove: 1
   minRot: 25
   maxSize: 2
+  lastRespawn: -10
+  invincibilityPeriod: 2
 --- !u!23 &1430228912
 Renderer:
   m_ObjectHideFlags: 0
