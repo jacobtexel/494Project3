@@ -19,7 +19,7 @@ public class MovementV2 : MonoBehaviour {
 	public float rotMult = 100f;
 	public float slowRotMult = 40f;
 	private float slowTimer = 0.0f;
-
+	public float jumpTime = 2f;
 	public GameObject fireballPrefab;
 	public GameObject knifePrefab;
 	public GameObject myKnife;
@@ -28,6 +28,7 @@ public class MovementV2 : MonoBehaviour {
 	private bool dash = false;
 	private bool downDash = false;
 	private bool recharge;
+	private bool jump = false;
 	public bool respawning;
 	private bool knockedUp;
 	public Vector3 startingSize = new Vector3 (.5f, .5f, .5f);
@@ -39,6 +40,10 @@ public class MovementV2 : MonoBehaviour {
 	public float invincibilityPeriod = 2f;
 
 	private Vector3 knockUpDirection;
+
+	//elevator properties
+	private bool onElevator = false;
+	private GameObject elevator;
 
 	// Use this for initialization
 	void Start () {
@@ -71,6 +76,16 @@ public class MovementV2 : MonoBehaviour {
 			timer = 0.0f;
 		}
 		//Jump action
+//		else if ((onElevator && !pointMan && Input.GetButtonDown (commandA)) || !respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
+//			jump = true;
+//			downDash = false;
+//			timer = jumpTime;
+//		}
+		else if (!respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
+			jump = true;
+			downDash = false;
+			timer = jumpTime;
+		}
 		else if (Input.GetButtonDown (commandA) && canJump()) {
 			jumpAction();
 		} 
@@ -137,12 +152,19 @@ public class MovementV2 : MonoBehaviour {
 		if (downDash && !inAir ()) {
 			downDash = false;
 		}
-
+		
+		if(onElevator)
+		{
+			//Basic Movement
+			Vector3 pos = transform.position; 
+			pos.y += elevator.GetComponent<FloorMovement>().speed * Time.deltaTime; 
+			transform.position = pos;
+		}
 	}
 
 	bool canJump(){
 		if (!respawning && !pointMan && !knockedUp) {
-			return !inAir();
+			return !inAir() || onElevator;
 		}
 		return false;
 	}
@@ -252,14 +274,25 @@ public class MovementV2 : MonoBehaviour {
 				GetKnockedUp(col.gameObject.transform.position);
 			}
 		}
+		else if(col.gameObject.tag == "Elevator")
+		{
+			onElevator = true;
+			elevator = col.gameObject;
+		}
 	}
 
+	void OnCollisionExit(Collision col){
+		if(col.gameObject.tag == "Elevator")
+		{
+			onElevator = false;
+			elevator = null;
+		}
+	}
 	public void startRespawn() {
-		GetComponent<Camera>().enabled = false;
 		gameObject.renderer.enabled = false;
-		gameObject.collider.enabled = false;
 		if(!respawning) {
-			transform.position -= new Vector3(0, 100f, 0);
+			transform.position = GameObject.FindGameObjectWithTag("HoldingZone").transform.position;
+			myKnife.renderer.enabled = false;
 			dash = false;
 			downDash = false;
 			recharge = false;
@@ -271,6 +304,7 @@ public class MovementV2 : MonoBehaviour {
 
 	void respawn() {
 		GameObject.FindGameObjectWithTag ("Minimap").GetComponent<LevelManager> ().respawnPlayer (gameObject);
+		myKnife.renderer.enabled = true;
 		gameObject.renderer.enabled = true;
 		gameObject.collider.enabled =true;
 		GetComponent<Camera> ().enabled = true;
