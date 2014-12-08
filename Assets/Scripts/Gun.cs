@@ -12,6 +12,8 @@ public class Gun : MonoBehaviour {
 	public float superSpread = 0.4f;
 	public int superShotCount =20;
 
+	public AudioClip superSound;
+	public AudioClip normalSound;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +28,7 @@ public class Gun : MonoBehaviour {
 	//Returns true if a shot is fired
 	public bool regularShot() {
 		if(timer > 0) return false;
-
+		audio.PlayOneShot (normalSound);
 		GameObject fireball = Instantiate(fireballPrefab) as GameObject;
 		fireball.GetComponent<Fireball>().player = transform.parent.GetComponent<MovementV2>();
 
@@ -43,6 +45,7 @@ public class Gun : MonoBehaviour {
 	//Fire 20 shots
 	public bool superShot() {
 		if(timer > 0) return false;
+		audio.PlayOneShot (superSound);
 		for(int x=0; x<superShotCount; x++){
 			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
 			fireball.GetComponent<Fireball>().player = transform.parent.GetComponent<MovementV2>();

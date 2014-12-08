@@ -78,10 +78,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d99f71ad144d4620aac89a3bbdacfd8, type: 3}
+  m_Script: {fileID: 11500000, guid: c9ada8f62a2aa8341b1e7ed7859ee91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashing: 0
+  UpgradePrefab: {fileID: 100000, guid: 0cd462aec67eb964dbc0c58903801d5b, type: 2}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
