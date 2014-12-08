@@ -63,12 +63,15 @@ public class LevelManager : MonoBehaviour {
 
 	public void respawnPlayer(GameObject player) {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
-		GameObject farthestSpawn = spawns[0];
+		GameObject[] farthestSpawns = new GameObject[3];
+		farthestSpawns [0] = spawns [0];
+		farthestSpawns [1] = spawns [0];
+		farthestSpawns [2] = spawns [0];
 		if(heavy == null) {
 			bool found = false;
 			while(!found) {
-				farthestSpawn = spawns[Random.Range(0,spawns.Length)];
-				if(!farthestSpawn.GetComponent<SpawnAction>().occupied)
+				farthestSpawns[0] = spawns[Random.Range(0,spawns.Length)];
+				if(!farthestSpawns[0].GetComponent<SpawnAction>().occupied)
 					found = true;
 			}
 		} else {
@@ -80,11 +83,16 @@ public class LevelManager : MonoBehaviour {
 				float dist = Mathf.Abs(Vector3.Distance(heavyLoc, spawn.transform.position));
 				if(dist > farthestDist) {
 					farthestDist = dist;
-					farthestSpawn = spawn;
+					farthestSpawns[2] = farthestSpawns[1];
+					farthestSpawns[1] = farthestSpawns[0];
+					farthestSpawns[0] = spawn;
 				}
 			}
 		}
-		player.transform.position = farthestSpawn.transform.position;
+		player.transform.position = farthestSpawns[Random.Range(0, farthestSpawns.Length)].transform.position;
+		GameObject centerObj = GameObject.FindGameObjectWithTag ("PowerupSpawn");
+		Vector3 direction = centerObj.transform.position - player.transform.position;
+		player.transform.rotation = Quaternion.LookRotation (direction);
 	}
 
 	public void setHeavy(GameObject player) {

@@ -11,27 +11,26 @@ public class MovementV2 : MonoBehaviour {
 	public string commandB;
 	public bool pointMan = false;
 	public float dashTime = .2f;
-	public float jumpTime = .5f;
 	public float knockBackTime = .5f;
 	public float timer;
 	public int points = 0;
 	public float moveMult = 3f;
+	public float dashMult = 8f;
 	public float rotMult = 100f;
 	public float slowRotMult = 40f;
 	private float slowTimer = 0.0f;
-
+	public float jumpTime = 2f;
 	public GameObject fireballPrefab;
 	public GameObject knifePrefab;
-
 	public GameObject myKnife;
 
 	//Bools concerning state of player
 	private bool dash = false;
 	private bool downDash = false;
 	private bool recharge;
+	private bool jump = false;
 	public bool respawning;
 	private bool knockedUp;
-	private bool jump;
 	public Vector3 startingSize = new Vector3 (.5f, .5f, .5f);
 	public float minMove = 1f;
 	public float minRot = 25f;
@@ -50,8 +49,20 @@ public class MovementV2 : MonoBehaviour {
 	void Start () {
 		recharge = false;
 		respawning = false;
-		jump = false;
-		makeKnife ();
+
+		GameObject knife = Instantiate(knifePrefab) as GameObject;
+		knife.transform.parent = transform;
+		
+		Vector3 v = displacementVector(.2f, .3f, transform.position.y-.1f, transform.position, Mathf.Deg2Rad*transform.eulerAngles.y+.587981f);
+		
+		knife.gameObject.renderer.material.color = gameObject.renderer.material.color;
+		knife.transform.position = v;
+		
+		Vector3 rot = knife.transform.localRotation.eulerAngles;
+		rot.y = 0;
+		knife.transform.localRotation = Quaternion.Euler(rot);
+		
+		myKnife = knife;
 	}
 	
 	// Update is called once per frame
@@ -62,24 +73,28 @@ public class MovementV2 : MonoBehaviour {
 		//Dash action
 		if (!respawning && !dash && !pointMan && Input.GetButton (commandB) && !recharge) {
 			dash = true;
-			downDash = false;
 			timer = 0.0f;
 		}
 		//Jump action
-		else if ((onElevator && !pointMan && Input.GetButtonDown (commandA)) || !respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
+//		else if ((onElevator && !pointMan && Input.GetButtonDown (commandA)) || !respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
+//			jump = true;
+//			downDash = false;
+//			timer = jumpTime;
+//		}
+		else if (!respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			jump = true;
 			downDash = false;
 			timer = jumpTime;
+		}
+		else if (Input.GetButtonDown (commandA) && canJump()) {
+			jumpAction();
 		} 
 		//Downdash action
-		else if (!respawning && !downDash && !jump && !pointMan && !knockedUp && !Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
+		else if (Input.GetButtonDown (commandA) && !respawning && !pointMan && !knockedUp && inAir()) {
 			downDash = true;
-			jump = false;
-			if(dash){
-				dash = false;
-				recharge = true;
-				Invoke("rechargeSkill", 1.5f);
-			}
+			Vector3 vel = rigidbody.velocity;
+			vel.y = -dashMult;
+			rigidbody.velocity = vel;
 		}
 		//Shooting action
 		if(!respawning && pointMan && Input.GetButton (commandB)){
@@ -90,7 +105,7 @@ public class MovementV2 : MonoBehaviour {
 			transform.GetComponentInChildren<Gun>().superShot();
 		}
 		//Regular action
-		if(!respawning && !knockedUp && !downDash){
+		if(!dash && !respawning && !knockedUp && !downDash){
 			//Rotate
 			if(slowTimer > 0)
 				transform.Rotate(slowRotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
@@ -108,7 +123,16 @@ public class MovementV2 : MonoBehaviour {
 
 		//Process position-alterring states
 		if(dash){
-			transform.position += transform.forward * 8 * Time.deltaTime;
+			transform.Rotate(rotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
+			//Forward/backward motion
+			Vector3 vel = rigidbody.velocity;
+			vel.x = 0;
+			vel.z = 0;
+			vel += transform.forward * dashMult;
+			//Left/right strafe
+			vel += transform.right * moveMult * Input.GetAxis(strafe);
+			rigidbody.velocity = vel;
+
 			timer += Time.deltaTime;
 			if(timer >= dashTime){
 				dash = false;
@@ -116,12 +140,7 @@ public class MovementV2 : MonoBehaviour {
 				Invoke("rechargeSkill", 1.5f);
 			}
 		}
-		if(jump){
-			gameObject.rigidbody.velocity += Vector3.up*6.5f;
-			jump = false;
-		}
 		if(knockedUp){
-			jump = false;
 			transform.position += 5 *knockUpDirection*Time.deltaTime;
 			transform.position += 4	*Vector3.up*Time.deltaTime;
 			timer -= Time.deltaTime;
@@ -130,13 +149,10 @@ public class MovementV2 : MonoBehaviour {
 				knockedUp = false;
 			}
 		}
-		if (downDash) {
-			transform.position += 4 * Vector3.down * Time.deltaTime;
-			if(downDash && Physics.Raycast(transform.position, Vector3.down, 0.25f)){
-				downDash = false;
-			}
+		if (downDash && !inAir ()) {
+			downDash = false;
 		}
-
+		
 		if(onElevator)
 		{
 			//Basic Movement
@@ -145,6 +161,36 @@ public class MovementV2 : MonoBehaviour {
 			transform.position = pos;
 		}
 	}
+
+	bool canJump(){
+		if (!respawning && !pointMan && !knockedUp) {
+			return !inAir() || onElevator;
+		}
+		return false;
+	}
+
+	//Returns true if it appears the player is in the air
+	bool inAir(){
+		Vector3 raycastOrigin = transform.position;
+		RaycastHit hit;
+		if(Physics.Raycast (raycastOrigin, Vector3.down, out hit, 0.25f))
+			return false;
+		else if(Physics.Raycast (raycastOrigin + Vector3.left*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
+			return false;
+		else if(Physics.Raycast (raycastOrigin + Vector3.right*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
+			return false;
+		else if(Physics.Raycast (raycastOrigin + Vector3.forward*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
+			return false;
+		else if(Physics.Raycast (raycastOrigin + Vector3.back*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
+			return false;
+		return true;
+	}
+	
+	void jumpAction(){
+		downDash = false;
+		gameObject.rigidbody.velocity += Vector3.up*6.5f;
+	}
+
 
 	void rechargeSkill() {
 		recharge = false;
@@ -196,7 +242,6 @@ public class MovementV2 : MonoBehaviour {
 		knockedUp = true;
 		GetComponent<PlayerV2> ().vignette.enabled = true;
 		timer = knockBackTime;
-		jump = false;
 	}
 
 	void OnTriggerEnter(Collider col){
@@ -220,11 +265,10 @@ public class MovementV2 : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod){
-			if((downDash || dash) && col.gameObject.GetComponent<MovementV2>().pointMan){
+			if((dash || downDash) && col.gameObject.GetComponent<MovementV2>().pointMan){
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
-				//col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
 				becomePointMan();
-			} else if(dash){
+			} else if(dash || downDash){
 				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
 			}else if(col.gameObject.GetComponent<MovementV2>().pointMan) {
 				GetKnockedUp(col.gameObject.transform.position);
@@ -254,7 +298,6 @@ public class MovementV2 : MonoBehaviour {
 			downDash = false;
 			recharge = false;
 			knockedUp = false;
-			jump = false;
 			respawning = true;
 			Invoke("respawn", 2f);
 		}
@@ -267,22 +310,6 @@ public class MovementV2 : MonoBehaviour {
 		GetComponent<Camera> ().enabled = true;
 		respawning = false;
 		lastRespawn = Time.time;
-	}
-
-	void makeKnife() {
-		GameObject knife = Instantiate(knifePrefab) as GameObject;
-		knife.transform.parent = transform;
-
-		Vector3 v = displacementVector(.2f, .3f, transform.position.y-.1f, transform.position, Mathf.Deg2Rad*transform.eulerAngles.y+.587981f);
-
-		knife.gameObject.renderer.material.color = gameObject.renderer.material.color;
-		knife.transform.position = v;
-
-		Vector3 rot = knife.transform.localRotation.eulerAngles;
-		rot.y = 0;
-		knife.transform.localRotation = Quaternion.Euler(rot);
-
-		myKnife = knife;
 	}
 
 	void getKnife() {
