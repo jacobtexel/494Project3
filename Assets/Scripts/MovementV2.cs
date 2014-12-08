@@ -90,7 +90,7 @@ public class MovementV2 : MonoBehaviour {
 			transform.GetComponentInChildren<Gun>().superShot();
 		}
 		//Regular action
-		if(!dash && !respawning && !knockedUp && !downDash){
+		if(!dash && !respawning && !knockedUp){
 			//Rotate
 			if(slowTimer > 0)
 				transform.Rotate(slowRotMult * Vector3.up * Time.deltaTime*Input.GetAxis(turn));
