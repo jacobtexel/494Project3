@@ -289,11 +289,10 @@ public class MovementV2 : MonoBehaviour {
 		}
 	}
 	public void startRespawn() {
-		GetComponent<Camera>().enabled = false;
 		gameObject.renderer.enabled = false;
-		gameObject.collider.enabled = false;
 		if(!respawning) {
-			transform.position -= new Vector3(0, 100f, 0);
+			transform.position = GameObject.FindGameObjectWithTag("HoldingZone").transform.position;
+			myKnife.renderer.enabled = false;
 			dash = false;
 			downDash = false;
 			recharge = false;
@@ -305,6 +304,7 @@ public class MovementV2 : MonoBehaviour {
 
 	void respawn() {
 		GameObject.FindGameObjectWithTag ("Minimap").GetComponent<LevelManager> ().respawnPlayer (gameObject);
+		myKnife.renderer.enabled = true;
 		gameObject.renderer.enabled = true;
 		gameObject.collider.enabled =true;
 		GetComponent<Camera> ().enabled = true;
