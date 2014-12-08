@@ -68,7 +68,6 @@ public class MovementV2 : MonoBehaviour {
 		//Dash action
 		if (!respawning && !dash && !pointMan && Input.GetButton (commandB) && !recharge) {
 			dash = true;
-			downDash = false;
 			timer = 0.0f;
 		}
 		//Jump action
@@ -76,13 +75,11 @@ public class MovementV2 : MonoBehaviour {
 			jumpAction();
 		} 
 		//Downdash action
-		else if (!respawning && !downDash && !pointMan && !knockedUp && !Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
+		else if (Input.GetButtonDown (commandA) && !respawning && !pointMan && !knockedUp && inAir()) {
 			downDash = true;
-			if(dash){
-				dash = false;
-				recharge = true;
-				Invoke("rechargeSkill", 1.5f);
-			}
+			Vector3 vel = rigidbody.velocity;
+			vel.y = -dashMult;
+			rigidbody.velocity = vel;
 		}
 		//Shooting action
 		if(!respawning && pointMan && Input.GetButton (commandB)){
@@ -107,7 +104,6 @@ public class MovementV2 : MonoBehaviour {
 			//Left/right strafe
 			vel += transform.right * moveMult * Input.GetAxis(strafe);
 			rigidbody.velocity = vel;
-	
 		}
 
 		//Process position-alterring states
@@ -138,32 +134,36 @@ public class MovementV2 : MonoBehaviour {
 				knockedUp = false;
 			}
 		}
-		if (downDash) {
-			transform.position += 4 * Vector3.down * Time.deltaTime;
-			if(downDash && Physics.Raycast(transform.position, Vector3.down, 0.25f)){
-				downDash = false;
-			}
+		if (downDash && !inAir ()) {
+			downDash = false;
 		}
 
 	}
 
 	bool canJump(){
 		if (!respawning && !pointMan && !knockedUp) {
-			Vector3 raycastOrigin = transform.position;
-			if(Physics.Raycast (raycastOrigin, Vector3.down, 0.25f))
-				return true;
-			else if(Physics.Raycast (raycastOrigin + Vector3.left*.2f, Vector3.down, 0.25f))
-				return true;
-			else if(Physics.Raycast (raycastOrigin + Vector3.right*.2f, Vector3.down, 0.25f))
-				return true;
-			else if(Physics.Raycast (raycastOrigin + Vector3.forward*.2f, Vector3.down, 0.25f))
-				return true;
-			else if(Physics.Raycast (raycastOrigin + Vector3.back*.2f, Vector3.down, 0.25f))
-				return true;
+			return !inAir();
 		}
 		return false;
 	}
 
+	//Returns true if it appears the player is in the air
+	bool inAir(){
+		Vector3 raycastOrigin = transform.position;
+		RaycastHit hit;
+		if(Physics.Raycast (raycastOrigin, Vector3.down, out hit, 0.25f))
+			return false;
+		else if(Physics.Raycast (raycastOrigin + Vector3.left*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
+			return false;
+		else if(Physics.Raycast (raycastOrigin + Vector3.right*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
+			return false;
+		else if(Physics.Raycast (raycastOrigin + Vector3.forward*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
+			return false;
+		else if(Physics.Raycast (raycastOrigin + Vector3.back*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
+			return false;
+		return true;
+	}
+	
 	void jumpAction(){
 		downDash = false;
 		gameObject.rigidbody.velocity += Vector3.up*6.5f;
@@ -243,11 +243,10 @@ public class MovementV2 : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod){
-			if(dash && col.gameObject.GetComponent<MovementV2>().pointMan){
+			if((dash || downDash) && col.gameObject.GetComponent<MovementV2>().pointMan){
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
-				//col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
 				becomePointMan();
-			} else if(dash){
+			} else if(dash || downDash){
 				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
 			}else if(col.gameObject.GetComponent<MovementV2>().pointMan) {
 				GetKnockedUp(col.gameObject.transform.position);
