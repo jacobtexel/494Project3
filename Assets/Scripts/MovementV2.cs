@@ -33,7 +33,6 @@ public class MovementV2 : MonoBehaviour {
 	private bool dash = false;
 	private bool downDash = false;
 	private bool recharge;
-	private bool jump = false;
 	public  bool respawning;
 	private bool knockedUp;
 	public int points = 0;

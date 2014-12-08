@@ -738,7 +738,7 @@ Transform:
   - {fileID: 1304897474}
   - {fileID: 945827962}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1001 &113673218
 Prefab:
   m_ObjectHideFlags: 0
@@ -1314,7 +1314,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 021c62242098a45b18c7c2a2f81c4967, type: 2}
   m_PrefabInternal: {fileID: 1572526270}
   m_GameObject: {fileID: 222467167}
-  m_LocalRotation: {x: 0, y: .70710659, z: 0, w: -.707106948}
+  m_LocalRotation: {x: 0, y: .70710665, z: 0, w: -.707107008}
   m_LocalPosition: {x: 20.0580292, y: 1.31759644, z: -3.95432878}
   m_LocalScale: {x: .5, y: 1, z: .5}
   m_Children:
@@ -1700,7 +1700,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 21
+  orthographic size: 24
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -1790,7 +1790,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 01dd6b53dda5e4ee58ad594f147160ab, type: 2}
   m_PrefabInternal: {fileID: 238068442}
   m_GameObject: {fileID: 349880293}
-  m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
+  m_LocalRotation: {x: 0, y: .382683486, z: 0, w: .923879564}
   m_LocalPosition: {x: 13.6804819, y: 6.092731, z: 16.2004299}
   m_LocalScale: {x: 3, y: 5.5, z: 3}
   m_Children: []
@@ -1866,7 +1866,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 7c364847df51c4f0a96ea1d4dad08889, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 389500347}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: .707106888, z: 0, w: .707106769}
   m_LocalPosition: {x: 17.9548817, y: -2.83227801, z: .0880584568}
   m_LocalScale: {x: 7, y: 1, z: 15}
   m_Children: []
@@ -2159,24 +2159,12 @@ MonoBehaviour:
   turn: turn4
   commandA: commandA4
   commandB: commandB4
-  pointMan: 0
-  dashTime: .5
-  knockBackTime: .5
-  timer: 0
-  points: 0
-  moveMult: 3
-  dashMult: 8
-  rotMult: 100
-  slowRotMult: 40
-  jumpTime: .5
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  pointMan: 0
   respawning: 0
-  startingSize: {x: .5, y: .5, z: .5}
-  minMove: 1
-  minRot: 25
-  maxSize: 2
+  points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
 --- !u!23 &423773474
@@ -2550,7 +2538,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 7c364847df51c4f0a96ea1d4dad08889, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470239396}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: .707106888, z: 0, w: .707106769}
   m_LocalPosition: {x: 17.5290794, y: 7.69507217, z: 10.0289431}
   m_LocalScale: {x: 5, y: 1, z: 20}
   m_Children: []
@@ -3779,7 +3767,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400004, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
   m_PrefabInternal: {fileID: 1666450155}
   m_GameObject: {fileID: 739157604}
-  m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
+  m_LocalRotation: {x: 0, y: .382683486, z: 0, w: .923879564}
   m_LocalPosition: {x: 22.7147446, y: 10.3099823, z: 14.32798}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4099,7 +4087,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 7c364847df51c4f0a96ea1d4dad08889, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762540680}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: .707106888, z: 0, w: .707106769}
   m_LocalPosition: {x: 17.9548779, y: -2.83227873, z: 39.8222198}
   m_LocalScale: {x: 7, y: 1, z: 15}
   m_Children: []
@@ -4563,24 +4551,12 @@ MonoBehaviour:
   turn: turn3
   commandA: commandA3
   commandB: commandB3
-  pointMan: 0
-  dashTime: .5
-  knockBackTime: .5
-  timer: 0
-  points: 0
-  moveMult: 3
-  dashMult: 8
-  rotMult: 100
-  slowRotMult: 40
-  jumpTime: .5
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  pointMan: 0
   respawning: 0
-  startingSize: {x: .5, y: .5, z: .5}
-  minMove: 1
-  minRot: 25
-  maxSize: 2
+  points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
 --- !u!23 &779256774
@@ -5021,7 +4997,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 7c364847df51c4f0a96ea1d4dad08889, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 890448865}
-  m_LocalRotation: {x: 0, y: .923879564, z: 0, w: .382683307}
+  m_LocalRotation: {x: 0, y: .923879623, z: 0, w: .382683337}
   m_LocalPosition: {x: 33.9677734, y: 7.69507217, z: 4.84826326}
   m_LocalScale: {x: 5, y: 1, z: 20}
   m_Children: []
@@ -6383,7 +6359,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 01dd6b53dda5e4ee58ad594f147160ab, type: 2}
   m_PrefabInternal: {fileID: 113673218}
   m_GameObject: {fileID: 1079823455}
-  m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
+  m_LocalRotation: {x: 0, y: .382683486, z: 0, w: .923879564}
   m_LocalPosition: {x: 19.8020363, y: 5.4056015, z: 16.25453}
   m_LocalScale: {x: 3, y: 4, z: 3}
   m_Children: []
@@ -6528,24 +6504,12 @@ MonoBehaviour:
   turn: turn1
   commandA: commandA1
   commandB: commandB1
-  pointMan: 0
-  dashTime: .5
-  knockBackTime: .5
-  timer: 0
-  points: 0
-  moveMult: 3
-  dashMult: 8
-  rotMult: 100
-  slowRotMult: 40
-  jumpTime: .5
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  pointMan: 0
   respawning: 0
-  startingSize: {x: .5, y: .5, z: .5}
-  minMove: 1
-  minRot: 25
-  maxSize: 2
+  points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
 --- !u!23 &1080205116
@@ -6871,7 +6835,7 @@ Transform:
   - {fileID: 506108077}
   - {fileID: 1258200629}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1001 &1088660544
 Prefab:
   m_ObjectHideFlags: 0
@@ -7773,7 +7737,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400006, guid: 9474250b461c83748b79d52f5f02a637, type: 3}
   m_PrefabInternal: {fileID: 2096511919}
   m_GameObject: {fileID: 1304897472}
-  m_LocalRotation: {x: 0, y: .923879564, z: 0, w: .382683307}
+  m_LocalRotation: {x: 0, y: .923879623, z: 0, w: .382683337}
   m_LocalPosition: {x: 15.669322, y: 1.19905019, z: -3.41800642}
   m_LocalScale: {x: 4, y: 3, z: 3}
   m_Children:
@@ -8385,7 +8349,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400006, guid: 740012119b56d4510abb7018db0711d3, type: 2}
   m_PrefabInternal: {fileID: 576459221}
   m_GameObject: {fileID: 1430201586}
-  m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
+  m_LocalRotation: {x: 0, y: .382683486, z: 0, w: .923879564}
   m_LocalPosition: {x: 5.47486258, y: .532583237, z: 6.71770096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8732,7 +8696,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 021c62242098a45b18c7c2a2f81c4967, type: 2}
   m_PrefabInternal: {fileID: 464980543}
   m_GameObject: {fileID: 1548257561}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: .707106888, z: 0, w: .707106769}
   m_LocalPosition: {x: -7.45539188, y: 1.31759644, z: 15.8445663}
   m_LocalScale: {x: .5, y: 1, z: .5}
   m_Children:
@@ -9129,7 +9093,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 01dd6b53dda5e4ee58ad594f147160ab, type: 2}
   m_PrefabInternal: {fileID: 2131970740}
   m_GameObject: {fileID: 1604091981}
-  m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
+  m_LocalRotation: {x: 0, y: .382683486, z: 0, w: .923879564}
   m_LocalPosition: {x: 16.7901077, y: 5.08636141, z: 13.0908051}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
@@ -9273,7 +9237,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 01dd6b53dda5e4ee58ad594f147160ab, type: 2}
   m_PrefabInternal: {fileID: 918633501}
   m_GameObject: {fileID: 1624730904}
-  m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
+  m_LocalRotation: {x: 0, y: .382683486, z: 0, w: .923879564}
   m_LocalPosition: {x: 16.8212585, y: 4.43663502, z: 19.2353096}
   m_LocalScale: {x: 3, y: 1.5, z: 3}
   m_Children: []
@@ -9836,24 +9800,12 @@ MonoBehaviour:
   turn: turn2
   commandA: commandA2
   commandB: commandB2
-  pointMan: 0
-  dashTime: .5
-  knockBackTime: .5
-  timer: 0
-  points: 0
-  moveMult: 3
-  dashMult: 8
-  rotMult: 100
-  slowRotMult: 40
-  jumpTime: .5
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  pointMan: 0
   respawning: 0
-  startingSize: {x: .5, y: .5, z: .5}
-  minMove: 1
-  minRot: 25
-  maxSize: 2
+  points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
 --- !u!23 &1751148760
