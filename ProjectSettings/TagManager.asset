@@ -14,8 +14,9 @@ TagManager:
   - PowerupSpawn
   - Danger
   - Minimap
-  - 
+  - Elevator
   - fireball
+  - HoldingZone
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
