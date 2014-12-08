@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour {
 			GameObject minimap = GameObject.Find("Minimap");
 			minimap.GetComponent<Camera>().rect = new Rect(0.75f, 0.25f, 0.5f, 0.5f);
 
-			player4.GetComponent<PlayerV2>().score = player3.GetComponent<PlayerV2>().score;
+			player4.GetComponent<PlayerV2>().score.pixelOffset = new Vector2(-800f,-.5f);
 		} else if(numPlayers == "3") {
 			GameObject player2 = GameObject.Find("Player2Cam");
 			Destroy(player2);
@@ -95,6 +95,9 @@ public class LevelManager : MonoBehaviour {
 		GameObject centerObj = GameObject.FindGameObjectWithTag ("PowerupSpawn");
 		Vector3 direction = centerObj.transform.position - player.transform.position;
 		player.transform.rotation = Quaternion.LookRotation (direction);
+		Vector3 rot = player.transform.localEulerAngles;
+		rot.x = 0;
+		player.transform.localEulerAngles = rot;
 	}
 
 	public void setHeavy(GameObject player) {

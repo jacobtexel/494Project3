@@ -270,7 +270,7 @@ public class MovementV2 : MonoBehaviour {
 
 	void respawn() {
 		GameObject.FindGameObjectWithTag ("Minimap").GetComponent<LevelManager> ().respawnPlayer (gameObject);
-		myKnife.renderer.enabled = false;
+		myKnife.renderer.enabled = true;
 		gameObject.renderer.enabled = true;
 		gameObject.collider.enabled =true;
 		GetComponent<Camera> ().enabled = true;
