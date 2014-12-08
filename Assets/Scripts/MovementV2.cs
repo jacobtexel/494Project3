@@ -42,6 +42,10 @@ public class MovementV2 : MonoBehaviour {
 
 	private Vector3 knockUpDirection;
 
+	//elevator properties
+	private bool onElevator = false;
+	private GameObject elevator;
+
 	// Use this for initialization
 	void Start () {
 		recharge = false;
@@ -62,7 +66,7 @@ public class MovementV2 : MonoBehaviour {
 			timer = 0.0f;
 		}
 		//Jump action
-		else if (!respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
+		else if ((onElevator && !pointMan && Input.GetButtonDown (commandA)) || !respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
 			jump = true;
 			downDash = false;
 			timer = jumpTime;
@@ -133,6 +137,13 @@ public class MovementV2 : MonoBehaviour {
 			}
 		}
 
+		if(onElevator)
+		{
+			//Basic Movement
+			Vector3 pos = transform.position; 
+			pos.y += elevator.GetComponent<FloorMovement>().speed * Time.deltaTime; 
+			transform.position = pos;
+		}
 	}
 
 	void rechargeSkill() {
@@ -209,7 +220,7 @@ public class MovementV2 : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod){
-			if(dash && col.gameObject.GetComponent<MovementV2>().pointMan){
+			if((downDash || dash) && col.gameObject.GetComponent<MovementV2>().pointMan){
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
 				//col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
 				becomePointMan();
@@ -219,8 +230,20 @@ public class MovementV2 : MonoBehaviour {
 				GetKnockedUp(col.gameObject.transform.position);
 			}
 		}
+		else if(col.gameObject.tag == "Elevator")
+		{
+			onElevator = true;
+			elevator = col.gameObject;
+		}
 	}
 
+	void OnCollisionExit(Collision col){
+		if(col.gameObject.tag == "Elevator")
+		{
+			onElevator = false;
+			elevator = null;
+		}
+	}
 	public void startRespawn() {
 		GetComponent<Camera>().enabled = false;
 		gameObject.renderer.enabled = false;
