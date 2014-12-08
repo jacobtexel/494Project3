@@ -6,8 +6,8 @@ using System.Collections;
 public class PlayerV2 : MonoBehaviour {
 	public int playerNum;
 	public GUITexture vignette;
-	public GUITexture timerBar;
 	public GUITexture crosshairs;
+	public GUIText score;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +17,6 @@ public class PlayerV2 : MonoBehaviour {
 	}
 
 	void Update() {
-		Vector3 barscale = timerBar.transform.localScale;
-		barscale.x = .5f * ((10-GetComponent<MovementV2>().points)/10.0f);
-		timerBar.transform.localScale = barscale;
+		score.text = GetComponent<MovementV2> ().points + " / 10";
 	}
 }

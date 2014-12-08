@@ -14,7 +14,7 @@ TagManager:
   - PowerupSpawn
   - Danger
   - Minimap
-  - 
+  - HoldingZone
   - fireball
   - 
   Builtin Layer 0: Default
