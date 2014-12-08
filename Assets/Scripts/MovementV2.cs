@@ -9,37 +9,41 @@ public class MovementV2 : MonoBehaviour {
 	public string turn;
 	public string commandA;
 	public string commandB;
-	public bool pointMan = false;
-	public float dashTime = .2f;
-	public float knockBackTime = .5f;
-	public float timer;
-	public int points = 0;
-	public float moveMult = 3f;
-	public float dashMult = 8f;
-	public float rotMult = 100f;
-	public float slowRotMult = 40f;
+
+	//Timer variables
+	private float dashTime = .5f;
+	private float knockBackTime = .5f;
 	private float slowTimer = 0.0f;
-	public float jumpTime = 2f;
+	private float timer;
+
+
+	//Multipliers for movement
+	private float moveMult = 3f;
+	private float dashMult = 8f;
+	private	float rotMult = 100f;
+	private float slowRotMult = 40f;
+
+	//Gameobjects
 	public GameObject fireballPrefab;
 	public GameObject knifePrefab;
 	public GameObject myKnife;
 
 	//Bools concerning state of player
+	public bool pointMan = false;
 	private bool dash = false;
 	private bool downDash = false;
 	private bool recharge;
 	private bool jump = false;
-	public bool respawning;
+	public  bool respawning;
 	private bool knockedUp;
-	public Vector3 startingSize = new Vector3 (.5f, .5f, .5f);
-	public float minMove = 1f;
-	public float minRot = 25f;
-	public float maxSize = 2f;
+	public int points = 0;
+	private Vector3 knockUpDirection;
+
+
 
 	public float lastRespawn = -10f;
 	public float invincibilityPeriod = 2f;
 
-	private Vector3 knockUpDirection;
 
 	//elevator properties
 	private bool onElevator = false;
@@ -76,17 +80,7 @@ public class MovementV2 : MonoBehaviour {
 			timer = 0.0f;
 		}
 		//Jump action
-//		else if ((onElevator && !pointMan && Input.GetButtonDown (commandA)) || !respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
-//			jump = true;
-//			downDash = false;
-//			timer = jumpTime;
-//		}
-		else if (!respawning && !jump && !pointMan && !knockedUp && Physics.Raycast (transform.position, Vector3.down, 0.25f) && Input.GetButtonDown (commandA)) {
-			jump = true;
-			downDash = false;
-			timer = jumpTime;
-		}
-		else if (Input.GetButtonDown (commandA) && canJump()) {
+		if (Input.GetButtonDown (commandA) && canJump()) {
 			jumpAction();
 		} 
 		//Downdash action
@@ -220,7 +214,6 @@ public class MovementV2 : MonoBehaviour {
 		getKnife ();
 		rotMult = 100f;
 		moveMult = 3f;
-		this.transform.localScale = startingSize;
 		Component halo = GetComponent("Halo");
 		halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
 		startRespawn ();
