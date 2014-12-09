@@ -42,6 +42,7 @@ public class MovementV2 : MonoBehaviour {
 
 	public float lastRespawn = -10f;
 	public float invincibilityPeriod = 2f;
+	public float reloadBonusMultiplier = 0.9f;
 
 
 	//elevator properties
@@ -190,11 +191,18 @@ public class MovementV2 : MonoBehaviour {
 	}
 
 	public void becomePointMan(){
-		pointMan = true;
+		if(!pointMan)
+		{
+			pointMan = true;
+			moveMult = moveMult / 2f;
+		}
+		else
+		{
+			transform.GetComponentInChildren<Gun>().multiplier *= reloadBonusMultiplier;
+		}
 		timer = 0.0f;
 		dash = false;
 		downDash = false;
-		moveMult = moveMult / 2f;
 		GameObject.FindGameObjectWithTag ("Minimap").GetComponent<LevelManager> ().setHeavy (gameObject);
 		if(knockedUp){
 			knockedUp = false;
@@ -209,6 +217,7 @@ public class MovementV2 : MonoBehaviour {
 	public void losePointMan(){
 		pointMan = false;
 		transform.FindChild ("Gun").renderer.enabled = false;
+		transform.GetComponentInChildren<Gun> ().multiplier = 1;
 		getKnife ();
 		rotMult = 100f;
 		moveMult = 3f;

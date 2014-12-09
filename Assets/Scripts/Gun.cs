@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour {
 	public GameObject fireballPrefab;
 	private Color parentColor;
 	private float timer = 0.0f;
+	public float multiplier = 1f;
 
 	public float regularInterval;
 	public float superInterval;
@@ -38,7 +39,7 @@ public class Gun : MonoBehaviour {
 		fireball.GetComponent<Fireball>().color = parentColor;
 
 
-		timer = regularInterval;
+		timer = regularInterval * multiplier;
 		return true;
 	}
 
@@ -57,7 +58,7 @@ public class Gun : MonoBehaviour {
 			fireball.GetComponent<Fireball>().color = parentColor;
 			//fireball.GetComponent<ParticleSystem>().enableEmission = false;
 		}
-		timer = superInterval;
+		timer = superInterval * multiplier;
 		return true;
 	}
 }

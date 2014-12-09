@@ -10,9 +10,14 @@ public class LevelManager : MonoBehaviour {
 	private GameObject heavy;
 
 	private bool spawnedPowerup;
+	private float timer;
+
+	public float minSpawnTime = 60;
+	public float maxSpawnTime = 90;
 	// Use this for initialization
 	void Start () {
 		spawnedPowerup = false;
+		timer = Random.Range (minSpawnTime, maxSpawnTime);
 		//GetComponent<GUIText> ().text = "Victorious Player: " + PlayerPrefs.GetString ("winner");
 		string numPlayers = PlayerPrefs.GetString ("numPlayers");
 		//string numPlayers = "3";
@@ -51,12 +56,26 @@ public class LevelManager : MonoBehaviour {
 		} else if(respawn && GameObject.FindGameObjectsWithTag("Powerup").Length == 0){
 			spawnPowerup();
 		}
+		if (timer > 0)
+		{
+			timer -= Time.deltaTime;
+		}
+		else 
+		{
+			if(GameObject.FindGameObjectsWithTag("Powerup").Length == 0)
+			{
+				spawnPowerup();
+			}
+			timer = Random.Range (minSpawnTime, maxSpawnTime);
+		}
+
 	}
 
 	public void spawnPowerup(){
 		if(GameObject.FindGameObjectsWithTag("PowerupSpawn").Length == 0)
 			print ("No power up spawn points on the level!");
-		else {
+		else if(GameObject.FindGameObjectsWithTag("Powerup").Length == 0){
+			timer = Random.Range (minSpawnTime, maxSpawnTime);
 			GameObject[] spawns = GameObject.FindGameObjectsWithTag ("PowerupSpawn");
 			GameObject powerUp = Instantiate(UpgradePrefab) as GameObject;
 			powerUp.transform.position = spawns [Random.Range (0, spawns.Length)].transform.position;

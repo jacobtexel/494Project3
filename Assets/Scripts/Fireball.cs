@@ -29,14 +29,17 @@ public class Fireball : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(col.gameObject.tag == "Fireball")
+		{
+			Destroy (this.gameObject);
 			return;
+		}
 
 		if (col.gameObject.tag == "MainCamera" && !col.gameObject.GetComponent<MovementV2>().respawning && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod) {
 			Debug.Log (Time.time);
 			Debug.Log (col.gameObject.GetComponent<MovementV2> ().lastRespawn);
 			Debug.Log(col.gameObject.GetComponent<MovementV2>().invincibilityPeriod);
+			col.gameObject.GetComponent<MovementV2>().losePointMan();
 			col.gameObject.GetComponent<MovementV2>().startRespawn();
-
 			player.GainPoint();
 		}
 		Destroy (this.gameObject);
