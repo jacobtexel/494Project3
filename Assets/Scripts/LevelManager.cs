@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour {
 			GameObject minimap = GameObject.Find("Minimap");
 			minimap.GetComponent<Camera>().rect = new Rect(0.75f, 0.25f, 0.5f, 0.5f);
 
-			player4.GetComponent<PlayerV2>().score.pixelOffset = new Vector2(-800f,-.5f);
+			//player4.GetComponent<PlayerV2>().score.pixelOffset = new Vector2(-800f,-.5f);
 		} else if(numPlayers == "3") {
 			GameObject player2 = GameObject.Find("Player2Cam");
 			Destroy(player2);

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 132: {fileID: 13200000}
   m_Layer: 10
-  m_Name: GUI Text
+  m_Name: ScoreText3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,24 +114,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.16000009, y: -8.81999969, z: -8.4691782}
+  m_LocalPosition: {x: -3.1032908, y: -9.61862183, z: -8.4691782}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: -11.7331696, y: -9.46564484, z: -4.77094364}
+  m_LocalRotation: {x: 0, y: -.396826088, z: 0, w: .917893827}
+  m_LocalPosition: {x: 17.3140488, y: -11.3470068, z: -10.1380272}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400004}
   m_Father: {fileID: 400006}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -155,9 +155,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400008}
-  - {fileID: 400010}
   - {fileID: 400002}
   - {fileID: 400000}
+  - {fileID: 400010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400008
@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.8260951, y: -9.21564484, z: -4.32828474}
+  m_LocalPosition: {x: -2.75890064, y: -9.21564484, z: -8.4691782}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
@@ -179,11 +179,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.82609606, y: -9.21564484, z: -4.32828522}
-  m_LocalScale: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: -2.75890064, y: -9.21564484, z: -8.4691782}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!20 &2000000
 Camera:
   m_ObjectHideFlags: 1
@@ -248,7 +248,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: dbf9d8b5852094998966f8c36297d21d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -364,25 +364,17 @@ MonoBehaviour:
   turn: turn3
   commandA: commandA3
   commandB: commandB3
-  pointMan: 0
-  dashTime: .5
-  jumpTime: .5
-  knockBackTime: .5
-  timer: 0
-  points: 0
-  moveMult: 3
-  rotMult: 100
-  slowRotMult: 40
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
+  pointMan: 0
   respawning: 0
-  startingSize: {x: .5, y: .5, z: .5}
-  minMove: 1
-  minRot: 25
-  maxSize: 2
+  knockedUp: 0
+  points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
+  onElevator: 0
+  elevator: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -399,6 +391,8 @@ MonoBehaviour:
   superInterval: 1.5
   superSpread: .300000012
   superShotCount: 40
+  superSound: {fileID: 8300000, guid: 24f205d25ec2a2646a92ef03b50b4c4e, type: 3}
+  normalSound: {fileID: 8300000, guid: 8f2ddeab776db2440b306ca46fc06a45, type: 3}
 --- !u!122 &12200000
 Halo:
   m_ObjectHideFlags: 1
@@ -463,7 +457,7 @@ GUIText:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 
+  m_Text: Hello
   m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}

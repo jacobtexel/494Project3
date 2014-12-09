@@ -34,7 +34,7 @@ public class MovementV2 : MonoBehaviour {
 	private bool downDash = false;
 	private bool recharge;
 	public  bool respawning;
-	private bool knockedUp;
+	public bool knockedUp;
 	public int points = 0;
 	private Vector3 knockUpDirection;
 
@@ -45,8 +45,8 @@ public class MovementV2 : MonoBehaviour {
 
 
 	//elevator properties
-	private bool onElevator = false;
-	private GameObject elevator;
+	public bool onElevator = false;
+	public GameObject elevator;
 
 	// Use this for initialization
 	void Start () {
@@ -208,7 +208,6 @@ public class MovementV2 : MonoBehaviour {
 
 	public void losePointMan(){
 		pointMan = false;
-		transform.localScale = new Vector3 (1f, 1f, 1f);
 		transform.FindChild ("Gun").renderer.enabled = false;
 		getKnife ();
 		rotMult = 100f;
@@ -246,8 +245,9 @@ public class MovementV2 : MonoBehaviour {
 			if(pointMan) {
 				losePointMan();
 				GameObject.FindGameObjectWithTag("Minimap").GetComponent<LevelManager>().spawnPowerup();
+			} else {
+				startRespawn();
 			}
-			startRespawn();
 		}
 	}
 
