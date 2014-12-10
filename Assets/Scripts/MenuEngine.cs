@@ -124,7 +124,7 @@ public class MenuEngine : MonoBehaviour {
 				}
 			}
 			else if(current == controls) {
-				//load the controls page
+				Application.LoadLevel(3);
 			}
 		}
 	}
