@@ -268,6 +268,7 @@ public class MovementV2 : MonoBehaviour {
 		if(col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod){
 			if((dash || downDash) && col.gameObject.GetComponent<MovementV2>().pointMan){
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
+				GainPoint();
 				becomePointMan();
 			} else if(dash || downDash){
 				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);

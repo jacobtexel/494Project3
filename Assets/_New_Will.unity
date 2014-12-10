@@ -6554,7 +6554,7 @@ MonoBehaviour:
   points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
-  reloadBonusMultiplier: .850000024
+  reloadBonusMultiplier: .5
   onElevator: 0
   elevator: {fileID: 0}
 --- !u!23 &1080205116
@@ -8824,7 +8824,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: reloadBonusMultiplier
-      value: .850000024
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
