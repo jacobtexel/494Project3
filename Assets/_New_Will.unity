@@ -188,6 +188,7 @@ GameObject:
   - 33: {fileID: 16817200}
   - 23: {fileID: 16817199}
   - 114: {fileID: 16817198}
+  - 82: {fileID: 16817202}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -256,6 +257,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 779256768}
   m_RootOrder: 0
+--- !u!82 &16817202
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16817197}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &21668626
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +1017,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400012, guid: 314d151fa740a4d92836207c310c540d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15.319706
+      value: -16.003931
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 314d151fa740a4d92836207c310c540d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -966,7 +1025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 314d151fa740a4d92836207c310c540d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 91.9069672
+      value: 99.7759094
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 314d151fa740a4d92836207c310c540d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3730,6 +3789,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+      propertyPath: normalSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f2ddeab776db2440b306ca46fc06a45, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
   m_RootGameObject: {fileID: 294305264}
@@ -4597,7 +4660,7 @@ MonoBehaviour:
   points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
-  reloadBonusMultiplier: .899999976
+  reloadBonusMultiplier: .850000024
   onElevator: 0
   elevator: {fileID: 0}
 --- !u!23 &779256774
@@ -6554,7 +6617,7 @@ MonoBehaviour:
   points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
-  reloadBonusMultiplier: .5
+  reloadBonusMultiplier: .850000024
   onElevator: 0
   elevator: {fileID: 0}
 --- !u!23 &1080205116
@@ -6869,7 +6932,7 @@ Transform:
   m_PrefabInternal: {fileID: 124908671}
   m_GameObject: {fileID: 1087617976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.319706, y: -100, z: 91.9069672}
+  m_LocalPosition: {x: -16.003931, y: -100, z: 99.7759094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1194786083}
@@ -8694,7 +8757,7 @@ MonoBehaviour:
   superSpread: .300000012
   superShotCount: 40
   superSound: {fileID: 8300000, guid: 24f205d25ec2a2646a92ef03b50b4c4e, type: 3}
-  normalSound: {fileID: 0}
+  normalSound: {fileID: 8300000, guid: 8f2ddeab776db2440b306ca46fc06a45, type: 3}
 --- !u!23 &1520660491
 Renderer:
   m_ObjectHideFlags: 0
@@ -8824,7 +8887,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
       propertyPath: reloadBonusMultiplier
-      value: .5
+      value: .850000024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1475072c8b84555abc805cdd97c7ba, type: 2}
@@ -9877,7 +9940,7 @@ MonoBehaviour:
   points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
-  reloadBonusMultiplier: .899999976
+  reloadBonusMultiplier: .850000024
   onElevator: 0
   elevator: {fileID: 0}
 --- !u!23 &1751148760
@@ -11221,6 +11284,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
+      propertyPath: reloadBonusMultiplier
+      value: .850000024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fd87912754c8458081ee00c1a34b185, type: 2}
   m_RootGameObject: {fileID: 1115560248}
@@ -11276,7 +11343,7 @@ MonoBehaviour:
   superSpread: .300000012
   superShotCount: 40
   superSound: {fileID: 8300000, guid: 24f205d25ec2a2646a92ef03b50b4c4e, type: 3}
-  normalSound: {fileID: 0}
+  normalSound: {fileID: 8300000, guid: 8f2ddeab776db2440b306ca46fc06a45, type: 3}
 --- !u!23 &2078233106
 Renderer:
   m_ObjectHideFlags: 0
@@ -11447,6 +11514,14 @@ Prefab:
     - target: {fileID: 400006, guid: 740012119b56d4510abb7018db0711d3, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: normalSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f2ddeab776db2440b306ca46fc06a45, type: 3}
+    - target: {fileID: 11400004, guid: 740012119b56d4510abb7018db0711d3, type: 2}
+      propertyPath: reloadBonusMultiplier
+      value: .850000024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 740012119b56d4510abb7018db0711d3, type: 2}
