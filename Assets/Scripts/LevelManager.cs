@@ -10,9 +10,16 @@ public class LevelManager : MonoBehaviour {
 	private GameObject heavy;
 
 	private bool spawnedPowerup;
+	private float timer;
+
+	public float minSpawnTime = 60;
+	public float maxSpawnTime = 90;
+
+	public float spawnRadius = 25f;
 	// Use this for initialization
 	void Start () {
 		spawnedPowerup = false;
+		timer = Random.Range (minSpawnTime, maxSpawnTime);
 		//GetComponent<GUIText> ().text = "Victorious Player: " + PlayerPrefs.GetString ("winner");
 		string numPlayers = PlayerPrefs.GetString ("numPlayers");
 		//string numPlayers = "3";
@@ -51,12 +58,26 @@ public class LevelManager : MonoBehaviour {
 		} else if(respawn && GameObject.FindGameObjectsWithTag("Powerup").Length == 0){
 			spawnPowerup();
 		}
+		if (timer > 0)
+		{
+			timer -= Time.deltaTime;
+		}
+		else 
+		{
+			if(GameObject.FindGameObjectsWithTag("Powerup").Length == 0)
+			{
+				spawnPowerup();
+			}
+			timer = Random.Range (minSpawnTime, maxSpawnTime);
+		}
+
 	}
 
 	public void spawnPowerup(){
 		if(GameObject.FindGameObjectsWithTag("PowerupSpawn").Length == 0)
 			print ("No power up spawn points on the level!");
-		else {
+		else if(GameObject.FindGameObjectsWithTag("Powerup").Length == 0){
+			timer = Random.Range (minSpawnTime, maxSpawnTime);
 			GameObject[] spawns = GameObject.FindGameObjectsWithTag ("PowerupSpawn");
 			GameObject powerUp = Instantiate(UpgradePrefab) as GameObject;
 			powerUp.transform.position = spawns [Random.Range (0, spawns.Length)].transform.position;
@@ -65,33 +86,30 @@ public class LevelManager : MonoBehaviour {
 
 	public void respawnPlayer(GameObject player) {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
-		GameObject[] farthestSpawns = new GameObject[3];
-		farthestSpawns [0] = spawns [0];
-		farthestSpawns [1] = spawns [0];
-		farthestSpawns [2] = spawns [0];
+		ArrayList possible = new ArrayList();
 		if(heavy == null) {
 			bool found = false;
+			GameObject spawn;
 			while(!found) {
-				farthestSpawns[0] = spawns[Random.Range(0,spawns.Length)];
-				if(!farthestSpawns[0].GetComponent<SpawnAction>().occupied)
+				spawn = spawns[Random.Range(0,spawns.Length)];
+				if(!spawn.GetComponent<SpawnAction>().occupied) {
+					possible.Add(spawn);
 					found = true;
+				}
 			}
 		} else {
-			float farthestDist = 0f;
 			Vector3 heavyLoc = heavy.transform.position;
 			foreach (GameObject spawn in spawns) {
 				if(spawn.GetComponent<SpawnAction>().occupied)
 					continue;
 				float dist = Mathf.Abs(Vector3.Distance(heavyLoc, spawn.transform.position));
-				if(dist > farthestDist) {
-					farthestDist = dist;
-					farthestSpawns[2] = farthestSpawns[1];
-					farthestSpawns[1] = farthestSpawns[0];
-					farthestSpawns[0] = spawn;
+				if(dist > spawnRadius) {
+					possible.Add(spawn);
 				}
 			}
 		}
-		player.transform.position = farthestSpawns[Random.Range(0, farthestSpawns.Length)].transform.position;
+		GameObject newSpawn = possible [Random.Range (0, possible.Count)] as GameObject;
+		player.transform.position = newSpawn.transform.position;
 		GameObject centerObj = GameObject.FindGameObjectWithTag ("PowerupSpawn");
 		Vector3 direction = centerObj.transform.position - player.transform.position;
 		player.transform.rotation = Quaternion.LookRotation (direction);
