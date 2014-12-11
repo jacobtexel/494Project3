@@ -166,7 +166,7 @@ public class MovementV2 : MonoBehaviour {
 	bool inAir(){
 		Vector3 raycastOrigin = transform.position;
 		RaycastHit hit;
-		if(Physics.Raycast (raycastOrigin, Vector3.down, out hit, 0.25f))
+		if(Physics.Raycast (raycastOrigin, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
 			return false;
 		else if(Physics.Raycast (raycastOrigin + Vector3.left*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
 			return false;
