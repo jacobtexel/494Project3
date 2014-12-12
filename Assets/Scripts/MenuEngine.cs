@@ -17,6 +17,7 @@ public class MenuEngine : MonoBehaviour {
 	public TextMesh controls;
 	public TextMesh pUnder;
 	public TextMesh mUnder;
+	public TextMesh credits;
 	Color tempColor;
 	bool mUnderSet;
 	bool pUnderSet;
@@ -44,7 +45,7 @@ public class MenuEngine : MonoBehaviour {
 				mapLevel = false;
 				playerLevel = true;
 			}
-			else if(current == start || current == controls)
+			else if(current == start || current == controls || current == credits)
 				mapLevel = true;
 			if(pUnderSet)
 				pUnder.color = tempColor;
@@ -84,14 +85,14 @@ public class MenuEngine : MonoBehaviour {
 			else if(mapLevel) {
 				mapLevel = false;
 			}
-			if(current == start || current == controls)
+			if(current == start || current == controls || current == credits)
 				playerLevel = true;
 			current.color = tempColor;
 			current = current.GetComponent<TextMeshScript>().down;
 			current.color = Color.yellow;
 		}
 		if(Input.GetKeyDown(KeyCode.Return)) {
-			if(current != players && current != map && current != start && current != controls) {
+			if(current != players && current != map && current != start && current != controls && current != credits) {
 				if(playerLevel) {
 					pUnder.transform.position = current.transform.position;
 					pUnder.color = Color.yellow;
@@ -125,7 +126,10 @@ public class MenuEngine : MonoBehaviour {
 				}
 			}
 			else if(current == controls) {
-				Application.LoadLevel(3);
+				Application.LoadLevel(5);
+			}
+			else if(current == credits) {
+				Application.LoadLevel(4);
 			}
 		}
 	}

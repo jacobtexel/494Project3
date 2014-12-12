@@ -2026,7 +2026,7 @@ MonoBehaviour:
   UpgradePrefab: {fileID: 100000, guid: 0cd462aec67eb964dbc0c58903801d5b, type: 2}
   minSpawnTime: 45
   maxSpawnTime: 60
-  spawnRadius: 25
+  spawnRadius: 15
 --- !u!81 &298227541
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2068,7 +2068,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294820095
+    m_Bits: 4294828287
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2898,7 +2898,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb366ae40095bce47bbcf444105715db, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -5078,7 +5078,7 @@ Halo:
     type: 2}
   m_PrefabInternal: {fileID: 1415090914}
   m_GameObject: {fileID: 880643614}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Color:
     serializedVersion: 2
     rgba: 4278190335

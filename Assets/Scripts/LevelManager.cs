@@ -61,6 +61,9 @@ public class LevelManager : MonoBehaviour {
 			if(player.GetComponent<MovementV2>().pointMan)
 				respawn = false;
 		}
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			Application.LoadLevel(0);
+		}
 		if(GameObject.FindGameObjectsWithTag("Powerup").Length == 0 && !spawnedPowerup){
 			spawnPowerup();
 			spawnedPowerup = true;
@@ -96,7 +99,7 @@ public class LevelManager : MonoBehaviour {
 	public void respawnPlayer(GameObject player) {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
 		ArrayList possible = new ArrayList();
-		if(/*heavy == null*/ true) {
+		if(heavy == null) {
 			bool found = false;
 			GameObject spawn;
 			while(!found) {
