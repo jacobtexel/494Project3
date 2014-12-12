@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour {
 	public void respawnPlayer(GameObject player) {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
 		ArrayList possible = new ArrayList();
-		if(/*heavy == null*/ true) {
+		if(heavy == null) {
 			bool found = false;
 			GameObject spawn;
 			while(!found) {
