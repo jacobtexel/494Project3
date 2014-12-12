@@ -23,7 +23,7 @@ public class MovementV2 : MonoBehaviour {
 	//Multipliers for movement
 	private float moveMult = 3f;
 	private float dashMult = 8f;
-	private	float rotMult = 100f;
+	private	float rotMult = 150f;
 	private float slowRotMult = 40f;
 
 	//Gameobjects
@@ -282,7 +282,6 @@ public class MovementV2 : MonoBehaviour {
 		if(col.tag == "Powerup"){
 			becomePointMan();
 			col.GetComponent<PowerUpV2>().remove();
-			//col.GetComponent<PowerupAction>().startRespawn();
 		}
 		if(col.tag == "Danger"){
 			if(pointMan) {
