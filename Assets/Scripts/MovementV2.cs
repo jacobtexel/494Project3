@@ -76,6 +76,7 @@ public class MovementV2 : MonoBehaviour {
 		//Evaluate player actions this frame
 		//Dash action
 		if (!respawning && !dash && !pointMan && Input.GetButton (commandB) && !recharge) {
+			GetComponent<PlayerV2>().playDash();
 			dash = true;
 			timer = 0.0f;
 		}

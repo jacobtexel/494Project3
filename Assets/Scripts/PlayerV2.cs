@@ -10,6 +10,7 @@ public class PlayerV2 : MonoBehaviour {
 	public GUIText score;
 	public AudioClip jumpSound;
 	public AudioClip hitSound;
+	public AudioClip dashSound;
 
 	// Use this for initialization
 	void Start () {
@@ -28,5 +29,9 @@ public class PlayerV2 : MonoBehaviour {
 
 	public void playHit(){
 		audio.PlayOneShot (hitSound);
+	}
+
+	public void playDash(){
+		audio.PlayOneShot (dashSound);
 	}
 }
