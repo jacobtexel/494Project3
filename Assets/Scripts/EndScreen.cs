@@ -5,7 +5,21 @@ public class EndScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<GUIText> ().text = "Victorious Player: " + PlayerPrefs.GetString ("winner");
+		int winner = PlayerPrefs.GetInt ("winner");
+		switch(winner){
+		case 1:
+			GetComponent<GUIText> ().text = "Red Player Wins!";
+			break;
+		case 2:
+			GetComponent<GUIText>().text = "Blue Player Wins!";
+			break;
+		case 3:
+			GetComponent<GUIText>().text = "Yellow Player Wins!";
+			break;
+		case 4:
+			GetComponent<GUIText>().text = "Green Player Wins!";
+			break;
+		}
 	}
 	
 	// Update is called once per frame

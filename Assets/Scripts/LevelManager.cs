@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour {
 		//theme music
 		themeMusic = (AudioClip)Resources.Load ("Sound/thinkfast");
 		audio.loop = true; 
-		audio.volume = 0.15f;
+		//audio.volume = 0.15f;
 		audio.clip = themeMusic;
 		audio.Play ();
 

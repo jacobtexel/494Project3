@@ -263,7 +263,7 @@ public class MovementV2 : MonoBehaviour {
 	public void GainPoint(){
 		points++;
 		if(points >= 10){
-			PlayerPrefs.SetString("winner", GetComponent<PlayerV2>().playerNum.ToString());
+			PlayerPrefs.SetInt("winner", GetComponent<PlayerV2>().playerNum);
 			Application.LoadLevel("_End_screen");
 		}
 	}
