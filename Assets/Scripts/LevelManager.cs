@@ -16,8 +16,17 @@ public class LevelManager : MonoBehaviour {
 	public float maxSpawnTime = 90;
 
 	public float spawnRadius = 25f;
+	private AudioClip themeMusic;
+
 	// Use this for initialization
 	void Start () {
+		//theme music
+		themeMusic = (AudioClip)Resources.Load ("Sound/thinkfast");
+		audio.loop = true; 
+		audio.volume = 0.15f;
+		audio.clip = themeMusic;
+		audio.Play ();
+
 		spawnedPowerup = false;
 		timer = Random.Range (minSpawnTime, maxSpawnTime);
 		//GetComponent<GUIText> ().text = "Victorious Player: " + PlayerPrefs.GetString ("winner");
