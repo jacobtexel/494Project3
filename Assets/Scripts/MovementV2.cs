@@ -109,6 +109,7 @@ public class MovementV2 : MonoBehaviour {
 		//Evaluate player actions this frame
 		//Dash action
 		if (!respawning && !dash && !pointMan && Input.GetButton (commandB) && !recharge) {
+			GetComponent<PlayerV2>().playDash();
 			dash = true;
 			timer = 0.0f;
 		}
@@ -182,7 +183,6 @@ public class MovementV2 : MonoBehaviour {
 		
 		if(onElevator)
 		{
-			//Basic Movement
 			Vector3 pos = transform.position; 
 			pos.y += elevator.GetComponent<FloorMovement>().speed * Time.deltaTime; 
 			transform.position = pos;
@@ -200,7 +200,7 @@ public class MovementV2 : MonoBehaviour {
 	bool inAir(){
 		Vector3 raycastOrigin = transform.position;
 		RaycastHit hit;
-		if(Physics.Raycast (raycastOrigin, Vector3.down, out hit, 0.25f))
+		if(Physics.Raycast (raycastOrigin, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
 			return false;
 		else if(Physics.Raycast (raycastOrigin + Vector3.left*.2f, Vector3.down, out hit, 0.25f) && hit.collider.tag!="MainCamera")
 			return false;
@@ -215,6 +215,7 @@ public class MovementV2 : MonoBehaviour {
 	
 	void jumpAction(){
 		downDash = false;
+		GetComponent<PlayerV2> ().playJump ();
 		gameObject.rigidbody.velocity += Vector3.up*6.5f;
 	}
 
@@ -301,12 +302,15 @@ public class MovementV2 : MonoBehaviour {
 		if(col.gameObject.tag == "MainCamera" && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod){
 			if((dash || downDash) && col.gameObject.GetComponent<MovementV2>().pointMan){
 				col.gameObject.GetComponent<MovementV2>().losePointMan();
+				col.gameObject.GetComponent<PlayerV2>().playHit();
 				GainPoint();
 				becomePointMan();
 			} else if(dash || downDash){
 				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
+				col.gameObject.GetComponent<PlayerV2>().playHit();
 			}else if(col.gameObject.GetComponent<MovementV2>().pointMan) {
 				GetKnockedUp(col.gameObject.transform.position);
+				GetComponent<PlayerV2>().playHit();
 			}
 		}
 		else if(col.gameObject.tag == "Elevator")
@@ -323,16 +327,19 @@ public class MovementV2 : MonoBehaviour {
 			elevator = null;
 		}
 	}
+
 	public void startRespawn() {
 		gameObject.renderer.enabled = false;
 		if(!respawning) {
 			transform.position = GameObject.FindGameObjectWithTag("HoldingZone").transform.position;
 			myKnife.renderer.enabled = false;
+
 			dash = false;
 			downDash = false;
 			recharge = false;
 			knockedUp = false;
 			respawning = true;
+
 			Invoke("respawn", 2f);
 		}
 	}

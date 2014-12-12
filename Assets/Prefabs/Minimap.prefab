@@ -55,7 +55,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294951167
+    m_Bits: 4294820095
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -82,6 +82,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradePrefab: {fileID: 100000, guid: 0cd462aec67eb964dbc0c58903801d5b, type: 2}
+  minSpawnTime: 60
+  maxSpawnTime: 90
+  spawnRadius: 25
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
