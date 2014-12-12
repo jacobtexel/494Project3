@@ -34,7 +34,11 @@ public class Fireball : MonoBehaviour {
 			return;
 		}
 
-		if (col.gameObject.tag == "MainCamera" && !col.gameObject.GetComponent<MovementV2>().respawning && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod) {
+		if(col.gameObject.tag == "MainCamera" && !col.gameObject.GetComponent<MovementV2>().respawning && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod && col.gameObject.GetComponent<MovementV2>().dash && col.gameObject.GetComponent<MovementV2>().dashDamage > 0) {
+			col.gameObject.GetComponent<MovementV2>().dashDamage--;
+		}
+
+		else if (col.gameObject.tag == "MainCamera" && !col.gameObject.GetComponent<MovementV2>().respawning && Time.time - col.gameObject.GetComponent<MovementV2>().lastRespawn > col.gameObject.GetComponent<MovementV2>().invincibilityPeriod) {
 			Debug.Log (Time.time);
 			Debug.Log (col.gameObject.GetComponent<MovementV2> ().lastRespawn);
 			Debug.Log(col.gameObject.GetComponent<MovementV2>().invincibilityPeriod);

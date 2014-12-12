@@ -33,7 +33,7 @@ public class MovementV2 : MonoBehaviour {
 
 	//Bools concerning state of player
 	public bool pointMan = false;
-	private bool dash = false;
+	public bool dash = false;
 	private bool downDash = false;
 	private bool recharge;
 	public  bool respawning;
@@ -41,7 +41,7 @@ public class MovementV2 : MonoBehaviour {
 	public int points = 0;
 	private Vector3 knockUpDirection;
 
-
+	public int dashDamage = 3;
 
 	public float lastRespawn = -10f;
 	public float invincibilityPeriod = 2f;
