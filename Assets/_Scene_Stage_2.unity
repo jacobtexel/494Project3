@@ -1587,7 +1587,7 @@ MonoBehaviour:
   points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
-  reloadBonusMultiplier: .899999976
+  reloadBonusMultiplier: .800000012
   onElevator: 0
   elevator: {fileID: 0}
 --- !u!23 &212824664
@@ -4700,6 +4700,14 @@ Prefab:
       propertyPath: normalSound
       value: 
       objectReference: {fileID: 8300000, guid: 8f2ddeab776db2440b306ca46fc06a45, type: 3}
+    - target: {fileID: 11400004, guid: 86efee6e02bb24ec1b24bfade8103da8, type: 2}
+      propertyPath: reloadBonusMultiplier
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 86efee6e02bb24ec1b24bfade8103da8, type: 2}
+      propertyPath: respawning
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86efee6e02bb24ec1b24bfade8103da8, type: 2}
   m_RootGameObject: {fileID: 547834305}
@@ -5144,7 +5152,7 @@ MonoBehaviour:
   points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
-  reloadBonusMultiplier: .899999976
+  reloadBonusMultiplier: .800000012
   onElevator: 0
   elevator: {fileID: 0}
 --- !u!23 &880643622
@@ -6079,6 +6087,10 @@ Prefab:
     - target: {fileID: 400006, guid: 5a33eff7ca4644b4b948dce629d47595, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 5a33eff7ca4644b4b948dce629d47595, type: 2}
+      propertyPath: reloadBonusMultiplier
+      value: .800000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a33eff7ca4644b4b948dce629d47595, type: 2}
@@ -8255,7 +8267,7 @@ MonoBehaviour:
   points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
-  reloadBonusMultiplier: .899999976
+  reloadBonusMultiplier: .800000012
   onElevator: 0
   elevator: {fileID: 0}
 --- !u!23 &1372830165
@@ -8612,6 +8624,10 @@ Prefab:
     - target: {fileID: 400004, guid: 9544cbe665c8d471ab302a82406eb413, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 9544cbe665c8d471ab302a82406eb413, type: 2}
+      propertyPath: reloadBonusMultiplier
+      value: .800000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9544cbe665c8d471ab302a82406eb413, type: 2}
@@ -11471,6 +11487,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
+      propertyPath: reloadBonusMultiplier
+      value: .800000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 151ee481ed976424e9037a2ab2d941d5, type: 2}
   m_RootGameObject: {fileID: 126437536}
@@ -11787,12 +11807,12 @@ MonoBehaviour:
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
   pointMan: 0
-  respawning: 1
+  respawning: 0
   knockedUp: 0
   points: 0
   lastRespawn: -10
   invincibilityPeriod: 2
-  reloadBonusMultiplier: .899999976
+  reloadBonusMultiplier: .800000012
   onElevator: 0
   elevator: {fileID: 0}
 --- !u!23 &2102077753
