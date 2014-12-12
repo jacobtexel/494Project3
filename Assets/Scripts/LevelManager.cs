@@ -87,7 +87,7 @@ public class LevelManager : MonoBehaviour {
 	public void respawnPlayer(GameObject player) {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Spawn");
 		ArrayList possible = new ArrayList();
-		if(heavy == null) {
+		if(/*heavy == null*/ true) {
 			bool found = false;
 			GameObject spawn;
 			while(!found) {
@@ -108,7 +108,7 @@ public class LevelManager : MonoBehaviour {
 				}
 			}
 		}
-		GameObject newSpawn = possible [Random.Range (0, possible.Count)] as GameObject;
+		GameObject newSpawn = possible[Random.Range (0, possible.Count)] as GameObject;
 		player.transform.position = newSpawn.transform.position;
 		GameObject centerObj = GameObject.FindGameObjectWithTag ("PowerupSpawn");
 		Vector3 direction = centerObj.transform.position - player.transform.position;

@@ -9,12 +9,15 @@ public class MovementV2 : MonoBehaviour {
 	public string turn;
 	public string commandA;
 	public string commandB;
+	public string commandV;
 
 	//Timer variables
 	private float dashTime = .5f;
 	private float knockBackTime = .5f;
 	private float slowTimer = 0.0f;
 	private float timer;
+	private float timeBetweenVoices = .5f;
+	private float lastVoiceMessage = -10f;
 
 
 	//Multipliers for movement
@@ -49,6 +52,9 @@ public class MovementV2 : MonoBehaviour {
 	public bool onElevator = false;
 	public GameObject elevator;
 
+	//Voice Messages
+	private AudioClip[] voices;
+
 	// Use this for initialization
 	void Start () {
 		recharge = false;
@@ -67,10 +73,37 @@ public class MovementV2 : MonoBehaviour {
 		knife.transform.localRotation = Quaternion.Euler(rot);
 		
 		myKnife = knife;
+
+		voices = new AudioClip[]{(AudioClip)Resources.Load ("Sound/Cookie1"),
+								(AudioClip)Resources.Load ("Sound/Cookie2"),
+								(AudioClip)Resources.Load ("Sound/Cookie3"),
+								(AudioClip)Resources.Load ("Sound/Fart1"),
+								(AudioClip)Resources.Load ("Sound/Fart2"),
+								(AudioClip)Resources.Load ("Sound/Fart3"),
+								(AudioClip)Resources.Load ("Sound/Halo1"),
+								(AudioClip)Resources.Load ("Sound/Halo2"),
+								(AudioClip)Resources.Load ("Sound/Halo3"),
+								(AudioClip)Resources.Load ("Sound/Haveyou1"),
+								(AudioClip)Resources.Load ("Sound/Haveyoukiddo1"),
+								(AudioClip)Resources.Load ("Sound/HeyBabayyy"),
+								(AudioClip)Resources.Load ("Sound/Highground1"),
+								(AudioClip)Resources.Load ("Sound/Highground2"),
+								(AudioClip)Resources.Load ("Sound/NiceOn"),
+								(AudioClip)Resources.Load ("Sound/NiceOn2"),
+								(AudioClip)Resources.Load ("Sound/Smash1"),
+								(AudioClip)Resources.Load ("Sound/Smash2"),
+								(AudioClip)Resources.Load ("Sound/Smash3"),
+								(AudioClip)Resources.Load ("Sound/Smash4"),
+								(AudioClip)Resources.Load ("Sound/SpicyTaco")};
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetButtonDown(commandV) && Time.time - lastVoiceMessage > timeBetweenVoices)
+		{
+			lastVoiceMessage = Time.time;
+			audio.PlayOneShot(voices[Random.Range (0, voices.Length)]);
+		}
 		if(slowTimer > 0)
 			slowTimer -= Time.deltaTime;
 		//Evaluate player actions this frame
