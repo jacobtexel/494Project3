@@ -2026,7 +2026,7 @@ MonoBehaviour:
   UpgradePrefab: {fileID: 100000, guid: 0cd462aec67eb964dbc0c58903801d5b, type: 2}
   minSpawnTime: 45
   maxSpawnTime: 60
-  spawnRadius: 25
+  spawnRadius: 15
 --- !u!81 &298227541
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5078,7 +5078,7 @@ Halo:
     type: 2}
   m_PrefabInternal: {fileID: 1415090914}
   m_GameObject: {fileID: 880643614}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Color:
     serializedVersion: 2
     rgba: 4278190335
