@@ -469,7 +469,7 @@ MonoBehaviour:
   superSpread: .300000012
   superShotCount: 40
   superSound: {fileID: 8300000, guid: 24f205d25ec2a2646a92ef03b50b4c4e, type: 3}
-  normalSound: {fileID: 0}
+  normalSound: {fileID: 8300000, guid: 8f2ddeab776db2440b306ca46fc06a45, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
