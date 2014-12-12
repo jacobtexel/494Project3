@@ -687,7 +687,7 @@ GameObject:
   - 33: {fileID: 109067332}
   - 65: {fileID: 109067331}
   - 23: {fileID: 109067330}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1488,7 +1488,7 @@ GameObject:
   - 33: {fileID: 249226220}
   - 65: {fileID: 249226219}
   - 23: {fileID: 249226218}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1758,7 +1758,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294951167
+    m_Bits: 4294820095
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2106,6 +2106,7 @@ GameObject:
   - 122: {fileID: 423773471}
   - 114: {fileID: 423773470}
   - 135: {fileID: 423773469}
+  - 82: {fileID: 423773481}
   m_Layer: 14
   m_Name: Player2Cam
   m_TagString: MainCamera
@@ -2142,6 +2143,9 @@ MonoBehaviour:
   vignette: {fileID: 1074900508}
   crosshairs: {fileID: 74905302}
   score: {fileID: 1675530525}
+  jumpSound: {fileID: 8300000, guid: 80110447c6389714a8241323e6c17c15, type: 3}
+  hitSound: {fileID: 8300000, guid: 12b9abdebd206cc4cb8f128adb4fa547, type: 3}
+  dashSound: {fileID: 8300000, guid: 87da370e9b1be314aaa0e7ee699ae47b, type: 3}
 --- !u!122 &423773471
 Halo:
   m_ObjectHideFlags: 0
@@ -2213,6 +2217,7 @@ MonoBehaviour:
   turn: turn4
   commandA: commandA4
   commandB: commandB4
+  commandV: commandV4
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -2332,6 +2337,65 @@ Transform:
   - {fileID: 2078233104}
   m_Father: {fileID: 294305265}
   m_RootOrder: 1
+--- !u!82 &423773481
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200002, guid: 151ee481ed976424e9037a2ab2d941d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 705099813}
+  m_GameObject: {fileID: 423773468}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &426155558
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,7 +2807,7 @@ GameObject:
   - 33: {fileID: 506108080}
   - 65: {fileID: 506108079}
   - 23: {fileID: 506108078}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: HoldPoint
   m_TagString: HoldingZone
   m_Icon: {fileID: 0}
@@ -3598,7 +3662,7 @@ GameObject:
   - 33: {fileID: 679597966}
   - 65: {fileID: 679597965}
   - 23: {fileID: 679597964}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4518,6 +4582,9 @@ MonoBehaviour:
   vignette: {fileID: 726364273}
   crosshairs: {fileID: 960874893}
   score: {fileID: 1021700398}
+  jumpSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  dashSound: {fileID: 0}
 --- !u!122 &779256771
 Halo:
   m_ObjectHideFlags: 0
@@ -4589,6 +4656,7 @@ MonoBehaviour:
   turn: turn3
   commandA: commandA3
   commandB: commandB3
+  commandV: 
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -5729,7 +5797,7 @@ GameObject:
   - 33: {fileID: 951137723}
   - 65: {fileID: 951137722}
   - 23: {fileID: 951137721}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6475,6 +6543,9 @@ MonoBehaviour:
   vignette: {fileID: 923021431}
   crosshairs: {fileID: 1096794903}
   score: {fileID: 1084684012}
+  jumpSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  dashSound: {fileID: 0}
 --- !u!122 &1080205113
 Halo:
   m_ObjectHideFlags: 0
@@ -6546,6 +6617,7 @@ MonoBehaviour:
   turn: turn1
   commandA: commandA1
   commandB: commandB1
+  commandV: 
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -6856,7 +6928,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1087617977}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: DeathHoldingZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7436,7 +7508,7 @@ GameObject:
   - 33: {fileID: 1194786086}
   - 65: {fileID: 1194786085}
   - 23: {fileID: 1194786084}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7592,7 +7664,7 @@ GameObject:
   - 33: {fileID: 1258200628}
   - 65: {fileID: 1258200627}
   - 23: {fileID: 1258200626}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9798,6 +9870,9 @@ MonoBehaviour:
   vignette: {fileID: 1855903882}
   crosshairs: {fileID: 1781668006}
   score: {fileID: 1586273289}
+  jumpSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  dashSound: {fileID: 0}
 --- !u!122 &1751148757
 Halo:
   m_ObjectHideFlags: 0
@@ -9869,6 +9944,7 @@ MonoBehaviour:
   turn: turn2
   commandA: commandA2
   commandB: commandB2
+  commandV: 
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
@@ -11277,7 +11353,7 @@ MonoBehaviour:
   superSpread: .300000012
   superShotCount: 40
   superSound: {fileID: 8300000, guid: 24f205d25ec2a2646a92ef03b50b4c4e, type: 3}
-  normalSound: {fileID: 0}
+  normalSound: {fileID: 8300000, guid: 8f2ddeab776db2440b306ca46fc06a45, type: 3}
 --- !u!23 &2078233106
 Renderer:
   m_ObjectHideFlags: 0
