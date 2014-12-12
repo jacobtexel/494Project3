@@ -25,5 +25,5 @@ EditorBuildSettings:
     path: Assets/_New_Will.unity
   - enabled: 0
     path: Assets/_End_Screen.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Controls_.unity

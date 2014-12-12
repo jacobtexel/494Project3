@@ -8,6 +8,8 @@ public class PlayerV2 : MonoBehaviour {
 	public GUITexture vignette;
 	public GUITexture crosshairs;
 	public GUIText score;
+	public AudioClip jumpSound;
+	public AudioClip hitSound;
 
 	// Use this for initialization
 	void Start () {
@@ -18,5 +20,13 @@ public class PlayerV2 : MonoBehaviour {
 
 	void Update() {
 		score.text = GetComponent<MovementV2> ().points + " / 10";
+	}
+
+	public void playJump(){
+		audio.PlayOneShot (jumpSound);	
+	}
+
+	public void playHit(){
+		audio.PlayOneShot (hitSound);
 	}
 }

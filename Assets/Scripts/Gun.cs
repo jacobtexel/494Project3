@@ -46,7 +46,7 @@ public class Gun : MonoBehaviour {
 	//Fire 20 shots
 	public bool superShot() {
 		if(timer > 0) return false;
-		audio.PlayOneShot (superShot);
+		audio.PlayOneShot (superSound);
 		for(int x=0; x<superShotCount; x++){
 			GameObject fireball = Instantiate(fireballPrefab) as GameObject;
 			fireball.GetComponent<Fireball>().player = transform.parent.GetComponent<MovementV2>();
