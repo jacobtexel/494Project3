@@ -2698,7 +2698,7 @@ BoxCollider:
   m_GameObject: {fileID: 640508327}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4278,7 +4278,7 @@ MonoBehaviour:
   UpgradePrefab: {fileID: 100000, guid: 0cd462aec67eb964dbc0c58903801d5b, type: 2}
   minSpawnTime: 60
   maxSpawnTime: 90
-  spawnRadius: 25
+  spawnRadius: 8
 --- !u!82 &945166467
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4435,6 +4435,10 @@ Prefab:
     - target: {fileID: 400012, guid: 314d151fa740a4d92836207c310c540d, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500002, guid: 314d151fa740a4d92836207c310c540d, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 314d151fa740a4d92836207c310c540d, type: 2}
@@ -6442,7 +6446,7 @@ Halo:
     type: 2}
   m_PrefabInternal: {fileID: 922612681}
   m_GameObject: {fileID: 1318933968}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Color:
     serializedVersion: 2
     rgba: 4278190335

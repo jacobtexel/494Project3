@@ -308,7 +308,8 @@ public class MovementV2 : MonoBehaviour {
 			} else if(dash || downDash){
 				col.gameObject.GetComponent<MovementV2>().GetKnockedUp(transform.position);
 				col.gameObject.GetComponent<PlayerV2>().playHit();
-			}else if(col.gameObject.GetComponent<MovementV2>().pointMan) {
+			}else if(col.gameObject.GetComponent<MovementV2>().pointMan && !respawning) {
+				print ("HELLO");
 				GetKnockedUp(col.gameObject.transform.position);
 				GetComponent<PlayerV2>().playHit();
 			}
@@ -332,6 +333,7 @@ public class MovementV2 : MonoBehaviour {
 		gameObject.renderer.enabled = false;
 		if(!respawning) {
 			transform.position = GameObject.FindGameObjectWithTag("HoldingZone").transform.position;
+			print(GameObject.FindGameObjectWithTag("HoldingZone").transform.position);
 			myKnife.renderer.enabled = false;
 
 			dash = false;
@@ -340,6 +342,7 @@ public class MovementV2 : MonoBehaviour {
 			knockedUp = false;
 			respawning = true;
 
+			gameObject.rigidbody.velocity = Vector3.zero;
 			Invoke("respawn", 2f);
 		}
 	}
