@@ -23,7 +23,7 @@ public class MovementV2 : MonoBehaviour {
 	//Multipliers for movement
 	private float moveMult = 3f;
 	private float dashMult = 8f;
-	private	float rotMult = 150f;
+	private	float rotMult = 175f;
 	private float slowRotMult = 40f;
 
 	//Gameobjects
@@ -228,7 +228,7 @@ public class MovementV2 : MonoBehaviour {
 		if(!pointMan)
 		{
 			pointMan = true;
-			moveMult = moveMult / 2f;
+			moveMult = moveMult * .75f;
 		}
 		else
 		{
@@ -253,7 +253,7 @@ public class MovementV2 : MonoBehaviour {
 		transform.FindChild ("Gun").renderer.enabled = false;
 		transform.GetComponentInChildren<Gun> ().multiplier = 1;
 		getKnife ();
-		rotMult = 100f;
+		//rotMult = 100f;
 		moveMult = 3f;
 		Component halo = GetComponent("Halo");
 		halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
