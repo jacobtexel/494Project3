@@ -20,9 +20,10 @@ public class MenuEngine : MonoBehaviour {
 	Color tempColor;
 	bool mUnderSet;
 	bool pUnderSet;
-
+	public AudioClip menuTheme;
 	// Use this for initialization
 	void Start () {
+		audio.PlayOneShot (menuTheme);
 		pUnder.transform.position = p4.transform.position;
 		mUnder.transform.position = m1.transform.position;
 		playerLevel = true;
