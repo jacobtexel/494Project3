@@ -126,7 +126,7 @@ public class MenuEngine : MonoBehaviour {
 				}
 			}
 			else if(current == controls) {
-				Application.LoadLevel(3);
+				Application.LoadLevel(5);
 			}
 			else if(current == credits) {
 				Application.LoadLevel(4);

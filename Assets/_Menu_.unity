@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebeae0bbc21ec948831cba5d7459bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  up: {fileID: 1757727818}
+  up: {fileID: 1015440937}
   down: {fileID: 1101057430}
   right: {fileID: 369112936}
   left: {fileID: 1301390593}
