@@ -485,6 +485,7 @@ MonoBehaviour:
   turn: turn1
   commandA: commandA1
   commandB: commandB1
+  commandV: commandV1
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}

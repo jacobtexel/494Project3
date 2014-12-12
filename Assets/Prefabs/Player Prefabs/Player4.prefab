@@ -504,11 +504,12 @@ MonoBehaviour:
   turn: turn2
   commandA: commandA2
   commandB: commandB2
+  commandV: commandV2
   fireballPrefab: {fileID: 100000, guid: e27e131d4a4755448aaed908d4ed4efc, type: 2}
   knifePrefab: {fileID: 100000, guid: 86475a3d9ba674532971d2214aaf50e5, type: 2}
   myKnife: {fileID: 0}
   pointMan: 0
-  respawning: 0
+  respawning: 1
   knockedUp: 0
   points: 0
   lastRespawn: -10
